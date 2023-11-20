@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject keybindings;
+
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -27,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
+
+    public KeyCode jumpKeyTest;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -64,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+        keybindings = GameObject.Find("KeyBindings");
+        
     }
 
     private void Update()
@@ -92,11 +99,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput() 
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().walkForwardKey))
+        {
+            verticalInput = 1;
+        } else if (Input.GetKey(keybindings.GetComponent<KeysBindings>().walkBackwardKey))
+        {
+            verticalInput = -1;
+        } else
+        {
+            verticalInput = 0;
+        }
+
+        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().walkLeftKey))
+        {
+            horizontalInput = 1;
+        } else if (Input.GetKey(keybindings.GetComponent<KeysBindings>().walkRightKey))
+        {
+            horizontalInput = -1;
+        } else
+        {
+            horizontalInput = 0;
+        }
 
         // when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
             Jump();
@@ -104,14 +130,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // start crouch
-        if (Input.GetKeyDown(crouchKey))
+        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
         // stop crouch
-        if (Input.GetKeyUp(crouchKey))
+        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
@@ -120,13 +146,13 @@ public class PlayerMovement : MonoBehaviour
     private void StateHandler()
     {
         // Mode - Crouching
-        if (Input.GetKeyDown(crouchKey)) 
+        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().crouchKey)) 
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
         }
         // Mode - Sprinting
-        if (grounded && Input.GetKey(sprintKey))
+        if (grounded && Input.GetKey(keybindings.GetComponent<KeysBindings>().sprintKey))
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
