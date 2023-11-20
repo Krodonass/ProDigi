@@ -83,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
-        Debug.Log(grounded + "" + readyToJump);
     }
 
     private void FixedUpdate()
