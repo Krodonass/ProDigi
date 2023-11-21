@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
+
+    private Transform highlight;
+    private RaycastHit raycastHit;
     public float sensX;
     public float sensY;
-
+    //private PickupController pickupController;
+    private float pickupRange = 5.0f;
     public Transform orientation;
   
     float xRotation;
@@ -20,6 +26,7 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(pickupController.GetComponent<PickupController>().isCarrying);
         // get mouse input
         float mouseX = Input.GetAxis("Mouse X") * sensX;
         float mouseY = Input.GetAxis("Mouse Y") * sensY;

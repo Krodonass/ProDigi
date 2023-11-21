@@ -573,10 +573,6 @@ MonoBehaviour:
   airMultiplier: 0.4
   crouchSpeed: 3.5
   crouchYScale: 0.5
-  jumpKey: 32
-  sprintKey: 304
-  crouchKey: 306
-  jumpKeyTest: 0
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -883,8 +879,8 @@ GameObject:
   - component: {fileID: 791262203}
   - component: {fileID: 791262202}
   m_Layer: 10
-  m_Name: Box (1)
-  m_TagString: Untagged
+  m_Name: Box
+  m_TagString: Pickupable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1270,6 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecf826ec1545134899a0dc741a979ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keybindings: {fileID: 1117033955}
   holdArea: {fileID: 667178333}
   playerCharacter: {fileID: 388658373}
   orientation: {fileID: 1083247358}
@@ -1986,8 +1983,8 @@ GameObject:
   - component: {fileID: 1476926398}
   - component: {fileID: 1476926397}
   m_Layer: 10
-  m_Name: Box (2)
-  m_TagString: Untagged
+  m_Name: Box
+  m_TagString: Pickupable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2642,8 +2639,8 @@ GameObject:
   - component: {fileID: 1864703284}
   - component: {fileID: 1864703283}
   m_Layer: 10
-  m_Name: Box (4)
-  m_TagString: Untagged
+  m_Name: Box
+  m_TagString: Pickupable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
