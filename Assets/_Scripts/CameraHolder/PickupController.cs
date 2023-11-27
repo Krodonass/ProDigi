@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PickupController : MonoBehaviour
 {
@@ -28,9 +29,12 @@ public class PickupController : MonoBehaviour
     public float mouseY;
 
     public bool isCarrying;
+    public bool isRotatingObject = false;
+    Vector3 m_EulerAngleVelocity;
 
     private void Update () 
     {
+
         mouseX = Input.GetAxis("Mouse X") * sensX;
         mouseY = Input.GetAxis("Mouse Y") * sensY;
 
@@ -76,6 +80,15 @@ public class PickupController : MonoBehaviour
         if (heldObj != null)
         {
             MoveObject();
+            if (Input.GetKey(keybindings.GetComponent<KeysBindings>().rotateKey))
+            {
+                isRotatingObject = true;
+                RotateObject();
+            } else
+            {
+                heldObjRB.transform.parent = holdArea;
+                isRotatingObject = false;
+            }
         }
     }
 
@@ -88,6 +101,12 @@ public class PickupController : MonoBehaviour
         }
     }
 
+    void RotateObject()
+    {
+        heldObjRB.transform.parent = null;
+        heldObjRB.rotation = Quaternion.Euler(heldObjRB.rotation.eulerAngles + new Vector3(0f, 5.0f * mouseX, 5.0f * mouseY));
+    }
+
     void PickupObject (GameObject pickObj)
     {
         if (pickObj.GetComponent<Rigidbody>() && pickObj.GetComponent<Rigidbody>().tag != "Player")
@@ -95,9 +114,7 @@ public class PickupController : MonoBehaviour
             heldObjRB = pickObj.GetComponent<Rigidbody>();
             heldObjRB.useGravity = false;
             heldObjRB.drag = 30;
-            //heldObjRB.transform.Rotate(0, 0, 0);
             heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
-
             heldObjRB.transform.parent = holdArea;
             heldObj = pickObj;
         }
@@ -105,12 +122,11 @@ public class PickupController : MonoBehaviour
 
     void DropObject()
     {
+        isRotatingObject = false;
         heldObjRB.useGravity = true;
         heldObjRB.drag = 1;
         heldObjRB.constraints = RigidbodyConstraints.None;
-
         heldObjRB.transform.parent = null;
-
         heldObjRB.AddForce(playerCharacter.velocity, ForceMode.Impulse);
         
         if (orientation.transform.rotation.eulerAngles.y >= 0 && orientation.transform.rotation.eulerAngles.y <= 89)
