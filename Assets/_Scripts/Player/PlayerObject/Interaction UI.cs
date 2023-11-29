@@ -22,5 +22,14 @@ public class InteractionUI : MonoBehaviour
         {
             mText.text = "";
         }
+
+        if (playercam.GetComponent<PickupController>().isGettingObjectInformation)
+        {
+            mText.text = playercam.GetComponent<PickupController>().objectInformationText;
+        } else
+        {
+            mText.text = "";
+        }
+
     }
 }

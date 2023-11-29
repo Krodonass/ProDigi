@@ -31,7 +31,8 @@ public class PickupController : MonoBehaviour
     public bool isCarrying;
     public bool isPickupable;
     public bool isRotatingObject = false;
-    Vector3 m_EulerAngleVelocity;
+    public bool isGettingObjectInformation = false;
+    public string objectInformationText = "";
 
     private void Update () 
     {
@@ -91,6 +92,14 @@ public class PickupController : MonoBehaviour
             {
                 heldObjRB.transform.parent = holdArea;
                 isRotatingObject = false;
+            }
+            if (Input.GetKey(keybindings.GetComponent<KeysBindings>().informationKey))
+            {
+                isGettingObjectInformation = true;
+                objectInformationText = heldObj.GetComponent<ObjectInformation>().information;
+            } else
+            {
+                isGettingObjectInformation = false;
             }
         }
     }

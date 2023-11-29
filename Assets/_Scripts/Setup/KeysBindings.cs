@@ -16,4 +16,5 @@ public class KeysBindings : MonoBehaviour
     [Header("Interaction")]
     public KeyCode grabKey;
     public KeyCode rotateKey;
+    public KeyCode informationKey;
 }
