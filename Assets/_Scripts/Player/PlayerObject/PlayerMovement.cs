@@ -123,14 +123,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // start crouch
-        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().crouchKey))
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
         // stop crouch
-        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().crouchKey))
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
