@@ -6,6 +6,7 @@ using UnityEngine;
 public class InteractionUI : MonoBehaviour
 {
     public PlayerCam playercam;
+    public GameObject keybindings;
     public TMP_Text mText;
 
     // Update is called once per frame
@@ -13,7 +14,7 @@ public class InteractionUI : MonoBehaviour
     {
         if (playercam.GetComponent<PickupController>().isPickupable)
         {
-            mText.text = "press E to pick up";
+            mText.text = "press " + keybindings.GetComponent<KeysBindings>().grabKey + " to pick up";
         } else if (playercam.GetComponent<PickupController>().isGettingObjectInformation)
         {
             mText.text = playercam.GetComponent<PickupController>().objectInformationText;
