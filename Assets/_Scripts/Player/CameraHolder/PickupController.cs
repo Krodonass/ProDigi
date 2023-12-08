@@ -159,6 +159,6 @@ public class PickupController : MonoBehaviour
             heldObjRB.AddForce(new Vector3(mouseX * 5, mouseY * 10, heldObjRB.velocity.z), ForceMode.Impulse);
         }
         heldObj = null;
-        holdArea.transform.localPosition = new Vector3(0, 0, 2f);
+        holdArea.transform.localPosition = new Vector3(0, 0, 1f);
     }
 }

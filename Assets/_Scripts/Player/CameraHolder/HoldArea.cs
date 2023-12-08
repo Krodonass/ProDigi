@@ -10,10 +10,10 @@ public class HoldArea : MonoBehaviour
     void Update()
     {
         mouseScroll = Input.mouseScrollDelta.y;
-        if (mouseScroll > 0f && transform.localPosition.z < 3f)
+        if (mouseScroll > 0f && transform.localPosition.z < 1.5f)
         {
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 0.01f);
-        } else if (mouseScroll < 0f && transform.localPosition.z > 1f)
+        } else if (mouseScroll < 0f && transform.localPosition.z > 0.5f)
         {
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 0.01f);
         }
