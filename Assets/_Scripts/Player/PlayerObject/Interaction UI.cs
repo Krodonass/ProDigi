@@ -18,6 +18,9 @@ public class InteractionUI : MonoBehaviour
         } else if (playercam.GetComponent<PickupController>().isGettingObjectInformation)
         {
             mText.text = playercam.GetComponent<PickupController>().objectInformationText;
+        } else if (playercam.GetComponent<PickupController>().isUsable) 
+        {
+            mText.text = "press " + keybindings.GetComponent<KeysBindings>().grabKey + " to use";
         } else
         {
             mText.text = "";

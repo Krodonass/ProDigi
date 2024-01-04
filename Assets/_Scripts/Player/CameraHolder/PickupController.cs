@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -27,10 +28,10 @@ public class PickupController : MonoBehaviour
 
     public float mouseX;
     public float mouseY;
-    public float mouseScroll;
 
     public bool isCarrying;
     public bool isPickupable;
+    public bool isUsable;
     public bool isRotatingObject = false;
     public bool isGettingObjectInformation = false;
     public string objectInformationText = "";
@@ -47,7 +48,7 @@ public class PickupController : MonoBehaviour
             highlight = null;
         }
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange) && raycastHit.transform.CompareTag("Pickupable") && !isCarrying)
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange) && raycastHit.transform.CompareTag("Pickupable") && !isCarrying && !isUsable)
         {
             highlight = raycastHit.transform;
             if (highlight.gameObject.GetComponent<Outline>() != null)
@@ -61,11 +62,26 @@ public class PickupController : MonoBehaviour
                 highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.magenta;
                 highlight.gameObject.GetComponent<Outline>().OutlineWidth = 7.0f;
             }
-        } else
+        } else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange) && raycastHit.transform.CompareTag("Usable") && !isCarrying)
         {
+            highlight = raycastHit.transform;
+            if (highlight.gameObject.GetComponent<Outline>() != null)
+            {
+                isUsable = true;
+                highlight.gameObject.GetComponent<Outline>().enabled = true;
+            } else
+            {
+                Outline outline = highlight.gameObject.AddComponent<Outline>();
+                outline.enabled = true;
+                highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.magenta;
+                highlight.gameObject.GetComponent<Outline>().OutlineWidth = 7.0f;
+            }
+        } else {
+            isUsable = false;
             isPickupable = false;
             highlight = null;
-        }
+        } 
+
 
         if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().grabKey))
         {
@@ -144,19 +160,19 @@ public class PickupController : MonoBehaviour
         
         if (orientation.transform.rotation.eulerAngles.y >= 0 && orientation.transform.rotation.eulerAngles.y <= 89)
         {
-            heldObjRB.AddForce(new Vector3(heldObjRB.velocity.x, mouseY * 10, -(mouseX * 5)), ForceMode.Impulse);
+            heldObjRB.AddForce(new Vector3(heldObjRB.velocity.x, mouseY * 2, -(mouseX * 1)), ForceMode.Impulse);
         } 
         else if (orientation.transform.rotation.eulerAngles.y >= 90 && orientation.transform.rotation.eulerAngles.y <= 179)
         {
-            heldObjRB.AddForce(new Vector3(-(mouseX * 5), mouseY * 10, heldObjRB.velocity.z), ForceMode.Impulse);
+            heldObjRB.AddForce(new Vector3(-(mouseX * 1), mouseY * 2, heldObjRB.velocity.z), ForceMode.Impulse);
         }
         else if (orientation.transform.rotation.eulerAngles.y >= 180 && orientation.transform.rotation.eulerAngles.y <= 269)
         {
-            heldObjRB.AddForce(new Vector3(heldObjRB.velocity.x, mouseY * 10, mouseX * 5), ForceMode.Impulse);
+            heldObjRB.AddForce(new Vector3(heldObjRB.velocity.x, mouseY * 2, mouseX * 1), ForceMode.Impulse);
         } 
         else if (orientation.transform.rotation.eulerAngles.y >= 270 && orientation.transform.rotation.eulerAngles.y <= 360)
         {
-            heldObjRB.AddForce(new Vector3(mouseX * 5, mouseY * 10, heldObjRB.velocity.z), ForceMode.Impulse);
+            heldObjRB.AddForce(new Vector3(mouseX * 1, mouseY * 2, heldObjRB.velocity.z), ForceMode.Impulse);
         }
         heldObj = null;
         holdArea.transform.localPosition = new Vector3(0, 0, 1f);
