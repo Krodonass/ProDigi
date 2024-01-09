@@ -41,7 +41,7 @@ public class PickupController : MonoBehaviour
 
         mouseX = Input.GetAxis("Mouse X") * sensX;
         mouseY = Input.GetAxis("Mouse Y") * sensY;
-
+        Debug.Log(mouseY);
         if (highlight != null)
         {
             highlight.gameObject.GetComponent<Outline>().enabled = false;
@@ -133,7 +133,7 @@ public class PickupController : MonoBehaviour
     void RotateObject()
     {
         heldObjRB.transform.parent = null;
-        heldObjRB.rotation = Quaternion.Euler(heldObjRB.rotation.eulerAngles + new Vector3(0f, 5.0f * mouseX, 5.0f * mouseY));
+        heldObjRB.transform.Rotate((-mouseY * 10), (-mouseX * 10), 0, Space.World);
     }
 
     void PickupObject (GameObject pickObj)
