@@ -157,24 +157,7 @@ public class PickupController : MonoBehaviour
         heldObjRB.drag = 1;
         heldObjRB.constraints = RigidbodyConstraints.None;
         heldObjRB.transform.parent = null;
-        //heldObjRB.AddForce(playerCharacter.velocity, ForceMode.Impulse);
         heldObjRB.AddForce(holdAreaa.GetComponent<HoldArea>().ObjVelocity, ForceMode.Impulse);
-        //if (orientation.transform.rotation.eulerAngles.y >= 0 && orientation.transform.rotation.eulerAngles.y <= 89)
-        //{
-        //     heldObjRB.AddForce(new Vector3(heldObjRB.velocity.x, mouseY * 2, -(mouseX * 1)), ForceMode.Impulse);
-        //} 
-        //else if (orientation.transform.rotation.eulerAngles.y >= 90 && orientation.transform.rotation.eulerAngles.y <= 179)
-        //{
-        //    heldObjRB.AddForce(new Vector3(-(mouseX * 1), mouseY * 2, heldObjRB.velocity.z), ForceMode.Impulse);
-        //}
-        //else if (orientation.transform.rotation.eulerAngles.y >= 180 && orientation.transform.rotation.eulerAngles.y <= 269)
-        //{
-        //    heldObjRB.AddForce(new Vector3(heldObjRB.velocity.x, mouseY * 2, mouseX * 1), ForceMode.Impulse);
-        //} 
-        //else if (orientation.transform.rotation.eulerAngles.y >= 270 && orientation.transform.rotation.eulerAngles.y <= 360)
-        //{
-        //    heldObjRB.AddForce(new Vector3(mouseX * 1, mouseY * 2, heldObjRB.velocity.z), ForceMode.Impulse);
-        //}
         heldObj = null;
         holdArea.transform.localPosition = new Vector3(0, 0, 1f);
     }

@@ -802,6 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613e298c70497c94c92ee0dffd9592d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjVelocity: {x: 0, y: 0, z: 0}
 --- !u!54 &667178335
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1254,6 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keybindings: {fileID: 1117033955}
+  holdAreaa: {fileID: 667178332}
   holdArea: {fileID: 667178333}
   playerCharacter: {fileID: 388658373}
   orientation: {fileID: 1083247358}
