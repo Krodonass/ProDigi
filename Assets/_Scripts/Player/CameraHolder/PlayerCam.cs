@@ -29,7 +29,6 @@ public class PlayerCam : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * sensX;
         float mouseY = Input.GetAxis("Mouse Y") * sensY;
 
-
         // rotate cam and orientation
        if (!playercam.GetComponent<PickupController>().isRotatingObject)
        {

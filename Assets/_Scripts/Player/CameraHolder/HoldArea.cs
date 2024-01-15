@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class HoldArea : MonoBehaviour
 {
-    public float mouseScroll;
-
-    // Update is called once per frame
-    void Update()
+    private float mouseScroll;
+    Vector3 PrevPos;
+    Vector3 NewPos;
+    public Vector3 ObjVelocity;
+    private void Start()
     {
+        PrevPos = transform.position;
+        NewPos = transform.position;
+    }
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        NewPos = transform.position;  // each frame track the new position
+        ObjVelocity = (NewPos - PrevPos) / Time.fixedDeltaTime;  // velocity = dist/time
+        PrevPos = NewPos;  // update position for next frame calculation
+
         mouseScroll = Input.mouseScrollDelta.y;
         if (mouseScroll > 0f && transform.localPosition.z < 1.5f)
         {

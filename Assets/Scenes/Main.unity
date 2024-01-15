@@ -767,6 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 667178333}
   - component: {fileID: 667178334}
+  - component: {fileID: 667178335}
   m_Layer: 0
   m_Name: HoldArea
   m_TagString: Untagged
@@ -782,7 +783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667178332}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -801,7 +802,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613e298c70497c94c92ee0dffd9592d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseScroll: 0
+--- !u!54 &667178335
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667178332}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &684687744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 17809364096493394, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
@@ -1471,8 +1498,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1450625509
-BoxCollider:
+--- !u!114 &1450625510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450625504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfc5c98364afbe498e1d58c3d5cb846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  information: This is the Base
+--- !u!64 &1450625514
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1489,22 +1529,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0038748134, y: 0.0038748125, z: 0.0018716175}
-  m_Center: {x: -0.0000000018626451, y: 5.820765e-11, z: 0.00093580876}
---- !u!114 &1450625510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450625504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbfc5c98364afbe498e1d58c3d5cb846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  information: This is the Base
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1388485733357891733, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
 --- !u!4 &1476926396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9213892675374619538, guid: cdd970d311427554992b5fc7e52cc946, type: 3}
@@ -1678,13 +1706,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7953606483559150473, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1450625509}
-    - targetCorrespondingSourceObject: {fileID: 7953606483559150473, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1450625508}
     - targetCorrespondingSourceObject: {fileID: 7953606483559150473, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1450625510}
+    - targetCorrespondingSourceObject: {fileID: 7953606483559150473, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1450625514}
     - targetCorrespondingSourceObject: {fileID: 6529573052539421902, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       insertIndex: -1
       addedObject: {fileID: 839320714}
