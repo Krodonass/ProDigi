@@ -39,7 +39,6 @@ public class PickupController : MonoBehaviour
 
     private void Update () 
     {
-        Debug.Log(holdAreaa.GetComponent<HoldArea>().ObjVelocity);
         mouseX = Input.GetAxis("Mouse X") * sensX;
         mouseY = Input.GetAxis("Mouse Y") * sensY;
 
@@ -90,12 +89,11 @@ public class PickupController : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange))
                 {
-                    isCarrying = true;
                     PickupObject(raycastHit.transform.gameObject);
                 }
+                //isCarrying = false;
             } else
             {
-                isCarrying = false;
                 DropObject();
             }
         }
@@ -141,6 +139,7 @@ public class PickupController : MonoBehaviour
     {
         if (pickObj.GetComponent<Rigidbody>() && pickObj.GetComponent<Rigidbody>().tag != "Player")
         {
+            isCarrying = true;
             heldObjRB = pickObj.GetComponent<Rigidbody>();
             heldObjRB.useGravity = false;
             heldObjRB.drag = 30;
@@ -152,6 +151,7 @@ public class PickupController : MonoBehaviour
 
     void DropObject()
     {
+        isCarrying = false;
         isRotatingObject = false;
         heldObjRB.useGravity = true;
         heldObjRB.drag = 1;
