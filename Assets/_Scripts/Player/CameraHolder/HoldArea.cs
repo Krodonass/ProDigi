@@ -14,7 +14,7 @@ public class HoldArea : MonoBehaviour
         NewPos = transform.position;
     }
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         NewPos = transform.position;  // each frame track the new position
         ObjVelocity = (NewPos - PrevPos) / Time.fixedDeltaTime;  // velocity = dist/time

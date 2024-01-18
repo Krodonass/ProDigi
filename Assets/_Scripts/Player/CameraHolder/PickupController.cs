@@ -37,7 +37,7 @@ public class PickupController : MonoBehaviour
     public bool isGettingObjectInformation = false;
     public string objectInformationText = "";
 
-    private void Update () 
+    private void Update() 
     {
         mouseX = Input.GetAxis("Mouse X") * sensX;
         mouseY = Input.GetAxis("Mouse Y") * sensY;
@@ -161,4 +161,5 @@ public class PickupController : MonoBehaviour
         heldObj = null;
         holdArea.transform.localPosition = new Vector3(0, 0, 1f);
     }
+
 }
