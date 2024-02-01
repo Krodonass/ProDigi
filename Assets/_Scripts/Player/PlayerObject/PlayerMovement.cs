@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    public GameObject gloveBoxPlayerPosotion;
+
     public MovementState state;
     public enum MovementState
     {
@@ -70,20 +72,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        
-        MyInput();
-        SpeedControl();
-        StateHandler();
-
-        //handle drag
-        if (grounded)
+        if (!gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
         {
-            rb.drag = groundDrag;
+            // ground check
+            grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        
+            MyInput();
+            SpeedControl();
+            StateHandler();
+
+            //handle drag
+            if (grounded)
+            {
+                rb.drag = groundDrag;
+            } else
+            {
+                rb.drag = 0;
+            }
+
         } else
         {
-            rb.drag = 0;
+            gameObject.transform.position = 
+                new Vector3(gloveBoxPlayerPosotion.transform.position.x, gameObject.transform.position.y, gloveBoxPlayerPosotion.transform.position.z);
         }
     }
 

@@ -13,7 +13,7 @@ public class HoldArea : MonoBehaviour
         PrevPos = transform.position;
         NewPos = transform.position;
     }
-    // Update is called once per frame
+    // Update is called once per framessssss
     void Update()
     {
         NewPos = transform.position;  // each frame track the new position

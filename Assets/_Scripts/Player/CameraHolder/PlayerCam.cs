@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-
+    public GameObject gameManager;
     private Transform highlight;
     private RaycastHit raycastHit;
     public float sensX;
@@ -30,13 +30,18 @@ public class PlayerCam : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * sensY;
 
         // rotate cam and orientation
+
        if (!playercam.GetComponent<PickupController>().isRotatingObject)
        {
             yRotation += mouseX;
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            if (!gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
+            {
+                transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+                orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            }
+            
        }
         
     }

@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class PickupController : MonoBehaviour
 {
+    public GameObject gameManager;
     public GameObject keybindings;
     public GameObject holdAreaa;
     private Transform highlight;
@@ -30,9 +31,20 @@ public class PickupController : MonoBehaviour
     public float mouseX;
     public float mouseY;
 
-    public bool isCarrying;
     public bool isPickupable;
+    public bool isCarrying;
+
     public bool isUsable;
+    public bool isUsing;
+    public bool isUsingGlovebox;
+
+    public bool isOpeningOutterHatch;
+    public bool isClosingOutterHatch;
+
+    public bool isOpeningInnerHatch;
+    public bool isClosingInnerHatch;
+
+
     public bool isRotatingObject = false;
     public bool isGettingObjectInformation = false;
     public string objectInformationText = "";
@@ -96,7 +108,46 @@ public class PickupController : MonoBehaviour
             {
                 DropObject();
             }
+            if (heldObj == null && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange))
+            {
+                if (raycastHit.collider.name == "glass")
+                {
+                    isUsingGlovebox = true;
+                }
+                if (isUsable && raycastHit.collider.name == "OutterHatch") 
+                { 
+                   if (!gameManager.GetComponent<GameManager>().isOpenOutterHatchGameManager)
+                   {
+                        isOpeningOutterHatch = true;
+                        isClosingOutterHatch = false;
+                    } else
+                   {
+                        isClosingOutterHatch = true;
+                        isOpeningOutterHatch = false;
+                   }
+                }
+
+                if (isUsable && raycastHit.collider.name == "InnerHatch")
+                {
+                    if (!gameManager.GetComponent<GameManager>().isOpenInnerHatchGameManager)
+                    {
+                        isOpeningInnerHatch = true;
+                        isClosingInnerHatch = false;
+                    } else
+                    {
+                        isClosingInnerHatch = true;
+                        isOpeningInnerHatch = false;
+                    }
+                }
+            }
         }
+
+
+        if (isUsingGlovebox && Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().exitEquipmentKey))
+        {
+            isUsingGlovebox = false;
+        }
+
         if (heldObj != null)
         {
             MoveObject();
@@ -157,7 +208,7 @@ public class PickupController : MonoBehaviour
         heldObjRB.drag = 1;
         heldObjRB.constraints = RigidbodyConstraints.None;
         heldObjRB.transform.parent = null;
-        heldObjRB.AddForce(holdAreaa.GetComponent<HoldArea>().ObjVelocity, ForceMode.Impulse);
+        heldObjRB.AddForce(holdAreaa.GetComponent<HoldArea>().ObjVelocity * 5f, ForceMode.Impulse);
         heldObj = null;
         holdArea.transform.localPosition = new Vector3(0, 0, 1f);
     }
