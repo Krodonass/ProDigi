@@ -553,10 +553,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8ea79f6ee14264ba6d6a321ff08e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keybindings: {fileID: 0}
+  gameManager: {fileID: 857700960}
+  keybindings: {fileID: 1117033955}
   walkSpeed: 7
   sprintSpeed: 10
   groundDrag: 5
+  moveSpeed: 0
   jumpForce: 6
   jumpCooldown: 0.25
   airMultiplier: 0.4
@@ -568,6 +570,7 @@ MonoBehaviour:
     m_Bits: 1024
   maxSlopeAngle: 40
   orientation: {fileID: 1083247358}
+  gloveBoxPlayerPosotion: {fileID: 0}
   state: 0
 --- !u!114 &388658376
 MonoBehaviour:
@@ -591,6 +594,7 @@ MonoBehaviour:
   grabKey: 101
   rotateKey: 0
   informationKey: 0
+  exitEquipmentKey: 0
 --- !u!1 &449972558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2180232625975573591, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
@@ -801,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613e298c70497c94c92ee0dffd9592d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseScroll: 0
+  ObjVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &684687744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 17809364096493394, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
@@ -1035,6 +1039,67 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7989083189981622287, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
+--- !u!1 &857700958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 857700959}
+  - component: {fileID: 857700960}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &857700959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857700958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1823481546}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &857700960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857700958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebde2066fc2a1ea4785075a47deeac9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 388658372}
+  playerCam: {fileID: 963194225}
+  isCarryingGameManager: 0
+  isPickupableGameManager: 0
+  isUsableGameManager: 0
+  isRotatingObjectGameManager: 0
+  isGettingObjectInformationGameManager: 0
+  isUsingGloveboxGameManager: 0
+  isUsingHatchGameManager: 0
+  outterHatch: {fileID: 7939699250480915443}
+  isOpeneingOutterHatchGameManager: 0
+  isClosingOutterHatchGameManager: 0
+  isOpenOutterHatchGameManager: 0
+  innerHatch: {fileID: 6539230799932454540}
+  isOpeneingInnerHatchGameManager: 0
+  isClosingInnerHatchGameManager: 0
+  isOpenInnerHatchGameManager: 0
 --- !u!1 &876606047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7621052660579513338, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
@@ -1210,6 +1275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e408c36024f046f40b5f487021fb85c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 857700958}
   sensX: 1.5
   sensY: 1.5
   playercam: {fileID: 963194229}
@@ -1226,7 +1292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ecf826ec1545134899a0dc741a979ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 857700958}
   keybindings: {fileID: 1117033955}
+  holdAreaa: {fileID: 667178332}
   holdArea: {fileID: 667178333}
   playerCharacter: {fileID: 388658373}
   orientation: {fileID: 1083247358}
@@ -1236,9 +1304,15 @@ MonoBehaviour:
   sensY: 1.5
   mouseX: 0
   mouseY: 0
-  isCarrying: 0
   isPickupable: 0
+  isCarrying: 0
   isUsable: 0
+  isUsing: 0
+  isUsingGlovebox: 0
+  isOpeningOutterHatch: 0
+  isClosingOutterHatch: 0
+  isOpeningInnerHatch: 0
+  isClosingInnerHatch: 0
   isRotatingObject: 0
   isGettingObjectInformation: 0
   objectInformationText: 
@@ -1312,6 +1386,7 @@ MonoBehaviour:
   grabKey: 101
   rotateKey: 324
   informationKey: 105
+  exitEquipmentKey: 0
 --- !u!4 &1117033957
 Transform:
   m_ObjectHideFlags: 0
@@ -1827,6 +1902,7 @@ Transform:
   m_Children:
   - {fileID: 705507995}
   - {fileID: 1117033957}
+  - {fileID: 857700959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1844853620
@@ -3817,9 +3893,10 @@ GameObject:
   - component: {fileID: 2219940638667368286}
   - component: {fileID: 7759452851309942800}
   - component: {fileID: 5521862000795204769}
+  - component: {fileID: 7759452851309942801}
   m_Layer: 0
-  m_Name: vacq_hatch_02
-  m_TagString: Untagged
+  m_Name: Inner Hatch
+  m_TagString: Usable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4165,6 +4242,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6539230799932454540}
   m_Mesh: {fileID: -4685154865508228981, guid: 8c8b988bd92f8f447abddc00c70195e5, type: 3}
+--- !u!114 &7759452851309942801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6539230799932454540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2e9f8a9959bf3419d79f4f18c78f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  isOpeningInnerHatch: 0
+  isClosingInnerHatch: 0
+  isOpenInnerHatch: 0
 --- !u!1 &7886166656861827902
 GameObject:
   m_ObjectHideFlags: 0
@@ -4212,13 +4305,30 @@ GameObject:
   - component: {fileID: 185478437883084008}
   - component: {fileID: 5312585637915794175}
   - component: {fileID: 5881920440552511216}
+  - component: {fileID: 7939699250480915444}
   m_Layer: 0
-  m_Name: vacq_hatch_01
-  m_TagString: Untagged
+  m_Name: Outter Hatch
+  m_TagString: Usable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7939699250480915444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939699250480915443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2483982b85bf8ab48808691a221a0866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  isOpeningOutterHatch: 0
+  isClosingOutterHatch: 0
+  isOpenOutterHatch: 0
 --- !u!33 &8041449101652639570
 MeshFilter:
   m_ObjectHideFlags: 0

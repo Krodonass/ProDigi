@@ -31,8 +31,8 @@ public class InnerHatch : MonoBehaviour
 
     public void openHatch()
     {
+        Debug.Log("jo");
         transform.Rotate(0, -120, 0);
-
     }
 
     public void closeHatch()
