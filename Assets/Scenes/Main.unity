@@ -616,6 +616,8 @@ MonoBehaviour:
   isOpeneingOvenDoorGameManager: 0
   isClosingOvenDoorGameManager: 0
   assembleBaseGameManager: 0
+  assembleGearGameManager: 0
+  assembleBrassTopGameManager: 0
   outterHatch: {fileID: 157759779372839719}
   isOpenOutterHatchGameManager: 0
   innerHatch: {fileID: 3953879050321225304}
@@ -1464,9 +1466,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 310630293}
-  baseAssembly: {fileID: 0}
-  gearAssembly: {fileID: 0}
-  brassTopAssembly: {fileID: 0}
+  baseAssembly: {fileID: 405060028}
+  gearAssembly: {fileID: 1015604897}
+  brassTopAssembly: {fileID: 1116791958}
   baseAssemblyPossible: 0
   baseAssembled: 0
   gearAssemblyPossible: 0
@@ -1680,9 +1682,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 310630293}
-  baseAssembly: {fileID: 0}
-  gearAssembly: {fileID: 0}
-  brassTopAssembly: {fileID: 0}
+  baseAssembly: {fileID: 405060028}
+  gearAssembly: {fileID: 1015604897}
+  brassTopAssembly: {fileID: 1116791958}
   baseAssemblyPossible: 0
   baseAssembled: 0
   gearAssemblyPossible: 0
@@ -1922,6 +1924,8 @@ MonoBehaviour:
   isUsingGlovebox: 0
   isPlacable: 0
   assembleBase: 0
+  assembleGear: 0
+  assembleBrassTop: 0
   isOpeningOutterHatch: 0
   isClosingOutterHatch: 0
   isOpeningInnerHatch: 0
@@ -3122,18 +3126,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1388485733357891733, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
---- !u!114 &1450625518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450625504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 152c540231010284ca031884c6e0a420, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1450625519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,9 +3584,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7953606483559150473, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1450625514}
-    - targetCorrespondingSourceObject: {fileID: 7953606483559150473, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1450625518}
     - targetCorrespondingSourceObject: {fileID: 7953606483559150473, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1450625519}
