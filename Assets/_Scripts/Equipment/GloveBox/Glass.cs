@@ -18,11 +18,11 @@ public class Glass : MonoBehaviour
         if (gameManger.GetComponent<GameManager>().isUsingGloveboxGameManager)
         {
             m.enabled = false;
-            gameObject.GetComponent<MeshCollider>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         } else
         {
             m.enabled = true;
-            gameObject.GetComponent<MeshCollider>().enabled = true;
+            gameObject.GetComponent<BoxCollider>().enabled = true;
         }
     }
 }

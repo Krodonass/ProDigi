@@ -11,6 +11,7 @@ public class PickupController : MonoBehaviour
     public GameObject gameManager;
     public GameObject keybindings;
     public GameObject holdAreaa;
+    public GameObject heldObjectInGloveBox;
     private Transform highlight;
     private RaycastHit raycastHit;
 
@@ -37,12 +38,20 @@ public class PickupController : MonoBehaviour
     public bool isUsable;
     public bool isUsing;
     public bool isUsingGlovebox;
+    public bool isPlacable;
+
+    public bool assembleBase;
+    public bool assembleGear;
+    public bool assembleBrassTop;
 
     public bool isOpeningOutterHatch;
     public bool isClosingOutterHatch;
 
     public bool isOpeningInnerHatch;
     public bool isClosingInnerHatch;
+
+    public bool isOpeningOvenDoor;
+    public bool isClosingOvenDoor;
 
 
     public bool isRotatingObject = false;
@@ -114,13 +123,14 @@ public class PickupController : MonoBehaviour
                 {
                     isUsingGlovebox = true;
                 }
+
                 if (isUsable && raycastHit.collider.name == "OutterHatch") 
                 { 
                    if (!gameManager.GetComponent<GameManager>().isOpenOutterHatchGameManager)
                    {
                         isOpeningOutterHatch = true;
                         isClosingOutterHatch = false;
-                    } else
+                   } else
                    {
                         isClosingOutterHatch = true;
                         isOpeningOutterHatch = false;
@@ -139,9 +149,49 @@ public class PickupController : MonoBehaviour
                         isOpeningInnerHatch = false;
                     }
                 }
+
+                if (isUsable && raycastHit.collider.name == "OvenDoor")
+                {
+                    if (!gameManager.GetComponent<GameManager>().isOpenOvenDoorGameManager)
+                    {
+                        isOpeningOvenDoor = true;
+                        isClosingOvenDoor = false;
+                    } else
+                    {
+                        isClosingOvenDoor = true;
+                        isOpeningOvenDoor = false;
+                    }
+                }
             }
         }
+        
+        if (gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager || 
+            gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager ||
+            gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
+        {
+            isPlacable = true;
+        }
 
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager)
+        {
+            assembleBase = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager)
+        {
+            assembleGear = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
+        {
+            assembleBrassTop = true;
+            isPlacable = false;
+            DropObject();
+        }
 
         if (isUsingGlovebox && Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().exitEquipmentKey))
         {
@@ -178,6 +228,10 @@ public class PickupController : MonoBehaviour
             Vector3 moveDirection = (holdArea.position - heldObj.transform.position);
             heldObjRB.AddForce(moveDirection * pickupForce);
         }
+        if (isUsingGlovebox)
+        {
+            heldObjectInGloveBox = heldObj;
+        }
     }
 
     void RotateObject()
@@ -211,6 +265,7 @@ public class PickupController : MonoBehaviour
         heldObjRB.AddForce(holdAreaa.GetComponent<HoldArea>().ObjVelocity * 5f, ForceMode.Impulse);
         heldObj = null;
         holdArea.transform.localPosition = new Vector3(0, 0, 1f);
+        heldObjectInGloveBox = null;
     }
 
 }

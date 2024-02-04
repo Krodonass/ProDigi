@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HoldArea : MonoBehaviour
 {
+    public GameObject gameManager;
     private float mouseScroll;
     Vector3 PrevPos;
     Vector3 NewPos;
@@ -21,12 +22,21 @@ public class HoldArea : MonoBehaviour
         PrevPos = NewPos;  // update position for next frame calculation
 
         mouseScroll = Input.mouseScrollDelta.y;
-        if (mouseScroll > 0f && transform.localPosition.z < 1.5f)
+        if (!gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 0.01f);
-        } else if (mouseScroll < 0f && transform.localPosition.z > 0.5f)
+            if (mouseScroll > 0f && transform.localPosition.z < 1.5f)
+            {
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 0.01f);
+            } else if (mouseScroll < 0f && transform.localPosition.z > 0.5f)
+            {
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 0.01f);
+            } else
+            {
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1f);
+            }
+        } else
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 0.01f);
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0.5f);
         }
     }
 }

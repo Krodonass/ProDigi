@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 public class OutterHatch : MonoBehaviour
 {
     public GameObject gameManager;
-    public bool isOpeningOutterHatch;
-    public bool isClosingOutterHatch;
     public bool isOpenOutterHatch = false;
     // Start is called before the first frame update
     void Start()
