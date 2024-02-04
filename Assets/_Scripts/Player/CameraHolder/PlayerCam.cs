@@ -38,9 +38,10 @@ public class PlayerCam : MonoBehaviour
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
             if (!gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
             {
+            }
                 transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
                 orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-            }
+            
        }
         
     }

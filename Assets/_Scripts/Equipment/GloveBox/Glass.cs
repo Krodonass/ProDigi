@@ -22,7 +22,7 @@ public class Glass : MonoBehaviour
         } else
         {
             m.enabled = true;
-            gameObject.GetComponent<BoxCollider>().enabled = true; 
+            gameObject.GetComponent<BoxCollider>().enabled = true;
         }
     }
 }
