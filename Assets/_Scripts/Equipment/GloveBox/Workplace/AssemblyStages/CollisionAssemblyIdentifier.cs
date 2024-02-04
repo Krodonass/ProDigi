@@ -30,19 +30,24 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
         {
             gameObject.transform.position = baseAssembly.transform.position;
             gameObject.transform.rotation = baseAssembly.transform.rotation;
-            //gameObject.transform.tag = "untagged";
+            gameObject.transform.tag = "Untagged";
         }
         if (gameObject.name == "gear" && gameManager.GetComponent<GameManager>().assembleGearGameManager)
         {
             gameObject.transform.position = gearAssembly.transform.position;
             gameObject.transform.rotation = gearAssembly.transform.rotation;
-            //gameObject.transform.tag = "untagged";
+            gameObject.transform.tag = "Untagged";
         }
         if (gameObject.name == "brass_top" && gameManager.GetComponent<GameManager>().assembleBrassTopGameManager)
         {
             gameObject.transform.position = brassTopAssembly.transform.position;
             gameObject.transform.rotation = brassTopAssembly.transform.rotation;
-            //gameObject.transform.tag = "untagged";
+            gameObject.transform.tag = "Untagged";
+        }
+
+        if (gameManager.GetComponent<GameManager>().allAssembledGameManager)
+        {
+            gameObject.SetActive(false);
         }
     }
 

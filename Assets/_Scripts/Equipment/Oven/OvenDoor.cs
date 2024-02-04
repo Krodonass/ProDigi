@@ -18,7 +18,6 @@ public class OvenDoor : MonoBehaviour
             isOpenOvenDoor = true;
         } else if (gameManager.GetComponent<GameManager>().isClosingOvenDoorGameManager && isOpenOvenDoor)
         {
-            Debug.Log("lol");
             closeHatch();
             isOpenOvenDoor = false;
         }
