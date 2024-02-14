@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+   
+    public GameObject patCellAssembled;
 
     [Header("PlayerObject")]
     public GameObject playerObject;
@@ -61,6 +63,12 @@ public class GameManager : MonoBehaviour
     [Header("OvenDoor.cs")]
     public bool brassTopAssemblyPossibleGameManager;
 
+    [Header("Pat Cell Assembly")]
+    public GameObject patCellAssembly;
+    [Header("OvenDoor.cs")]
+    public bool allAssembledGameManager;
+
+
     private void Awake()
     {
        Instance = this;
@@ -112,18 +120,26 @@ public class GameManager : MonoBehaviour
         // OvenDoor.cs
         isOpenOvenDoorGameManager = ovenDoor.GetComponent<OvenDoor>().isOpenOvenDoor;
 
-        // Pat Cell Base
+        // Base
         // CollisionAssemblyIdentifier.cs.cs
         baseAssemblyPossibleGameManager = patCellBase.GetComponent<CollisionAssemblyIdentifier>().baseAssemblyPossible;
 
-        // Pat Cell Gear
+        // Gear
         // CollisionAssemblyIdentifier.cs.cs
         gearAssemblyPossibleGameManager = patCellGear.GetComponent<CollisionAssemblyIdentifier>().gearAssemblyPossible;
 
-        // OvenDoor
+        // BrassTop
         // CollisionAssemblyIdentifier.cs.cs
         brassTopAssemblyPossibleGameManager = patCellBrassTop.GetComponent<CollisionAssemblyIdentifier>().brasstopAssemblyPossible;
 
+        // PatCellAssembly
+        // CollisionAssemblyIdentifier.cs.cs
+        allAssembledGameManager = patCellAssembly.GetComponent<PatCellAssembly>().allAssembled;
+
+        if (allAssembledGameManager)
+        {
+            patCellAssembled.SetActive(true);
+        }
     }
 
     public enum GameState

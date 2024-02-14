@@ -262,9 +262,9 @@ public class PickupController : MonoBehaviour
         heldObjRB.drag = 1;
         heldObjRB.constraints = RigidbodyConstraints.None;
         heldObjRB.transform.parent = null;
-        heldObjRB.AddForce(holdAreaa.GetComponent<HoldArea>().ObjVelocity * 5f, ForceMode.Impulse);
+        heldObjRB.AddForce(holdAreaa.GetComponent<HoldArea>().ObjVelocity * 10f, ForceMode.Impulse);
         heldObj = null;
-        holdArea.transform.localPosition = new Vector3(0, 0, 1f);
+        holdArea.transform.localPosition = new Vector3(0, 0, 0.5f);
         heldObjectInGloveBox = null;
     }
 

@@ -22,21 +22,12 @@ public class HoldArea : MonoBehaviour
         PrevPos = NewPos;  // update position for next frame calculation
 
         mouseScroll = Input.mouseScrollDelta.y;
-        if (!gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
+        if (mouseScroll > 0f && transform.localPosition.z < 1f)
         {
-            if (mouseScroll > 0f && transform.localPosition.z < 1.5f)
-            {
-                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 0.01f);
-            } else if (mouseScroll < 0f && transform.localPosition.z > 0.5f)
-            {
-                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 0.01f);
-            } else
-            {
-                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1f);
-            }
-        } else
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 0.01f);
+        } else if (mouseScroll < 0f && transform.localPosition.z > 0.1f)
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0.5f);
+            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 0.01f);
         }
     }
 }

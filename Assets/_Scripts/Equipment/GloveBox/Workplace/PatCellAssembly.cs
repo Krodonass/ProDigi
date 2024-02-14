@@ -9,10 +9,13 @@ public class PatCellAssembly : MonoBehaviour
     public GameObject baseAssembly;
     public GameObject gearAssembly;
     public GameObject brassTopAssembly;
+    public GameObject patCellAssembled;
 
     public bool bottomAssembled;
     public bool midAssembled;
     public bool topAssembled;
+
+    public bool allAssembled;
 
     // Update is called once per frame
     void Update()
@@ -63,6 +66,26 @@ public class PatCellAssembly : MonoBehaviour
 
             brassTopAssembly.GetComponent<MeshRenderer>().enabled = false;
             brassTopAssembly.GetComponent<Collider>().enabled = false;
+        }
+
+        if (bottomAssembled && midAssembled && topAssembled && !allAssembled)
+        {
+            Destroy(baseAssembly.GetComponent<Rigidbody>());
+            Destroy(gearAssembly.GetComponent<Rigidbody>());
+            Destroy(brassTopAssembly.GetComponent<Rigidbody>());
+
+            Destroy(baseAssembly.GetComponent<MeshCollider>());
+            Destroy(gearAssembly.GetComponent<MeshCollider>());
+            Destroy(brassTopAssembly.GetComponent<MeshCollider>());
+
+            Destroy(baseAssembly.GetComponent<MeshFilter>());
+            Destroy(gearAssembly.GetComponent<MeshFilter>());
+            Destroy(brassTopAssembly.GetComponent<MeshFilter>());
+
+
+            allAssembled = true;
+
+            gameObject.SetActive(false);
         }
 
         if (gameManager.GetComponent<GameManager>().assembleBaseGameManager && !bottomAssembled)
