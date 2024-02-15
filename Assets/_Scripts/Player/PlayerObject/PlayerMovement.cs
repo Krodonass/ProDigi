@@ -6,14 +6,17 @@ using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject keybindings;
+    [Header("Setup")]
+    [SerializeField]
+    private GameManager gameManager;
+    [SerializeField]
+    private GameObject keybindings;
 
     [Header("Movement")]
-    private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-
     public float groundDrag;
+    public float moveSpeed;
 
     [Header("Jumping")]
     public float jumpForce;
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    public GameObject gloveBoxPlayerPosotion;
+
     public MovementState state;
     public enum MovementState
     {
@@ -62,26 +67,33 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
-        keybindings = GameObject.Find("KeyBindings");
         
     }
 
     private void Update()
     {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        
-        MyInput();
-        SpeedControl();
-        StateHandler();
-
-        //handle drag
-        if (grounded)
+        if (!gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
         {
-            rb.drag = groundDrag;
+            // ground check
+            grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        
+            MyInput();
+            SpeedControl();
+            StateHandler();
+
+            //handle drag
+            if (grounded)
+            {
+                rb.drag = groundDrag;
+            } else
+            {
+                rb.drag = 0;
+            }
+
         } else
         {
-            rb.drag = 0;
+            gameObject.transform.position = 
+                new Vector3(gloveBoxPlayerPosotion.transform.position.x, gameObject.transform.position.y, gloveBoxPlayerPosotion.transform.position.z);
         }
     }
 
@@ -130,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // stop crouch
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().crouchKey))
+        if (Input.GetKeyUp(keybindings.GetComponent<KeysBindings>().crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
@@ -139,13 +151,13 @@ public class PlayerMovement : MonoBehaviour
     private void StateHandler()
     {
         // Mode - Crouching
-        if (Input.GetKey(keybindings.GetComponent<KeysBindings>().crouchKey)) 
+        if (grounded && Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().crouchKey)) 
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
         }
         // Mode - Sprinting
-        if (grounded && Input.GetKey(keybindings.GetComponent<KeysBindings>().sprintKey))
+        else if (grounded && Input.GetKey(keybindings.GetComponent<KeysBindings>().sprintKey))
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;

@@ -8,7 +8,10 @@ using UnityEngine.EventSystems;
 
 public class PickupController : MonoBehaviour
 {
+    public GameObject gameManager;
     public GameObject keybindings;
+    public GameObject holdAreaa;
+    public GameObject heldObjectInGloveBox;
     private Transform highlight;
     private RaycastHit raycastHit;
 
@@ -29,19 +32,37 @@ public class PickupController : MonoBehaviour
     public float mouseX;
     public float mouseY;
 
-    public bool isCarrying;
     public bool isPickupable;
+    public bool isCarrying;
+
     public bool isUsable;
+    public bool isUsing;
+    public bool isUsingGlovebox;
+    public bool isPlacable;
+
+    public bool assembleBase;
+    public bool assembleGear;
+    public bool assembleBrassTop;
+
+    public bool isOpeningOutterHatch;
+    public bool isClosingOutterHatch;
+
+    public bool isOpeningInnerHatch;
+    public bool isClosingInnerHatch;
+
+    public bool isOpeningOvenDoor;
+    public bool isClosingOvenDoor;
+
+
     public bool isRotatingObject = false;
     public bool isGettingObjectInformation = false;
     public string objectInformationText = "";
 
-    private void Update () 
+    private void Update() 
     {
-
         mouseX = Input.GetAxis("Mouse X") * sensX;
         mouseY = Input.GetAxis("Mouse Y") * sensY;
-        Debug.Log(mouseY);
+
         if (highlight != null)
         {
             highlight.gameObject.GetComponent<Outline>().enabled = false;
@@ -89,15 +110,94 @@ public class PickupController : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange))
                 {
-                    isCarrying = true;
                     PickupObject(raycastHit.transform.gameObject);
                 }
+                //isCarrying = false;
             } else
             {
-                isCarrying = false;
                 DropObject();
             }
+            if (heldObj == null && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange))
+            {
+                if (raycastHit.collider.name == "glass")
+                {
+                    isUsingGlovebox = true;
+                }
+
+                if (isUsable && raycastHit.collider.name == "OutterHatch") 
+                { 
+                   if (!gameManager.GetComponent<GameManager>().isOpenOutterHatchGameManager)
+                   {
+                        isOpeningOutterHatch = true;
+                        isClosingOutterHatch = false;
+                   } else
+                   {
+                        isClosingOutterHatch = true;
+                        isOpeningOutterHatch = false;
+                   }
+                }
+
+                if (isUsable && raycastHit.collider.name == "InnerHatch")
+                {
+                    if (!gameManager.GetComponent<GameManager>().isOpenInnerHatchGameManager)
+                    {
+                        isOpeningInnerHatch = true;
+                        isClosingInnerHatch = false;
+                    } else
+                    {
+                        isClosingInnerHatch = true;
+                        isOpeningInnerHatch = false;
+                    }
+                }
+
+                if (isUsable && raycastHit.collider.name == "OvenDoor")
+                {
+                    if (!gameManager.GetComponent<GameManager>().isOpenOvenDoorGameManager)
+                    {
+                        isOpeningOvenDoor = true;
+                        isClosingOvenDoor = false;
+                    } else
+                    {
+                        isClosingOvenDoor = true;
+                        isOpeningOvenDoor = false;
+                    }
+                }
+            }
         }
+        
+        if (gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager || 
+            gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager ||
+            gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
+        {
+            isPlacable = true;
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager)
+        {
+            assembleBase = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager)
+        {
+            assembleGear = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
+        {
+            assembleBrassTop = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (isUsingGlovebox && Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().exitEquipmentKey))
+        {
+            isUsingGlovebox = false;
+        }
+
         if (heldObj != null)
         {
             MoveObject();
@@ -128,6 +228,10 @@ public class PickupController : MonoBehaviour
             Vector3 moveDirection = (holdArea.position - heldObj.transform.position);
             heldObjRB.AddForce(moveDirection * pickupForce);
         }
+        if (isUsingGlovebox)
+        {
+            heldObjectInGloveBox = heldObj;
+        }
     }
 
     void RotateObject()
@@ -140,6 +244,7 @@ public class PickupController : MonoBehaviour
     {
         if (pickObj.GetComponent<Rigidbody>() && pickObj.GetComponent<Rigidbody>().tag != "Player")
         {
+            isCarrying = true;
             heldObjRB = pickObj.GetComponent<Rigidbody>();
             heldObjRB.useGravity = false;
             heldObjRB.drag = 30;
@@ -151,30 +256,16 @@ public class PickupController : MonoBehaviour
 
     void DropObject()
     {
+        isCarrying = false;
         isRotatingObject = false;
         heldObjRB.useGravity = true;
         heldObjRB.drag = 1;
         heldObjRB.constraints = RigidbodyConstraints.None;
         heldObjRB.transform.parent = null;
-        heldObjRB.AddForce(playerCharacter.velocity, ForceMode.Impulse);
-        
-        if (orientation.transform.rotation.eulerAngles.y >= 0 && orientation.transform.rotation.eulerAngles.y <= 89)
-        {
-            heldObjRB.AddForce(new Vector3(heldObjRB.velocity.x, mouseY * 2, -(mouseX * 1)), ForceMode.Impulse);
-        } 
-        else if (orientation.transform.rotation.eulerAngles.y >= 90 && orientation.transform.rotation.eulerAngles.y <= 179)
-        {
-            heldObjRB.AddForce(new Vector3(-(mouseX * 1), mouseY * 2, heldObjRB.velocity.z), ForceMode.Impulse);
-        }
-        else if (orientation.transform.rotation.eulerAngles.y >= 180 && orientation.transform.rotation.eulerAngles.y <= 269)
-        {
-            heldObjRB.AddForce(new Vector3(heldObjRB.velocity.x, mouseY * 2, mouseX * 1), ForceMode.Impulse);
-        } 
-        else if (orientation.transform.rotation.eulerAngles.y >= 270 && orientation.transform.rotation.eulerAngles.y <= 360)
-        {
-            heldObjRB.AddForce(new Vector3(mouseX * 1, mouseY * 2, heldObjRB.velocity.z), ForceMode.Impulse);
-        }
+        heldObjRB.AddForce(holdAreaa.GetComponent<HoldArea>().ObjVelocity * 10f, ForceMode.Impulse);
         heldObj = null;
-        holdArea.transform.localPosition = new Vector3(0, 0, 1f);
+        holdArea.transform.localPosition = new Vector3(0, 0, 0.5f);
+        heldObjectInGloveBox = null;
     }
+
 }

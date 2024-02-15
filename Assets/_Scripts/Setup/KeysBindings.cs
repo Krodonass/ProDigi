@@ -17,4 +17,6 @@ public class KeysBindings : MonoBehaviour
     public KeyCode grabKey;
     public KeyCode rotateKey;
     public KeyCode informationKey;
+    public KeyCode exitEquipmentKey;
+    public KeyCode placeItemKey;
 }
