@@ -121,19 +121,19 @@ public class GameManager : MonoBehaviour
         isOpenOvenDoorGameManager = ovenDoor.GetComponent<OvenDoor>().isOpenOvenDoor;
 
         // Base
-        // CollisionAssemblyIdentifier.cs.cs
+        // CollisionAssemblyIdentifier.cs
         baseAssemblyPossibleGameManager = patCellBase.GetComponent<CollisionAssemblyIdentifier>().baseAssemblyPossible;
 
         // Gear
-        // CollisionAssemblyIdentifier.cs.cs
+        // CollisionAssemblyIdentifier.cs
         gearAssemblyPossibleGameManager = patCellGear.GetComponent<CollisionAssemblyIdentifier>().gearAssemblyPossible;
 
         // BrassTop
-        // CollisionAssemblyIdentifier.cs.cs
+        // CollisionAssemblyIdentifier.cs
         brassTopAssemblyPossibleGameManager = patCellBrassTop.GetComponent<CollisionAssemblyIdentifier>().brasstopAssemblyPossible;
 
         // PatCellAssembly
-        // CollisionAssemblyIdentifier.cs.cs
+        // CollisionAssemblyIdentifier.cs
         allAssembledGameManager = patCellAssembly.GetComponent<PatCellAssembly>().allAssembled;
 
         if (allAssembledGameManager)
