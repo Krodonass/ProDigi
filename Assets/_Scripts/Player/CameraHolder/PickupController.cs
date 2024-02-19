@@ -5,6 +5,9 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SocialPlatforms;
+using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class PickupController : MonoBehaviour
 {
@@ -14,6 +17,8 @@ public class PickupController : MonoBehaviour
     public GameObject heldObjectInGloveBox;
     private Transform highlight;
     private RaycastHit raycastHit;
+    public Space space;
+    public Vector3 relative;
 
     [Header("Pickup Settings")]
     [SerializeField] Transform holdArea;
@@ -58,10 +63,40 @@ public class PickupController : MonoBehaviour
     public bool isGettingObjectInformation = false;
     public string objectInformationText = "";
 
+    public float yRotationMultiplier;
+    public float zRotationMultiplier;
+    public float z2;
+
     private void Update() 
     {
+        relative = transform.InverseTransformDirection(Vector3.forward);
+
         mouseX = Input.GetAxis("Mouse X") * sensX;
         mouseY = Input.GetAxis("Mouse Y") * sensY;
+
+        Debug.Log(gameObject.transform.rotation.eulerAngles.y);
+
+
+        if (gameObject.transform.rotation.eulerAngles.y <= 180)
+        {
+            yRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 0, 180, 10, -10);
+        } else if (gameObject.transform.rotation.eulerAngles.y > 180)
+        {
+            yRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 180, 360, -10, 10);
+        }
+
+        if (gameObject.transform.rotation.eulerAngles.y > 90 && gameObject.transform.rotation.eulerAngles.y <= 270)
+        {
+            zRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 90, 270, -10, 10);
+        }
+
+        if (gameObject.transform.rotation.eulerAngles.y < 90)
+        {
+            zRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 90, 0, -10, 0);
+        } else if (gameObject.transform.rotation.eulerAngles.y > 270 && gameObject.transform.rotation.eulerAngles.y <= 360)
+        {
+            zRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 270, 360, 10, 0);
+        }
 
         if (highlight != null)
         {
@@ -236,8 +271,10 @@ public class PickupController : MonoBehaviour
 
     void RotateObject()
     {
-        heldObjRB.transform.parent = null;
-        heldObjRB.transform.Rotate((-mouseY * 10), (-mouseX * 10), 0, Space.World);
+
+        heldObjRB.transform.Rotate((mouseY * yRotationMultiplier), (-mouseX * 10), (mouseY * zRotationMultiplier), Space.World);
+        //heldObjRB.angularVelocity = Vector3.forward * (-mouseX * 10);
+        //heldObjRB.transform.RotateAround(relative, new Vector3((-mouseY * 10), (-mouseX * 10), 0), 0.1f);
     }
 
     void PickupObject (GameObject pickObj)
@@ -266,6 +303,11 @@ public class PickupController : MonoBehaviour
         heldObj = null;
         holdArea.transform.localPosition = new Vector3(0, 0, 0.5f);
         heldObjectInGloveBox = null;
+    }
+
+    float Remap(float source, float sourceFrom, float sourceTo, float targetFrom, float targetTo)
+    {
+        return targetFrom + (source - sourceFrom) * (targetTo - targetFrom) / (sourceTo - sourceFrom);
     }
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class HoldArea : MonoBehaviour
 {
     public GameObject gameManager;
+    public GameObject playerCam;
     private float mouseScroll;
     Vector3 PrevPos;
     Vector3 NewPos;
