@@ -74,8 +74,6 @@ public class PickupController : MonoBehaviour
         mouseX = Input.GetAxis("Mouse X") * sensX;
         mouseY = Input.GetAxis("Mouse Y") * sensY;
 
-        Debug.Log(gameObject.transform.rotation.eulerAngles.y);
-
 
         if (gameObject.transform.rotation.eulerAngles.y <= 180)
         {
