@@ -65,11 +65,9 @@ public class PickupController : MonoBehaviour
 
     public float yRotationMultiplier;
     public float zRotationMultiplier;
-    public float z2;
 
     private void Update() 
     {
-        relative = transform.InverseTransformDirection(Vector3.forward);
 
         mouseX = Input.GetAxis("Mouse X") * sensX;
         mouseY = Input.GetAxis("Mouse Y") * sensY;
