@@ -28,12 +28,12 @@ public class OutterHatch : MonoBehaviour
 
     public void openHatch()
     {
-        transform.Rotate(0, -120, 0);
+        transform.Rotate(0, 120, 0);
 
     }
 
     public void closeHatch()
     {
-        transform.Rotate(0, 120, 0);
+        transform.Rotate(0, -120, 0);
     }
 }
