@@ -2168,6 +2168,7 @@ MonoBehaviour:
   holdAreaa: {fileID: 667178332}
   heldObjectInGloveBox: {fileID: 0}
   space: 0
+  relative: {x: 0, y: 0, z: 0}
   holdArea: {fileID: 667178333}
   playerCharacter: {fileID: 388658373}
   orientation: {fileID: 1083247358}
@@ -2195,6 +2196,8 @@ MonoBehaviour:
   isRotatingObject: 0
   isGettingObjectInformation: 0
   objectInformationText: 
+  yRotationMultiplier: 0
+  zRotationMultiplier: 0
 --- !u!1 &1015604897
 GameObject:
   m_ObjectHideFlags: 0
@@ -3267,8 +3270,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 3.8314168, z: 1}
-  m_Center: {x: 0, y: -1.4157084, z: 0}
+  m_Size: {x: 1, y: 8.14047, z: 1}
+  m_Center: {x: 0, y: -3.5702343, z: 0}
 --- !u!23 &1446827682
 MeshRenderer:
   m_ObjectHideFlags: 0
