@@ -136,6 +136,8 @@ public class GameManager : MonoBehaviour
         // CollisionAssemblyIdentifier.cs
         allAssembledGameManager = patCellAssembly.GetComponent<PatCellAssembly>().allAssembled;
 
+        
+
         if (allAssembledGameManager)
         {
             patCellAssembled.SetActive(true);

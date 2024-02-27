@@ -26,6 +26,7 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (gameObject.name == "base" && gameManager.GetComponent<GameManager>().assembleBaseGameManager)
         {
             gameObject.transform.position = baseAssembly.transform.position;
@@ -56,6 +57,10 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
 
         if (gameObject.name == "base" && collision.gameObject.name == "BaseAssembly")
         {
+            // Zum Spieler kippen
+            Debug.Log("X" + gameObject.transform.rotation.eulerAngles.y);
+            // "Y"- Rotation
+            //Debug.Log("Z" + gameObject.transform.rotation.eulerAngles.z);
             baseAssemblyPossible = true;
         }
 
