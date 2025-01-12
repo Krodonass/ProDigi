@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         } else
         {
             gameObject.transform.position = 
-                new Vector3(gloveBoxPlayerPosotion.transform.position.x, gameObject.transform.position.y, gloveBoxPlayerPosotion.transform.position.z);
+            new Vector3(gloveBoxPlayerPosotion.transform.position.x, gameObject.transform.position.y, gloveBoxPlayerPosotion.transform.position.z);
         }
     }
 
@@ -177,9 +177,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
+        
         // on slope
         if (OnSlope() && !exitingSlope)
         {

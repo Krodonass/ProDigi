@@ -3,7 +3,13 @@ guid: 5e307b85491d4d54d958d327ab0fb43b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameManager: {instanceID: 0}
+  - baseAssembly: {instanceID: 0}
+  - gearAssembly: {instanceID: 0}
+  - brassTopAssembly: {instanceID: 0}
+  - assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  - assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

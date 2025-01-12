@@ -46,6 +46,11 @@ public class PickupController : MonoBehaviour
     public bool isPlacable;
 
     public bool assembleBase;
+    public bool assembleLowerPlunger;
+    public bool assembleLowerCathode;
+    public bool assembleSleeve;
+    public bool assembleUpperCathode;
+    public bool assembleUpperPlunger;
     public bool assembleGear;
     public bool assembleBrassTop;
 
@@ -57,6 +62,9 @@ public class PickupController : MonoBehaviour
 
     public bool isOpeningOvenDoor;
     public bool isClosingOvenDoor;
+
+    public bool isEvacuating;
+    public bool isFlooding;
 
 
     public bool isRotatingObject = false;
@@ -141,7 +149,10 @@ public class PickupController : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange))
                 {
-                    PickupObject(raycastHit.transform.gameObject);
+                    if (raycastHit.transform.gameObject.tag == "Pickupable")
+                    {
+                        PickupObject(raycastHit.transform.gameObject);
+                    }
                 }
                 //isCarrying = false;
             } else
@@ -193,10 +204,30 @@ public class PickupController : MonoBehaviour
                         isOpeningOvenDoor = false;
                     }
                 }
+
+                if (isUsable && raycastHit.collider.name == "vacq_handle")
+                {
+                    if (!gameManager.GetComponent<GameManager>().isEvacuatedGameManager && gameManager.GetComponent<GameManager>().isFloodedGameManager)
+                    {
+                        isFlooding = false;
+                        isEvacuating = true;
+                    }
+                    else if (gameManager.GetComponent<GameManager>().isEvacuatedGameManager && !gameManager.GetComponent<GameManager>().isFloodedGameManager)
+                    {
+                        isEvacuating = false;
+                        isFlooding = true;
+                    }
+                }
             }
         }
-        
+
+
         if (gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager || 
+            gameManager.GetComponent<GameManager>().lowerPlungerAssemblyPossibleGameManager ||
+            gameManager.GetComponent<GameManager>().patCellLowerCathodeAssemblyPossibleGameManager ||
+            gameManager.GetComponent<GameManager>().patCellSleeveAssemblyPossibleGameManager ||
+            gameManager.GetComponent<GameManager>().patCellUpperCathodeAssemblyPossibleGameManager ||
+            gameManager.GetComponent<GameManager>().patCellUpperPlungerAssemblyPossibleGameManager ||
             gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager ||
             gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
         {
@@ -206,6 +237,42 @@ public class PickupController : MonoBehaviour
         if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager)
         {
             assembleBase = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().lowerPlungerAssemblyPossibleGameManager)
+        {
+            assembleLowerPlunger = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellLowerCathodeAssemblyPossibleGameManager)
+        {
+    
+            assembleLowerCathode = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellSleeveAssemblyPossibleGameManager)
+        {
+            assembleSleeve = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellUpperCathodeAssemblyPossibleGameManager)
+        {
+            assembleUpperCathode = true;
+            isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellUpperPlungerAssemblyPossibleGameManager)
+        {
+            assembleUpperPlunger = true;
             isPlacable = false;
             DropObject();
         }

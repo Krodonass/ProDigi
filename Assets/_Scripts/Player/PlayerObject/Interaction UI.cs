@@ -14,13 +14,13 @@ public class InteractionUI : MonoBehaviour
     {
         if (playercam.GetComponent<PickupController>().isPickupable)
         {
-            mText.text = "press " + keybindings.GetComponent<KeysBindings>().grabKey + " to pick up";
+            //mText.text = "press " + keybindings.GetComponent<KeysBindings>().grabKey + " to pick up";
         } else if (playercam.GetComponent<PickupController>().isGettingObjectInformation)
         {
             mText.text = playercam.GetComponent<PickupController>().objectInformationText;
         } else if (playercam.GetComponent<PickupController>().isUsable) 
         {
-            mText.text = "press " + keybindings.GetComponent<KeysBindings>().grabKey + " to use";
+            //mText.text = "press " + keybindings.GetComponent<KeysBindings>().grabKey + " to use";
         } else
         {
             mText.text = "";
