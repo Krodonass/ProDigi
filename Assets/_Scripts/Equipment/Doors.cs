@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
+    public GameObject gameManager;
     private string isLDopen = "n";
     private string isTDopen = "n";
 
@@ -21,7 +22,7 @@ public class Doors : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameObject.name == "mobile_cabinet_door_01" || gameObject.name == "OvenDoor" || gameObject.name == "OutterHatch")
+        if (gameObject.name == "mobile_cabinet_door_01" || gameObject.name == "OvenDoor")
         {
             Debug.Log("lelelel");
             if (isLDopen == "n")
@@ -63,6 +64,38 @@ public class Doors : MonoBehaviour
                 StartCoroutine(stopDrawer());
             } else if (isTDopen == "y") {
                 GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 1);
+                isTDopen = "c";
+                StartCoroutine(stopDrawer());
+            }
+        }
+
+        if (gameObject.name == "vacq_tray" && !gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
+        {
+            if (isTDopen == "n")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -1);
+                isTDopen = "o";
+                StartCoroutine(stopDrawer());
+            }
+            else if (isTDopen == "y")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 1);
+                isTDopen = "c";
+                StartCoroutine(stopDrawer());
+            }
+        }
+        else if (gameObject.name == "vacq_tray" && gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
+        {
+            Debug.Log("lelelel");
+            if (isTDopen == "n")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 1);
+                isTDopen = "o";
+                StartCoroutine(stopDrawer());
+            }
+            else if (isTDopen == "y")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -1);
                 isTDopen = "c";
                 StartCoroutine(stopDrawer());
             }
