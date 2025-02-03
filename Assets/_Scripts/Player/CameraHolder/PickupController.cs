@@ -54,6 +54,8 @@ public class PickupController : MonoBehaviour
     public bool assembleGear;
     public bool assembleBrassTop;
 
+    public bool placedPatCallInTester; 
+
     public bool isOpeningOutterHatch;
     public bool isClosingOutterHatch;
 
@@ -288,6 +290,12 @@ public class PickupController : MonoBehaviour
         {
             assembleBrassTop = true;
             isPlacable = false;
+            DropObject();
+        }
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().PatCellTesterPlacableGameManager)
+        {
+            placedPatCallInTester = true;
             DropObject();
         }
 

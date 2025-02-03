@@ -69,6 +69,23 @@ public class Doors : MonoBehaviour
             }
         }
 
+        if (gameObject.name == "oven_tray")
+        {
+            Debug.Log("lelelel");
+            if (isTDopen == "n")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(-1, 0, 0);
+                isTDopen = "o";
+                StartCoroutine(stopDrawer());
+            }
+            else if (isTDopen == "y")
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(1, 0, 0);
+                isTDopen = "c";
+                StartCoroutine(stopDrawer());
+            }
+        }
+
         if (gameObject.name == "vacq_tray" && !gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
         {
             if (isTDopen == "n")
