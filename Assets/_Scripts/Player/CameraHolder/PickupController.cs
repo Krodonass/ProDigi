@@ -142,7 +142,7 @@ public class PickupController : MonoBehaviour
             isUsable = false;
             isPickupable = false;
             highlight = null;
-        } 
+        }
 
 
         if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().grabKey))
