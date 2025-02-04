@@ -174,8 +174,10 @@ public class PickupController : MonoBehaviour
             {
                 isUsingGlovebox = true;
             }
-            
-            else
+            else if (hit.collider.name == "PC")
+            {
+                print("HackerMan!!!");
+            }else
             {
                 //open or closes Doors
                 Doors doors = hit.transform.GetComponent<Doors>();
