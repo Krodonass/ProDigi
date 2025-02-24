@@ -40,6 +40,8 @@ public class PickupController : MonoBehaviour
     public bool isPickupable;
     public bool isCarrying;
 
+    public bool isCarryingPipette;
+
     public bool isUsable;
     public bool isUsing;
     public bool isUsingGlovebox;
@@ -359,6 +361,11 @@ public class PickupController : MonoBehaviour
             heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
             heldObjRB.transform.parent = holdArea;
             heldObj = pickObj;
+            Debug.Log(pickObj.name);
+            if (pickObj.name == "pipette")
+            {
+                isCarryingPipette = true;
+            }
         }
     }
 
@@ -374,6 +381,7 @@ public class PickupController : MonoBehaviour
         heldObj = null;
         holdArea.transform.localPosition = new Vector3(0, 0, 0.5f);
         heldObjectInGloveBox = null;
+        isCarryingPipette = false;
     }
 
     float Remap(float source, float sourceFrom, float sourceTo, float targetFrom, float targetTo)
