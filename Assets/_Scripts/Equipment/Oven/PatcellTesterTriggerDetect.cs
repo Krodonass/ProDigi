@@ -23,6 +23,7 @@ public class PatcellTesterTriggerDetect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(gameManager.GetComponent<GameManager>().placedPatcellInTesterGameManager);
 
         if (gameManager.GetComponent<GameManager>().placedPatcellInTesterGameManager)
         {

@@ -251,7 +251,10 @@ public class GameManager : MonoBehaviour
             patCellAssembled.SetActive(true);
         }
 
-        PatCellTesterPlacableGameManager = PatCellTesterTrigger.GetComponent<PatcellTesterTriggerDetect>().placingPossible;
+        if (PatCellTesterTrigger)
+        {
+            PatCellTesterPlacableGameManager = PatCellTesterTrigger.GetComponent<PatcellTesterTriggerDetect>().placingPossible;
+        }
     }
 
     public enum GameState

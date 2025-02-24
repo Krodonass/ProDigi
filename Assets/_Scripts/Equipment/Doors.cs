@@ -5,6 +5,7 @@ using UnityEngine;
 public class Doors : MonoBehaviour
 {
     public GameObject gameManager;
+    
     private string isLDopen = "n";
     private string isTDopen = "n";
 
@@ -22,7 +23,13 @@ public class Doors : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameObject.name == "mobile_cabinet_door_01" || gameObject.name == "OvenDoor")
+        //InvokeInteraction();
+    }
+    
+    //Opens or close the door
+    public void InvokeInteraction()
+    {
+         if (gameObject.name == "mobile_cabinet_door_01" || gameObject.name == "OvenDoor")
         {
             Debug.Log("lelelel");
             if (isLDopen == "n")
