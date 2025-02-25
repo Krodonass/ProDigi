@@ -22,8 +22,10 @@ public class GameManager : MonoBehaviour
     public bool isRotatingObjectGameManager;
     public bool isGettingObjectInformationGameManager;
     public bool isUsingGloveboxGameManager;
+    public bool isCarryingPipetteGameManager;
     public GameObject heldObjInGloveBoxGameManager;
     public bool isUsingHatchGameManager;
+    public bool placedPatcellInTesterGameManager;
 
     public bool isOpeneingOutterHatchGameManager;
     public bool isClosingOutterHatchGameManager;
@@ -122,6 +124,10 @@ public class GameManager : MonoBehaviour
     public bool allComponentsInGloveBoxGameManager;
     public bool assembledPatCellInWorkplaceGameManager;
 
+    [Header("PatCell Tester Trigger")]
+    public GameObject PatCellTesterTrigger;
+    public bool PatCellTesterPlacableGameManager;
+
     private void Awake()
     {
        Instance = this;
@@ -145,6 +151,7 @@ public class GameManager : MonoBehaviour
 
         isUsingGloveboxGameManager = playerCam.GetComponent<PickupController>().isUsingGlovebox;
 
+        isCarryingPipetteGameManager = playerCam.GetComponent<PickupController>().isCarryingPipette;
         isOpeneingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isOpeningOutterHatch;
         isClosingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isClosingOutterHatch;
 
@@ -164,6 +171,8 @@ public class GameManager : MonoBehaviour
         assembleUpperPlungerGameManager = playerCam.GetComponent<PickupController>().assembleUpperPlunger;
         assembleGearGameManager = playerCam.GetComponent<PickupController>().assembleGear;
         assembleBrassTopGameManager = playerCam.GetComponent<PickupController>().assembleBrassTop;
+
+        placedPatcellInTesterGameManager = playerCam.GetComponent<PickupController>().placedPatCallInTester;
 
         // OutterHatch
         // OutterHatch.cs
@@ -240,6 +249,11 @@ public class GameManager : MonoBehaviour
         if (allAssembledGameManager)
         {
             patCellAssembled.SetActive(true);
+        }
+
+        if (PatCellTesterTrigger)
+        {
+            PatCellTesterPlacableGameManager = PatCellTesterTrigger.GetComponent<PatcellTesterTriggerDetect>().placingPossible;
         }
     }
 

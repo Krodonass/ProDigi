@@ -40,6 +40,8 @@ public class PickupController : MonoBehaviour
     public bool isPickupable;
     public bool isCarrying;
 
+    public bool isCarryingPipette;
+
     public bool isUsable;
     public bool isUsing;
     public bool isUsingGlovebox;
@@ -53,6 +55,8 @@ public class PickupController : MonoBehaviour
     public bool assembleUpperPlunger;
     public bool assembleGear;
     public bool assembleBrassTop;
+
+    public bool placedPatCallInTester; 
 
     public bool isOpeningOutterHatch;
     public bool isClosingOutterHatch;
@@ -74,145 +78,166 @@ public class PickupController : MonoBehaviour
     public float yRotationMultiplier;
     public float zRotationMultiplier;
 
-    private void Update() 
+    private void Update()
+{
+    // Komponenten und häufig verwendete Werte cachen
+    KeysBindings keysBindings = keybindings.GetComponent<KeysBindings>();
+    GameManager gm = gameManager.GetComponent<GameManager>();
+    float currentY = transform.rotation.eulerAngles.y;
+    
+    // Mausbewegung
+    mouseX = Input.GetAxis("Mouse X") * sensX;
+    mouseY = Input.GetAxis("Mouse Y") * sensY;
+
+    // yRotationMultiplier berechnen
+    if (currentY <= 180f)
     {
+        yRotationMultiplier = Remap(currentY, 0f, 180f, 10f, -10f);
+    }
+    else
+    {
+        yRotationMultiplier = Remap(currentY, 180f, 360f, -10f, 10f);
+    }
 
-        mouseX = Input.GetAxis("Mouse X") * sensX;
-        mouseY = Input.GetAxis("Mouse Y") * sensY;
+    // zRotationMultiplier berechnen
+    if (currentY > 90f && currentY <= 270f)
+    {
+        zRotationMultiplier = Remap(currentY, 90f, 270f, -10f, 10f);
+    }
+    else if (currentY < 90f)
+    {
+        zRotationMultiplier = Remap(currentY, 90f, 0f, -10f, 0f);
+    }
+    else if (currentY > 270f && currentY <= 360f)
+    {
+        zRotationMultiplier = Remap(currentY, 270f, 360f, 10f, 0f);
+    }
 
-
-        if (gameObject.transform.rotation.eulerAngles.y <= 180)
+    // Falls es bereits ein hervorgehobenes Objekt gibt, deaktiviere dessen Outline
+    if (highlight != null)
+    {
+        Outline oldOutline = highlight.GetComponent<Outline>();
+        if (oldOutline != null)
         {
-            yRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 0, 180, 10, -10);
-        } else if (gameObject.transform.rotation.eulerAngles.y > 180)
-        {
-            yRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 180, 360, -10, 10);
+            oldOutline.enabled = false;
         }
+        highlight = null;
+    }
 
-        if (gameObject.transform.rotation.eulerAngles.y > 90 && gameObject.transform.rotation.eulerAngles.y <= 270)
+    // Einen Raycast durchführen und Ergebnis zwischenspeichern
+    bool hasHit = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, pickupRange);
+
+    // Überprüfe, ob das getroffene Objekt pickupable oder usable ist
+    if (hasHit)
+    {
+        if (hit.transform.CompareTag("Pickupable") && !isCarrying && !isUsable)
         {
-            zRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 90, 270, -10, 10);
+            highlight = hit.transform;
+            EnableOutline(highlight);
+            isPickupable = true;
         }
-
-        if (gameObject.transform.rotation.eulerAngles.y < 90)
+        else if (hit.transform.CompareTag("Usable") && !isCarrying)
         {
-            zRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 90, 0, -10, 0);
-        } else if (gameObject.transform.rotation.eulerAngles.y > 270 && gameObject.transform.rotation.eulerAngles.y <= 360)
+            highlight = hit.transform;
+            EnableOutline(highlight);
+            isUsable = true;
+        }else
         {
-            zRotationMultiplier = Remap(gameObject.transform.rotation.eulerAngles.y, 270, 360, 10, 0);
-        }
-
-        if (highlight != null)
-        {
-            highlight.gameObject.GetComponent<Outline>().enabled = false;
-            highlight = null;
-        }
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange) && raycastHit.transform.CompareTag("Pickupable") && !isCarrying && !isUsable)
-        {
-            highlight = raycastHit.transform;
-            if (highlight.gameObject.GetComponent<Outline>() != null)
-            {
-                isPickupable = true;
-                highlight.gameObject.GetComponent<Outline>().enabled = true;
-            } else
-            {
-                Outline outline = highlight.gameObject.AddComponent<Outline>();
-                outline.enabled = true;
-                highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.magenta;
-                highlight.gameObject.GetComponent<Outline>().OutlineWidth = 7.0f;
-            }
-        } else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange) && raycastHit.transform.CompareTag("Usable") && !isCarrying)
-        {
-            highlight = raycastHit.transform;
-            if (highlight.gameObject.GetComponent<Outline>() != null)
-            {
-                isUsable = true;
-                highlight.gameObject.GetComponent<Outline>().enabled = true;
-            } else
-            {
-                Outline outline = highlight.gameObject.AddComponent<Outline>();
-                outline.enabled = true;
-                highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.magenta;
-                highlight.gameObject.GetComponent<Outline>().OutlineWidth = 7.0f;
-            }
-        } else {
-            isUsable = false;
             isPickupable = false;
-            highlight = null;
-        } 
+            isUsable = false;
+        }
+    }
+    else
+    {
+        isPickupable = false;
+        isUsable = false;
+    }
 
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().grabKey))
+    // Grab-Input verarbeiten
+    if (Input.GetKeyDown(keysBindings.grabKey))
+    {
+        if (heldObj == null)
         {
-            if (heldObj == null) // No Object in Hand
+            if (hasHit && hit.transform.CompareTag("Pickupable"))
             {
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange))
-                {
-                    if (raycastHit.transform.gameObject.tag == "Pickupable")
-                    {
-                        PickupObject(raycastHit.transform.gameObject);
-                    }
-                }
-                //isCarrying = false;
-            } else
-            {
-                DropObject();
+                PickupObject(hit.transform.gameObject);
             }
-            if (heldObj == null && Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, pickupRange))
-            {
-                if (raycastHit.collider.name == "glass")
-                {
-                    isUsingGlovebox = true;
-                }
+        }
+        else
+        {
+            DropObject();
+        }
 
-                if (isUsable && raycastHit.collider.name == "OutterHatch") 
-                { 
-                   if (!gameManager.GetComponent<GameManager>().isOpenOutterHatchGameManager)
-                   {
+        // Weitere Interaktionen, falls kein Objekt in der Hand ist
+        if (heldObj == null && hasHit)
+        {
+            // Beispiel: Wenn das getroffene Objekt "glass" heißt, Glovebox aktivieren
+            if (hit.collider.name == "glass")
+            {
+                isUsingGlovebox = true;
+            }
+            else if (hit.collider.name == "PC")
+            {
+                print("HackerMan!!!");
+            }else
+            {
+                //open or closes Doors
+                Doors doors = hit.transform.GetComponent<Doors>();
+                if (doors)
+                {
+                    doors.InvokeInteraction();
+                }
+            }
+
+            if (isUsable)
+            {
+                if (hit.collider.name == "OutterHatch")
+                {
+                    if (!gm.isOpenOutterHatchGameManager)
+                    {
                         isOpeningOutterHatch = true;
                         isClosingOutterHatch = false;
-                   } else
-                   {
+                    }
+                    else
+                    {
                         isClosingOutterHatch = true;
                         isOpeningOutterHatch = false;
-                   }
+                    }
                 }
-
-                if (isUsable && raycastHit.collider.name == "InnerHatch")
+                else if (hit.collider.name == "InnerHatch")
                 {
-                    if (!gameManager.GetComponent<GameManager>().isOpenInnerHatchGameManager)
+                    if (!gm.isOpenInnerHatchGameManager)
                     {
                         isOpeningInnerHatch = true;
                         isClosingInnerHatch = false;
-                    } else
+                    }
+                    else
                     {
                         isClosingInnerHatch = true;
                         isOpeningInnerHatch = false;
                     }
                 }
-
-                if (isUsable && raycastHit.collider.name == "OvenDoor")
+                else if (hit.collider.name == "OvenDoor")
                 {
-                    if (!gameManager.GetComponent<GameManager>().isOpenOvenDoorGameManager)
+                    if (!gm.isOpenOvenDoorGameManager)
                     {
                         isOpeningOvenDoor = true;
                         isClosingOvenDoor = false;
-                    } else
+                    }
+                    else
                     {
                         isClosingOvenDoor = true;
                         isOpeningOvenDoor = false;
                     }
                 }
-
-                if (isUsable && raycastHit.collider.name == "vacq_handle")
+                else if (hit.collider.name == "vacq_handle")
                 {
-                    if (!gameManager.GetComponent<GameManager>().isEvacuatedGameManager && gameManager.GetComponent<GameManager>().isFloodedGameManager)
+                    if (!gm.isEvacuatedGameManager && gm.isFloodedGameManager)
                     {
                         isFlooding = false;
                         isEvacuating = true;
                     }
-                    else if (gameManager.GetComponent<GameManager>().isEvacuatedGameManager && !gameManager.GetComponent<GameManager>().isFloodedGameManager)
+                    else if (gm.isEvacuatedGameManager && !gm.isFloodedGameManager)
                     {
                         isEvacuating = false;
                         isFlooding = true;
@@ -220,104 +245,128 @@ public class PickupController : MonoBehaviour
                 }
             }
         }
+    }
 
+    // Prüfen, ob das Ablegen von Objekten möglich ist
+    if (gm.baseAssemblyPossibleGameManager ||
+        gm.lowerPlungerAssemblyPossibleGameManager ||
+        gm.patCellLowerCathodeAssemblyPossibleGameManager ||
+        gm.patCellSleeveAssemblyPossibleGameManager ||
+        gm.patCellUpperCathodeAssemblyPossibleGameManager ||
+        gm.patCellUpperPlungerAssemblyPossibleGameManager ||
+        gm.gearAssemblyPossibleGameManager ||
+        gm.brassTopAssemblyPossibleGameManager)
+    {
+        isPlacable = true;
+    }
 
-        if (gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager || 
-            gameManager.GetComponent<GameManager>().lowerPlungerAssemblyPossibleGameManager ||
-            gameManager.GetComponent<GameManager>().patCellLowerCathodeAssemblyPossibleGameManager ||
-            gameManager.GetComponent<GameManager>().patCellSleeveAssemblyPossibleGameManager ||
-            gameManager.GetComponent<GameManager>().patCellUpperCathodeAssemblyPossibleGameManager ||
-            gameManager.GetComponent<GameManager>().patCellUpperPlungerAssemblyPossibleGameManager ||
-            gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager ||
-            gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
-        {
-            isPlacable = true;
-        }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager)
+    // Platzieren-Input verarbeiten (alle möglichen Assemblierungen in einem Block zusammengefasst)
+    if (Input.GetKeyDown(keysBindings.placeItemKey))
+    {
+        if (gm.baseAssemblyPossibleGameManager)
         {
             assembleBase = true;
             isPlacable = false;
             DropObject();
         }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().lowerPlungerAssemblyPossibleGameManager)
+        else if (gm.lowerPlungerAssemblyPossibleGameManager)
         {
             assembleLowerPlunger = true;
             isPlacable = false;
             DropObject();
         }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellLowerCathodeAssemblyPossibleGameManager)
+        else if (gm.patCellLowerCathodeAssemblyPossibleGameManager)
         {
-    
             assembleLowerCathode = true;
             isPlacable = false;
             DropObject();
         }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellSleeveAssemblyPossibleGameManager)
+        else if (gm.patCellSleeveAssemblyPossibleGameManager)
         {
             assembleSleeve = true;
             isPlacable = false;
             DropObject();
         }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellUpperCathodeAssemblyPossibleGameManager)
+        else if (gm.patCellUpperCathodeAssemblyPossibleGameManager)
         {
             assembleUpperCathode = true;
             isPlacable = false;
             DropObject();
         }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellUpperPlungerAssemblyPossibleGameManager)
+        else if (gm.patCellUpperPlungerAssemblyPossibleGameManager)
         {
             assembleUpperPlunger = true;
             isPlacable = false;
             DropObject();
         }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager)
+        else if (gm.gearAssemblyPossibleGameManager)
         {
             assembleGear = true;
             isPlacable = false;
             DropObject();
         }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
+        else if (gm.brassTopAssemblyPossibleGameManager)
         {
             assembleBrassTop = true;
             isPlacable = false;
             DropObject();
         }
-
-        if (isUsingGlovebox && Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().exitEquipmentKey))
+        else if (gm.PatCellTesterPlacableGameManager)
         {
-            isUsingGlovebox = false;
-        }
-
-        if (heldObj != null)
-        {
-            MoveObject();
-            if (Input.GetKey(keybindings.GetComponent<KeysBindings>().rotateKey))
-            {
-                isRotatingObject = true;
-                RotateObject();
-            } else
-            {
-                heldObjRB.transform.parent = holdArea;
-                isRotatingObject = false;
-            }
-            if (Input.GetKey(keybindings.GetComponent<KeysBindings>().informationKey))
-            {
-                isGettingObjectInformation = true;
-                objectInformationText = heldObj.GetComponent<ObjectInformation>().information;
-            } else
-            {
-                isGettingObjectInformation = false;
-            }
+            placedPatCallInTester = true;
+            DropObject();
         }
     }
+
+    // Glovebox-Exit verarbeiten
+    if (isUsingGlovebox && Input.GetKeyDown(keysBindings.exitEquipmentKey))
+    {
+        isUsingGlovebox = false;
+    }
+
+    // Wenn ein Objekt gehalten wird, dieses bewegen/rotieren und ggf. Informationen anzeigen
+    if (heldObj != null)
+    {
+        MoveObject();
+
+        if (Input.GetKey(keysBindings.rotateKey))
+        {
+            isRotatingObject = true;
+            RotateObject();
+        }
+        else
+        {
+            heldObjRB.transform.parent = holdArea;
+            isRotatingObject = false;
+        }
+
+        if (Input.GetKey(keysBindings.informationKey))
+        {
+            isGettingObjectInformation = true;
+            objectInformationText = heldObj.GetComponent<ObjectInformation>().information;
+        }
+        else
+        {
+            isGettingObjectInformation = false;
+        }
+    }
+}
+
+/// <summary>
+/// Hilfsmethode, um den Outline‑Effekt auf einem Objekt zu aktivieren.
+/// Falls noch kein Outline‑Component vorhanden ist, wird dieser hinzugefügt und konfiguriert.
+/// </summary>
+private void EnableOutline(Transform obj)
+{
+    Outline outline = obj.GetComponent<Outline>();
+    if (outline == null)
+    {
+        outline = obj.gameObject.AddComponent<Outline>();
+        outline.OutlineColor = Color.magenta;
+        outline.OutlineWidth = 7.0f;
+    }
+    outline.enabled = true;
+}
 
     void MoveObject()
     {
@@ -334,7 +383,6 @@ public class PickupController : MonoBehaviour
 
     void RotateObject()
     {
-
         heldObjRB.transform.Rotate((mouseY * yRotationMultiplier), (-mouseX * 10), (mouseY * zRotationMultiplier), Space.World);
         //heldObjRB.angularVelocity = Vector3.forward * (-mouseX * 10);
         //heldObjRB.transform.RotateAround(relative, new Vector3((-mouseY * 10), (-mouseX * 10), 0), 0.1f);
@@ -351,6 +399,11 @@ public class PickupController : MonoBehaviour
             heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
             heldObjRB.transform.parent = holdArea;
             heldObj = pickObj;
+            Debug.Log(pickObj.name);
+            if (pickObj.name == "pipette")
+            {
+                isCarryingPipette = true;
+            }
         }
     }
 
@@ -366,6 +419,7 @@ public class PickupController : MonoBehaviour
         heldObj = null;
         holdArea.transform.localPosition = new Vector3(0, 0, 0.5f);
         heldObjectInGloveBox = null;
+        isCarryingPipette = false;
     }
 
     float Remap(float source, float sourceFrom, float sourceTo, float targetFrom, float targetTo)

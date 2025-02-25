@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ProDigi Project.sln"
+    "dotnet.defaultSolution": "ProDigi.sln"
 }
