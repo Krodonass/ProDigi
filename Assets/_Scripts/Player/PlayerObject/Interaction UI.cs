@@ -1,13 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InteractionUI : MonoBehaviour
 {
     public PlayerCam playercam;
     public GameObject keybindings;
     public TMP_Text mText;
+    public Canvas canvas;
+
+    private void Start()
+    {
+        PickupController.PCStartEvent += PcCanvasOnPCStartEvent;
+        PcCanvas.PCQuitEvent += PcCanvasOnPCQuitEvent;
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,6 +33,22 @@ public class InteractionUI : MonoBehaviour
         } else
         {
             mText.text = "";
+        }
+    }
+    
+    void PcCanvasOnPCStartEvent(Transform PC)
+    {
+        if (canvas)
+        {
+            canvas.gameObject.SetActive(false);
+        }
+    }
+    
+    void PcCanvasOnPCQuitEvent()
+    {
+        if (canvas)
+        {
+            canvas.gameObject.SetActive(true);
         }
     }
 }

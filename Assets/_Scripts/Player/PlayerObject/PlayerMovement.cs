@@ -72,28 +72,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
-        {
-            // ground check
-            grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        
-            MyInput();
-            SpeedControl();
-            StateHandler();
-
-            //handle drag
-            if (grounded)
-            {
-                rb.drag = groundDrag;
-            } else
-            {
-                rb.drag = 0;
-            }
-
-        } else
+        if (gameManager.isUsingGloveboxGameManager)
         {
             gameObject.transform.position = 
             new Vector3(gloveBoxPlayerPosotion.transform.position.x, gameObject.transform.position.y, gloveBoxPlayerPosotion.transform.position.z);
+            return;
+        }
+        if(gameManager.isUsingPCGameManager){
+            return;
+        }
+        
+        // ground check
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+    
+        MyInput();
+        SpeedControl();
+        StateHandler();
+
+        //handle drag
+        if (grounded)
+        {
+            rb.drag = groundDrag;
+        } else
+        {
+            rb.drag = 0;
         }
     }
 
@@ -255,5 +257,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 GetSlopeMoveDirection() 
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+    //Stops the Movement for the frame;
+    public void StopMovement(){
+        rb.velocity = Vector2.zero;
+        horizontalInput = 0;
+        verticalInput = 0;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
     [Header("PlayerMovement.cs")]
 
     [Header("PlayerCam")]
-    public GameObject playerCam;
+    public PlayerCam playerCam;
     [Header ("PickupController.cs")]
     public bool isCarryingGameManager;
     public bool isPickupableGameManager;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public bool isRotatingObjectGameManager;
     public bool isGettingObjectInformationGameManager;
     public bool isUsingGloveboxGameManager;
+    public bool isUsingPCGameManager = false;
     public bool isCarryingPipetteGameManager;
     public GameObject heldObjInGloveBoxGameManager;
     public bool isUsingHatchGameManager;
@@ -128,6 +130,8 @@ public class GameManager : MonoBehaviour
     public GameObject PatCellTesterTrigger;
     public bool PatCellTesterPlacableGameManager;
 
+    public InteractionUI interactionUI;
+
     private void Awake()
     {
        Instance = this;
@@ -136,6 +140,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PickupController.PCStartEvent += StartUsingPC;
+        PcCanvas.PCQuitEvent += StopUsingPC;
     }
 
     // Update is called once per frame
@@ -143,36 +149,44 @@ public class GameManager : MonoBehaviour
     {
         // PlayerCam
         // PickupController.cs
-        isCarryingGameManager = playerCam.GetComponent<PickupController>().isCarrying;
-        isPickupableGameManager = playerCam.GetComponent<PickupController>().isPickupable;
-        isUsableGameManager = playerCam.GetComponent<PickupController>().isUsable;
-        isRotatingObjectGameManager = playerCam.GetComponent<PickupController>().isRotatingObject;
-        isGettingObjectInformationGameManager = playerCam.GetComponent<PickupController>().isGettingObjectInformation;
+        PickupController pickupController = playerCam.gameObject.GetComponent<PickupController>();
+        if (pickupController)
+        {
+            isCarryingGameManager = pickupController.isCarrying;
+            isPickupableGameManager = pickupController.isPickupable;
+            isUsableGameManager = pickupController.isUsable;
+            isRotatingObjectGameManager = pickupController.isRotatingObject;
+            isGettingObjectInformationGameManager = pickupController.isGettingObjectInformation;
 
-        isUsingGloveboxGameManager = playerCam.GetComponent<PickupController>().isUsingGlovebox;
+            isUsingGloveboxGameManager = pickupController.isUsingGlovebox;
 
-        isCarryingPipetteGameManager = playerCam.GetComponent<PickupController>().isCarryingPipette;
-        isOpeneingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isOpeningOutterHatch;
-        isClosingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isClosingOutterHatch;
+            isCarryingPipetteGameManager = pickupController.isCarryingPipette;
+            isOpeneingOutterHatchGameManager = pickupController.isOpeningOutterHatch;
+            isClosingOutterHatchGameManager = pickupController.isClosingOutterHatch;
 
-        isOpeneingInnerHatchGameManager = playerCam.GetComponent<PickupController>().isOpeningInnerHatch;
-        isClosingInnerHatchGameManager = playerCam.GetComponent<PickupController>().isClosingInnerHatch;
+            isOpeneingInnerHatchGameManager = pickupController.isOpeningInnerHatch;
+            isClosingInnerHatchGameManager = pickupController.isClosingInnerHatch;
 
-        isOpeneingOvenDoorGameManager = playerCam.GetComponent<PickupController>().isOpeningOvenDoor;
-        isClosingOvenDoorGameManager = playerCam.GetComponent<PickupController>().isClosingOvenDoor;
+            isOpeneingOvenDoorGameManager = pickupController.isOpeningOvenDoor;
+            isClosingOvenDoorGameManager = pickupController.isClosingOvenDoor;
 
-        heldObjInGloveBoxGameManager = playerCam.GetComponent<PickupController>().heldObjectInGloveBox;
+            heldObjInGloveBoxGameManager = pickupController.heldObjectInGloveBox;
 
-        assembleBaseGameManager = playerCam.GetComponent<PickupController>().assembleBase;
-        assembleLowerPlungerGameManager = playerCam.GetComponent<PickupController>().assembleLowerPlunger;
-        assembleLowerCathodeGameManager = playerCam.GetComponent<PickupController>().assembleLowerCathode;
-        assembleSleeveGameManager = playerCam.GetComponent<PickupController>().assembleSleeve;
-        assembleUpperCathodeGameManager = playerCam.GetComponent<PickupController>().assembleUpperCathode;
-        assembleUpperPlungerGameManager = playerCam.GetComponent<PickupController>().assembleUpperPlunger;
-        assembleGearGameManager = playerCam.GetComponent<PickupController>().assembleGear;
-        assembleBrassTopGameManager = playerCam.GetComponent<PickupController>().assembleBrassTop;
+            assembleBaseGameManager = pickupController.assembleBase;
+            assembleLowerPlungerGameManager = pickupController.assembleLowerPlunger;
+            assembleLowerCathodeGameManager = pickupController.assembleLowerCathode;
+            assembleSleeveGameManager = pickupController.assembleSleeve;
+            assembleUpperCathodeGameManager = pickupController.assembleUpperCathode;
+            assembleUpperPlungerGameManager = pickupController.assembleUpperPlunger;
+            assembleGearGameManager = pickupController.assembleGear;
+            assembleBrassTopGameManager = pickupController.assembleBrassTop;
 
-        placedPatcellInTesterGameManager = playerCam.GetComponent<PickupController>().placedPatCallInTester;
+            placedPatcellInTesterGameManager = pickupController.placedPatCallInTester;
+            
+            isEvacuatingGameManager = pickupController.isEvacuating;
+            isFloodingGameManager = pickupController.isFlooding;
+        }
+
 
         // OutterHatch
         // OutterHatch.cs
@@ -239,10 +253,6 @@ public class GameManager : MonoBehaviour
         allComponentsInGloveBoxGameManager = WorkplaceTrigger.GetComponent<WorkplaceTrigger>().allComponentsInWorkplace;
         assembledPatCellInWorkplaceGameManager = WorkplaceTrigger.GetComponent<WorkplaceTrigger>().assembledPatCellInWorkplace;
 
-
-        isEvacuatingGameManager = playerCam.GetComponent<PickupController>().isEvacuating;
-        isFloodingGameManager = playerCam.GetComponent<PickupController>().isFlooding;
-
         isFloodedGameManager = Dial.GetComponent<VacuumDial>().isFlooded;
         isEvacuatedGameManager = Dial.GetComponent<VacuumDial>().isEvacuated;
 
@@ -261,4 +271,36 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    //Call when you use a PC
+    public void StartUsingPC(Transform PC){
+        isUsingPCGameManager = true;
+        PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        if(playerMovement){
+            playerMovement.StopMovement();
+        }
+        playerCam.StartPosition = playerCam.transform.position;
+        playerCam.transform.DOMove(PC.position, .5f);
+        playerCam.transform.DORotate(PC.rotation.eulerAngles, 0.5f);
+        if(interactionUI){
+                interactionUI.gameObject.SetActive(false);
+        }
+    }
+
+    public void StopUsingPC(){
+        playerCam.transform.DOMove(playerCam.StartRotation.eulerAngles, 0.5f);
+        playerCam.transform.DOMove(playerCam.StartPosition, .5f).OnComplete(() =>
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            if(interactionUI){
+                interactionUI.gameObject.SetActive(true);
+            }
+            isUsingPCGameManager = false;
+        });
+        return;
+    }
+
 }
