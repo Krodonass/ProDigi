@@ -269,79 +269,86 @@ public class PickupController : MonoBehaviour
         }
     }
 
-    // Prüfen, ob das Ablegen von Objekten möglich ist
-    if (gm.baseAssemblyPossibleGameManager ||
-        gm.lowerPlungerAssemblyPossibleGameManager ||
-        gm.patCellLowerCathodeAssemblyPossibleGameManager ||
-        gm.patCellSleeveAssemblyPossibleGameManager ||
-        gm.patCellUpperCathodeAssemblyPossibleGameManager ||
-        gm.patCellUpperPlungerAssemblyPossibleGameManager ||
-        gm.gearAssemblyPossibleGameManager ||
-        gm.brassTopAssemblyPossibleGameManager)
-    {
-        isPlacable = true;
-    }
+        // Prüfen, ob das Ablegen von Objekten möglich ist
+        if (gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager ||
+               gameManager.GetComponent<GameManager>().lowerPlungerAssemblyPossibleGameManager ||
+               gameManager.GetComponent<GameManager>().patCellLowerCathodeAssemblyPossibleGameManager ||
+               gameManager.GetComponent<GameManager>().patCellSleeveAssemblyPossibleGameManager ||
+               gameManager.GetComponent<GameManager>().patCellUpperCathodeAssemblyPossibleGameManager ||
+               gameManager.GetComponent<GameManager>().patCellUpperPlungerAssemblyPossibleGameManager ||
+               gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager ||
+               gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
+        {
+            isPlacable = true;
+        }
 
-    // Platzieren-Input verarbeiten (alle möglichen Assemblierungen in einem Block zusammengefasst)
-    if (Input.GetKeyDown(keysBindings.placeItemKey))
-    {
-        if (gm.baseAssemblyPossibleGameManager)
+        if (!isCarryingPipette)
+        {
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager)
         {
             assembleBase = true;
             isPlacable = false;
             DropObject();
         }
-        else if (gm.lowerPlungerAssemblyPossibleGameManager)
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().lowerPlungerAssemblyPossibleGameManager)
         {
             assembleLowerPlunger = true;
             isPlacable = false;
             DropObject();
         }
-        else if (gm.patCellLowerCathodeAssemblyPossibleGameManager)
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellLowerCathodeAssemblyPossibleGameManager)
         {
+
             assembleLowerCathode = true;
             isPlacable = false;
             DropObject();
         }
-        else if (gm.patCellSleeveAssemblyPossibleGameManager)
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellSleeveAssemblyPossibleGameManager)
         {
             assembleSleeve = true;
             isPlacable = false;
             DropObject();
         }
-        else if (gm.patCellUpperCathodeAssemblyPossibleGameManager)
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellUpperCathodeAssemblyPossibleGameManager)
         {
             assembleUpperCathode = true;
             isPlacable = false;
             DropObject();
         }
-        else if (gm.patCellUpperPlungerAssemblyPossibleGameManager)
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellUpperPlungerAssemblyPossibleGameManager)
         {
             assembleUpperPlunger = true;
             isPlacable = false;
             DropObject();
         }
-        else if (gm.gearAssemblyPossibleGameManager)
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager)
         {
             assembleGear = true;
             isPlacable = false;
             DropObject();
         }
-        else if (gm.brassTopAssemblyPossibleGameManager)
+
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
         {
             assembleBrassTop = true;
             isPlacable = false;
             DropObject();
         }
-        else if (gm.PatCellTesterPlacableGameManager)
+            
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().PatCellTesterPlacableGameManager)
         {
             placedPatCallInTester = true;
             DropObject();
         }
-    }
-
-    // Glovebox-Exit verarbeiten
-    if (Input.GetKeyDown(keysBindings.exitEquipmentKey))
+        }
+        // Glovebox-Exit verarbeiten
+        if (Input.GetKeyDown(keysBindings.exitEquipmentKey))
     {
         if(isUsingGlovebox){
             isUsingGlovebox = false;

@@ -10,6 +10,7 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
     public GameObject lowerPlungerAssembly;
     public GameObject lowerCathodeAssembly;
     public GameObject sleeveAssembly;
+    public GameObject electrolyteAssembly;
     public GameObject UpperCathodeAssembly;
     public GameObject upperPlungerAssembly;
     public GameObject gearAssembly;
@@ -29,6 +30,9 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
 
     public bool sleeveAssemblyPossible;
     public bool sleeveAssembled;
+
+    public bool electrolyteAssemblyPossible;
+    public bool electrolyteAssembled;
 
     public bool upperCathodeAssemblyPossible;
     public bool upperCathodeAssembled;
@@ -76,6 +80,12 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             gameObject.transform.rotation = sleeveAssembly.transform.rotation;
             gameObject.transform.tag = "Untagged";
         }
+        if (gameObject.name == "electrolyte" && gameManager.GetComponent<GameManager>().assembleElectrolyteGameManager)
+        {
+            gameObject.transform.position = sleeveAssembly.transform.position;
+            gameObject.transform.rotation = sleeveAssembly.transform.rotation;
+            gameObject.transform.tag = "Untagged";
+        }
         if (gameObject.name == "negative_upper_cathode" && gameManager.GetComponent<GameManager>().assembleUpperCathodeGameManager)
         {
             gameObject.transform.position = UpperCathodeAssembly.transform.position;
@@ -116,7 +126,7 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // "Y"- Rotation
             baseAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
-            
+
         }
 
         if (gameObject.name == "lower_plunger" && collision.gameObject.name == "LowerPlungerAssembly")
@@ -142,6 +152,17 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // Zum Spieler kippen
             // "Y"- Rotation
             sleeveAssemblyPossible = true;
+            collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
+
+        }
+        
+        if (gameObject.name == "PipetteLaserPointer" && collision.gameObject.name == "ElectrolyteAssembly")
+        {
+            // Zum Spieler kippen
+            // "Y"- Rotation
+            Debug.Log("pipi");
+            Debug.Log("electro");
+            electrolyteAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
 
         }
@@ -180,6 +201,11 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        if (gameObject.name == "PipetteLaserPointer")
+        {
+            
+        }
+
         if (collision.gameObject.tag == "ground")
         {
             FindAnyObjectByType<AudioManager>().Play("Small_Collision");
@@ -209,6 +235,12 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
         if (gameObject.name == "sleeve" && collision.gameObject.name == "SleeveAssembly")
         {
             sleeveAssemblyPossible = false;
+            collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+        }
+
+        if (gameObject.name == "PipetteLaserPointer" && collision.gameObject.name == "ElectrolyteAssembly")
+        {
+            electrolyteAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
         }
 

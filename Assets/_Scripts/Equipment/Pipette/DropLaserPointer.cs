@@ -21,9 +21,11 @@ public class DropLaserPointer : MonoBehaviour
         if (gameManager.GetComponent<GameManager>().activateLaserPointerGameManager)
         {
             LaserPointer.GetComponent<MeshRenderer>().enabled = true;
+          
         } else
         {
             LaserPointer.GetComponent<MeshRenderer>().enabled = false;
+           
         }
     }
 }

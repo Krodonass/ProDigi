@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     public bool assembleLowerPlungerGameManager;
     public bool assembleLowerCathodeGameManager;
     public bool assembleSleeveGameManager;
+    public bool assembleElectrolyteGameManager;
     public bool assembleUpperCathodeGameManager;
     public bool assembleUpperPlungerGameManager;
     public bool assembleGearGameManager;
@@ -83,6 +84,10 @@ public class GameManager : MonoBehaviour
     [Header("Pat Cell Sleeve")]
     public GameObject patCellSleeve;
     public bool patCellSleeveAssemblyPossibleGameManager;
+
+    [Header("Pat Cell Sleeve")]
+    public GameObject patCellElectrolyte;
+    public bool patCellElectrolyteAssemblyPossibleGameManager;
 
     [Header("Pat Cell Upper Cathode")]
     public GameObject patCellUpperCathode;
@@ -133,6 +138,9 @@ public class GameManager : MonoBehaviour
 
     public InteractionUI interactionUI;
 
+    public GameObject drop;
+    public bool electrolyAssembledGameManager;
+
     private void Awake()
     {
        Instance = this;
@@ -148,6 +156,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        electrolyAssembledGameManager = drop.GetComponent<Drop>().electolytAssembled;
         // PlayerCam
         // PickupController.cs
         PickupController pickupController = playerCam.gameObject.GetComponent<PickupController>();
@@ -272,6 +281,8 @@ public class GameManager : MonoBehaviour
         {
             PatCellTesterPlacableGameManager = PatCellTesterTrigger.GetComponent<PatcellTesterTriggerDetect>().placingPossible;
         }
+
+        
     }
 
     public enum GameState

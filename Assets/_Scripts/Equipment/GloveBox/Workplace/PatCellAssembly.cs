@@ -10,6 +10,7 @@ public class PatCellAssembly : MonoBehaviour
     public GameObject lowerPlungerAssembly;
     public GameObject lowerCathodeAssembly;
     public GameObject sleeveAssembly;
+    public GameObject electrolyteAssembly;
     public GameObject upperCathodeAssembly;
     public GameObject upperPlungerAssembly;
     public GameObject gearAssembly;
@@ -20,6 +21,7 @@ public class PatCellAssembly : MonoBehaviour
     public bool lowerPlungerAssembled;
     public bool lowerCathodeAssembled;
     public bool sleeveAssembled;
+    public bool electrolyteAssembled;
     public bool upperCathodeAssembled;
     public bool upperPlungerAssembled;
     public bool gearAssembled;
@@ -37,6 +39,7 @@ public class PatCellAssembly : MonoBehaviour
             upperPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
             upperCathodeAssembly.GetComponent<MeshRenderer>().enabled = false;
             sleeveAssembly.GetComponent<MeshRenderer>().enabled = false;
+            electrolyteAssembly.GetComponent<MeshRenderer>().enabled = false;
             lowerCathodeAssembly.GetComponent<MeshRenderer>().enabled = false;
             lowerPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
 
@@ -47,6 +50,7 @@ public class PatCellAssembly : MonoBehaviour
             upperPlungerAssembly.GetComponent<Collider>().enabled = false;
             upperCathodeAssembly.GetComponent<Collider>().enabled = false;
             sleeveAssembly.GetComponent<Collider>().enabled = false;
+            electrolyteAssembly.GetComponent<Collider>().enabled = false;
             lowerCathodeAssembly.GetComponent<Collider>().enabled = false;
             lowerPlungerAssembly.GetComponent<Collider>().enabled = false;
 
@@ -80,15 +84,25 @@ public class PatCellAssembly : MonoBehaviour
 
             sleeveAssembly.GetComponent<MeshRenderer>().enabled = true;
             sleeveAssembly.GetComponent<Collider>().enabled = true;
-        } else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && sleeveAssembled && !upperCathodeAssembled)
+        } else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && sleeveAssembled && !electrolyteAssembled)
         {
             sleeveAssembly.GetComponent<MeshRenderer>().enabled = false;
             sleeveAssembly.GetComponent<Collider>().enabled = false;
             gameManager.GetComponent<GameManager>().patCellSleeve.GetComponent<Collider>().enabled = false;
 
+            electrolyteAssembly.GetComponent<MeshRenderer>().enabled = true;
+            electrolyteAssembly.GetComponent<Collider>().enabled = true;
+        }
+        else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && electrolyteAssembled && !upperCathodeAssembled)
+        {
+            electrolyteAssembly.GetComponent<MeshRenderer>().enabled = false;
+            electrolyteAssembly.GetComponent<Collider>().enabled = false;
+            gameManager.GetComponent<GameManager>().patCellElectrolyte.GetComponent<Collider>().enabled = false;
+
             upperCathodeAssembly.GetComponent<MeshRenderer>().enabled = true;
             upperCathodeAssembly.GetComponent<Collider>().enabled = true;
-        } else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && upperCathodeAssembled && !upperPlungerAssembled)
+        }
+        else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && upperCathodeAssembled && !upperPlungerAssembled)
         {
             upperCathodeAssembly.GetComponent<MeshRenderer>().enabled = false;
             upperCathodeAssembly.GetComponent<Collider>().enabled = false;
