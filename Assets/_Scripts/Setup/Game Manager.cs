@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public bool isGettingObjectInformationGameManager;
     public bool isUsingGloveboxGameManager;
     public bool isCarryingPipetteGameManager;
+    public bool activateLaserPointerGameManager;
     public GameObject heldObjInGloveBoxGameManager;
     public bool isUsingHatchGameManager;
     public bool placedPatcellInTesterGameManager;
@@ -152,6 +153,8 @@ public class GameManager : MonoBehaviour
         isUsingGloveboxGameManager = playerCam.GetComponent<PickupController>().isUsingGlovebox;
 
         isCarryingPipetteGameManager = playerCam.GetComponent<PickupController>().isCarryingPipette;
+        activateLaserPointerGameManager = playerCam.GetComponent<PickupController>().activatePipetteLaserpointer;
+
         isOpeneingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isOpeningOutterHatch;
         isClosingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isClosingOutterHatch;
 

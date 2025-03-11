@@ -41,6 +41,7 @@ public class PickupController : MonoBehaviour
     public bool isCarrying;
 
     public bool isCarryingPipette;
+    public bool activatePipetteLaserpointer;
 
     public bool isUsable;
     public bool isUsing;
@@ -168,8 +169,15 @@ public class PickupController : MonoBehaviour
             DropObject();
         }
 
-        // Weitere Interaktionen, falls kein Objekt in der Hand ist
-        if (heldObj == null && hasHit)
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gm.GetComponent<GameManager>().PatCellTesterPlacableGameManager)
+        {
+                Debug.Log("lol");
+            placedPatCallInTester = true;
+            DropObject();
+        }
+
+            // Weitere Interaktionen, falls kein Objekt in der Hand ist
+            if (heldObj == null && hasHit)
         {
             // Beispiel: Wenn das getroffene Objekt "glass" heißt, Glovebox aktivieren
             if (hit.collider.name == "glass")
@@ -332,12 +340,14 @@ public class PickupController : MonoBehaviour
         if (Input.GetKey(keysBindings.rotateKey))
         {
             isRotatingObject = true;
+            activatePipetteLaserpointer = true;
             RotateObject();
         }
         else
         {
             heldObjRB.transform.parent = holdArea;
             isRotatingObject = false;
+            activatePipetteLaserpointer = false;
         }
 
         if (Input.GetKey(keysBindings.informationKey))
