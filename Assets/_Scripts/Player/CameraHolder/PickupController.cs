@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -78,6 +79,10 @@ public class PickupController : MonoBehaviour
 
     public float yRotationMultiplier;
     public float zRotationMultiplier;
+    
+    //Execute when Use the PC
+    public static event Action<Transform> PCStartEvent;
+ 
 
     private void Update()
 {
@@ -157,6 +162,9 @@ public class PickupController : MonoBehaviour
     // Grab-Input verarbeiten
     if (Input.GetKeyDown(keysBindings.grabKey))
     {
+        if(gm.isUsingPCGameManager){
+            return;
+        }
         if (heldObj == null)
         {
             if (hasHit && hit.transform.CompareTag("Pickupable"))
@@ -184,8 +192,14 @@ public class PickupController : MonoBehaviour
             {
                 isUsingGlovebox = true;
             }
-            else if (hit.collider.name == "PC")
+            else if (hit.collider.name == "terminal_screen")
             {
+                PcScript pcScript = hit.collider.GetComponent<PcScript>();
+                if(pcScript)
+                {
+                    //gm.StartUsingPC(pcScript.PlayerPCPostion);
+                    PCStartEvent(pcScript.PlayerPCPostion);
+                }
                 print("HackerMan!!!");
             }else
             {
@@ -327,10 +341,17 @@ public class PickupController : MonoBehaviour
     }
 
     // Glovebox-Exit verarbeiten
-    if (isUsingGlovebox && Input.GetKeyDown(keysBindings.exitEquipmentKey))
+    if (Input.GetKeyDown(keysBindings.exitEquipmentKey))
     {
-        isUsingGlovebox = false;
+        if(isUsingGlovebox){
+            isUsingGlovebox = false;
+            return;
+        }
+        if(gm.isUsingPCGameManager){
+            PcCanvas.TriggerPCQuit();
+        }
     }
+
 
     // Wenn ein Objekt gehalten wird, dieses bewegen/rotieren und ggf. Informationen anzeigen
     if (heldObj != null)
@@ -368,14 +389,19 @@ public class PickupController : MonoBehaviour
 /// </summary>
 private void EnableOutline(Transform obj)
 {
-    Outline outline = obj.GetComponent<Outline>();
-    if (outline == null)
-    {
-        outline = obj.gameObject.AddComponent<Outline>();
-        outline.OutlineColor = Color.magenta;
-        outline.OutlineWidth = 7.0f;
+    GameManager gm = gameManager.GetComponent<GameManager>();
+    if(!gm) return;
+    if(!gm.isUsingPCGameManager){
+        Outline outline = obj.GetComponent<Outline>();
+        if (outline == null)
+        {
+            outline = obj.gameObject.AddComponent<Outline>();
+            outline.OutlineColor = Color.magenta;
+            outline.OutlineWidth = 7.0f;
+        }
+        outline.enabled = true;
     }
-    outline.enabled = true;
+
 }
 
     void MoveObject()
