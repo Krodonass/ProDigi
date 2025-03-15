@@ -9,10 +9,12 @@ public class PcCanvas : MonoBehaviour
 
     private Canvas canvas;
 
-    public GameObject MailUI;
+    [SerializeField] private GameObject MailScreen;
+    [SerializeField] private GameObject StartScreen;
+
+    [SerializeField] private AudioSource MouseClick;
 
     public static event Action PCQuitEvent;
-
 
 
     
@@ -24,6 +26,17 @@ public class PcCanvas : MonoBehaviour
         {
             //canvas.worldCamera = Camera.current;
         }
+
+        MailScreen.SetActive(false);
+        StartScreen.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            MouseClick.Play();
+        }
     }
 
     // Update is called once per frame
@@ -32,23 +45,29 @@ public class PcCanvas : MonoBehaviour
         PCQuitEvent();
     }
 
-    public static void TriggerPCQuit(){
+    public static void TriggerPCQuit()
+    {
         PCQuitEvent.Invoke();
     }
 
         //Opens the Mail overview
-    public void OnMailUI(){
-        MailUI.SetActive(!MailUI.activeSelf);
+    public void OnMailUI()
+    {
+        StartScreen.SetActive(false);
+        MailScreen.SetActive(true);
     }
 
 
     //Goes back to Mainmenu
-    public void OpenMainMenu(){
-        MailUI.SetActive(false);
+    public void OpenMainMenu()
+    {
+        MailScreen.SetActive(false);
+        StartScreen.SetActive(true);
     }
 
     //Opens a specific mail
-    public void OpenMail(){
+    public void OpenMail()
+    {
 
     }
 }
