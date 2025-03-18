@@ -30,7 +30,6 @@ RectTransform:
   m_Children:
   - {fileID: 7971478448569619602}
   - {fileID: 509375233076645820}
-  - {fileID: 5346000865918577053}
   m_Father: {fileID: 8306369190445684228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -66,16 +65,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071222915231249744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00001564622}
+  m_LocalScale: {x: 0.3, y: 0.30000004, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2926423816810658313}
-  m_Father: {fileID: 2828405584173782867}
+  m_Father: {fileID: 8306369190445684228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.23, y: -12.66}
+  m_AnchoredPosition: {x: 20.230011, y: -12.660001}
   m_SizeDelta: {x: 30, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8746730788982579270
@@ -297,6 +296,7 @@ RectTransform:
   - {fileID: 7297602984252713919}
   - {fileID: 2828405584173782867}
   - {fileID: 6169267145096676970}
+  - {fileID: 5346000865918577053}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1574668235300740606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +379,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcdc16966568a84bbdc23778fe48f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MailUI: {fileID: 5116106922490467483}
+  ControlsScreen: {fileID: 0}
+  MailScreen: {fileID: 0}
+  StartScreen: {fileID: 0}
+  MouseClick: {fileID: 0}
 --- !u!1 &4492820327825817824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,11 +1008,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 050f670fbd1f7cb408cf6a5ce4184ced, type: 3}
---- !u!1 &5116106922490467483 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6644141227195148577, guid: 050f670fbd1f7cb408cf6a5ce4184ced, type: 3}
-  m_PrefabInstance: {fileID: 1960379881934601658}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6169267145096676970 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5668071321044614096, guid: 050f670fbd1f7cb408cf6a5ce4184ced, type: 3}
