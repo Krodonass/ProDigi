@@ -6,7 +6,10 @@ using UnityEngine.UIElements;
 public class OutterHatch : MonoBehaviour
 {
     public GameManager gameManager;
+    [HideInInspector]
     public bool isOpenOutterHatch = false;
+    
+    public Doors innerTray;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +29,15 @@ public class OutterHatch : MonoBehaviour
             isOpenOutterHatch = true;
         } else if (gameManager.isClosingOutterHatchGameManager && isOpenOutterHatch) 
         {
-            closeHatch();
-            isOpenOutterHatch = false;
+            if (innerTray)
+            {
+                if (innerTray.isTDopen == "n")
+                {
+                    closeHatch();
+                    isOpenOutterHatch = false;
+
+                }
+            }
         }
     }
 
