@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class OutterHatch : MonoBehaviour
 {
-    public GameObject gameManager;
+    public GameManager gameManager;
     public bool isOpenOutterHatch = false;
     // Start is called before the first frame update
     void Start()
@@ -16,10 +16,15 @@ public class OutterHatch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.GetComponent<GameManager>().isOpeneingOutterHatchGameManager && !isOpenOutterHatch) {
+        if (gameManager.isOpeneingOutterHatchGameManager && !isOpenOutterHatch) {
+            //Check if vakuum is Tube
+            if (gameManager.isEvacuatedGameManager || gameManager.isEvacuatingGameManager)
+            {
+                return;
+            }
             openHatch();
             isOpenOutterHatch = true;
-        } else if (gameManager.GetComponent<GameManager>().isClosingOutterHatchGameManager && isOpenOutterHatch) 
+        } else if (gameManager.isClosingOutterHatchGameManager && isOpenOutterHatch) 
         {
             closeHatch();
             isOpenOutterHatch = false;
