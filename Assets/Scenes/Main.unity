@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483982b85bf8ab48808691a221a0866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 310630293}
+  gameManager: {fileID: 310630295}
   isOpenOutterHatch: 0
 --- !u!1 &84609814 stripped
 GameObject:
@@ -3911,27 +3911,6 @@ MonoBehaviour:
   gearAssembled: 0
   brasstopAssemblyPossible: 0
   brasstopAssembled: 0
---- !u!65 &449972572
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449972558}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.002415052, y: 0.0024150515, z: 0.0005321982}
-  m_Center: {x: 0, y: 0, z: 0.00026609897}
 --- !u!1 &452999757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -488133675316436259, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
@@ -16482,11 +16461,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8512870528771197507, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.32
+      value: 0.1828
       objectReference: {fileID: 0}
     - target: {fileID: -8512870528771197507, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.481
+      value: 2.4108
+      objectReference: {fileID: 0}
+    - target: {fileID: -8512870528771197507, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7621052660579513338, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_TagString
@@ -16608,6 +16591,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.319
       objectReference: {fileID: 0}
+    - target: {fileID: -2502030981990978003, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5333372149100178990, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
     - target: {fileID: -488133675316436259, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_TagString
       value: Pickupable
@@ -16666,15 +16653,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6737385770243752509, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.184
+      value: -2.0278
       objectReference: {fileID: 0}
     - target: {fileID: 6737385770243752509, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.333
+      value: 0.1882
       objectReference: {fileID: 0}
     - target: {fileID: 6737385770243752509, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.606
+      value: 2.5225
       objectReference: {fileID: 0}
     - target: {fileID: 7330762057889809632, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_Layer
@@ -16847,9 +16834,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2180232625975573591, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       insertIndex: -1
       addedObject: {fileID: 449972564}
-    - targetCorrespondingSourceObject: {fileID: 2180232625975573591, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 449972572}
   m_SourcePrefab: {fileID: 100100000, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
 --- !u!4 &1556338435 stripped
 Transform:
@@ -21875,7 +21859,7 @@ GameObject:
   - component: {fileID: 5039380847242024002}
   m_Layer: 11
   m_Name: vacq_tray
-  m_TagString: Untagged
+  m_TagString: Usable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23143,7 +23127,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &5039380847242024003
 MonoBehaviour:
@@ -23892,7 +23876,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30

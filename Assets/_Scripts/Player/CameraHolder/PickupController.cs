@@ -408,7 +408,6 @@ private void EnableOutline(Transform obj)
         }
         outline.enabled = true;
     }
-
 }
 
     void MoveObject()
