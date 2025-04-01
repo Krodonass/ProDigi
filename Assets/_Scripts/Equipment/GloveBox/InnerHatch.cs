@@ -5,20 +5,30 @@ using UnityEngine;
 public class InnerHatch : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject gameManager;
+    public GameManager gameManager;
     public bool isOpenInnerHatch = false;
+
+    public Doors innerTray;
  
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.GetComponent<GameManager>().isOpeneingInnerHatchGameManager && !isOpenInnerHatch)
+        if (gameManager.isOpeneingInnerHatchGameManager && !isOpenInnerHatch)
         {
             openHatch();
             isOpenInnerHatch = true;
-        } else if (gameManager.GetComponent<GameManager>().isClosingInnerHatchGameManager && isOpenInnerHatch)
+        } else if (gameManager.isClosingInnerHatchGameManager && isOpenInnerHatch)
         {
-            closeHatch();
-            isOpenInnerHatch = false;
+            //Checks if try is open 
+            if (innerTray)
+            {
+                if (innerTray.isTDopen == "n")
+                {
+                    closeHatch();
+                    isOpenInnerHatch = false;
+                }
+            }
+
         }
     }
 

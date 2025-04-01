@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.82676816, g: 0.8538991, b: 0.9065169, a: 1}
+  m_IndirectSpecularColor: {r: 0.82955074, g: 0.8565691, b: 0.90860254, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -555,6 +555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!65 &84609821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1178,8 +1180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2e9f8a9959bf3419d79f4f18c78f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 310630293}
+  gameManager: {fileID: 310630295}
   isOpenInnerHatch: 0
+  innerTray: {fileID: 5039380847242024003}
 --- !u!1 &116902633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4287,6 +4290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &461637976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4327,6 +4332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!23 &461637978
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7709,6 +7716,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &798611643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7749,6 +7758,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!23 &798611645
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8129,6 +8140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &825870599
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8169,6 +8182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!23 &825870601
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8463,6 +8478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &873622960
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8857,6 +8874,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!64 &923552409
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9770,6 +9789,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!64 &1004074249
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10165,6 +10186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!64 &1024127153
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11083,6 +11106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!1 &1076947035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2314306198333534940, guid: 6ad4ee5337f0c2b41b420a616bdb008b, type: 3}
@@ -12850,6 +12875,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!64 &1154897224
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13674,6 +13701,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!64 &1266736659
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13945,6 +13974,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &1270387353
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13985,6 +14016,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!23 &1270387355
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15502,6 +15535,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!65 &1484800177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17650,6 +17685,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!65 &1620067861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18268,6 +18305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &1741261266
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18308,6 +18347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!65 &1741261268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21201,6 +21242,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &2133001577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21241,6 +21284,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!23 &2133001579
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22935,6 +22980,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &4904457269990381700
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23111,6 +23158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 310630293}
+  isLDopen: n
+  isTDopen: n
 --- !u!23 &5212962526763747824
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24553,6 +24602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  isLDopen: n
+  isTDopen: n
 --- !u!54 &9129330120154524628
 Rigidbody:
   m_ObjectHideFlags: 0

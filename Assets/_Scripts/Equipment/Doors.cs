@@ -6,25 +6,10 @@ public class Doors : MonoBehaviour
 {
     public GameObject gameManager;
     
-    private string isLDopen = "n";
-    private string isTDopen = "n";
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnMouseDown()
-    {
-        //InvokeInteraction();
-    }
+    [HideInInspector]
+    public string isLDopen = "n";
+    [HideInInspector]
+    public string isTDopen = "n";
     
     //Opens or close the door
     public void InvokeInteraction()
