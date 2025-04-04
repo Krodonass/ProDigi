@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -2.067}
+  m_AnchoredPosition: {x: 10, y: -2.0668945}
   m_SizeDelta: {x: 300, y: 165.815}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4087391700138245477
@@ -168,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 8.3305}
+  m_AnchoredPosition: {x: 10, y: 8.330566}
   m_SizeDelta: {x: 300, y: 16.661}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3168220864076438766
@@ -302,7 +302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 10.15}
+  m_AnchoredPosition: {x: 10, y: 10.149902}
   m_SizeDelta: {x: 300, y: 16.661}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8297154892986006811
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee208c3f07a5bb24ab9a95689469f67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contantRectTranform: {fileID: 2676226339723054468}
   ScrollViewContent: {fileID: 2676226339723054468}
   EmailTextWindow: {fileID: 7497402229503828170}
   EmailSendertTMP: {fileID: 3594781808738590885}
@@ -656,7 +657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.06, y: -1.61}
+  m_AnchoredPosition: {x: -16.06, y: -1.6098633}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3088831343729382013
@@ -847,7 +848,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2865848911716703589}
   m_HandleRect: {fileID: 2091763773976331230}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -887,7 +888,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.00007205643}
+  m_AnchoredPosition: {x: 10, y: 0.00029599894}
   m_SizeDelta: {x: -2.62, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &9032620222531969552
@@ -908,7 +909,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

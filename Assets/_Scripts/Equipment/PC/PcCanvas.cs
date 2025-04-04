@@ -45,40 +45,37 @@ public class PcCanvas : MonoBehaviour
         PCQuitEvent.Invoke();
     }
 
-        //Opens the Mail overview
+    //opens mail screen and closes every other screen
     public void OpenMailScreen()
     {
         ControlsScreen.SetActive(false);
         StartScreen.SetActive(false);
         MailScreen.SetActive(true);
     }
-
-
-    //Goes back to Mainmenu
+    
+    //opens start screen and closes every other screen
     public void OpenStartScreen()
     {
         MailScreen.SetActive(false);
         ControlsScreen.SetActive(false);
         StartScreen.SetActive(true);
     }
-
-
-
+    
+    //opens contol screen and closes every other screen
     public void OpenControlsScreen()
     {
         MailScreen.SetActive(false);
         StartScreen.SetActive(false);
         ControlsScreen.SetActive(true);
     }
-
-
+    
     //Opens a specific mail
     public void OpenMail()
     {
 
     }
 
-
+    //plays mouse click sound
     public void MouseClickSound()
     {
         MouseClick.Play();

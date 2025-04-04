@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class MailScreen : MonoBehaviour
 {
-
     public Transform ScrollViewContent;
 
     public TextMeshProUGUI  EmailTextWindow;
@@ -40,7 +39,6 @@ public class MailScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void ShowEmail(EmailData email){
