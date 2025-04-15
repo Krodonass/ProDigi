@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        electrolyAssembledGameManager = drop.GetComponent<Drop>().electolytAssembled;
+        //electrolyAssembledGameManager = drop.GetComponent<Drop>().electolytAssembled;
         // PlayerCam
         // PickupController.cs
         PickupController pickupController = playerCam.gameObject.GetComponent<PickupController>();

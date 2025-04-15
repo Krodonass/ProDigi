@@ -163,6 +163,8 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             Debug.Log("pipi");
             Debug.Log("electro");
             electrolyteAssemblyPossible = true;
+            List<Material> materialList = new List<Material>();
+            materialList.Add(assemblyPossible);
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
 
         }

@@ -19,10 +19,15 @@ public class Drop : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(electolytAssembled);
         if (other.gameObject.name == "ElectrolyteAssembly")
         {
-            electolytAssembled = true;
+            if (GameManager.Instance.patCellElectrolyteAssemblyPossibleGameManager)
+            {
+                electolytAssembled = true;
+                GameManager.Instance.electrolyAssembledGameManager = true;
+                GameManager.Instance.patCellUpperCathodeAssemblyPossibleGameManager = true;
+            }
+
         }
     }
     private void OnCollisionEnter(Collision collision)
