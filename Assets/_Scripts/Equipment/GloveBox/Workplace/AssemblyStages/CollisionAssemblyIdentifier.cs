@@ -183,7 +183,6 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // "Y"- Rotation
             upperPlungerAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
-
         }
 
         if (gameObject.name == "gear" && collision.gameObject.name == "GearAssembly")
