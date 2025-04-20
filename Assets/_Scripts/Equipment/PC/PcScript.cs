@@ -9,8 +9,6 @@ public class PcScript : MonoBehaviour
     public Transform PlayerPCPostion;
 
     private MeshCollider meshCollider;
-
-
     
 
     // Start is called before the first frame update
@@ -21,14 +19,7 @@ public class PcScript : MonoBehaviour
 
         meshCollider = GetComponent<MeshCollider>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+    
     public void OnExit(){
         if(meshCollider){
             meshCollider.enabled = true;

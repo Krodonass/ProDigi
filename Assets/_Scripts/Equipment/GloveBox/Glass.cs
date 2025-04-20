@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Glass : MonoBehaviour
 {
+    //Playerposition while using glovebox
+    public Transform PlayerPoint;
     public GameObject gameManger;
     public MeshRenderer m;
     // Start is called before the first frame update
@@ -25,4 +26,6 @@ public class Glass : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().enabled = true;
         }
     }
+    
+    
 }

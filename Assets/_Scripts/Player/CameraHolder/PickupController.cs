@@ -1,14 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
+using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SocialPlatforms;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
+
 
 public class PickupController : MonoBehaviour
 {
@@ -82,6 +75,8 @@ public class PickupController : MonoBehaviour
     
     //Execute when Use the PC
     public static event Action<Transform> PCStartEvent;
+    public static event Action<Transform> GloveBoxUseEvent;
+    public static event Action GloveBoxExitEvent;
  
 
     private void Update()
@@ -185,11 +180,13 @@ public class PickupController : MonoBehaviour
         }
 
             // Weitere Interaktionen, falls kein Objekt in der Hand ist
-            if (heldObj == null && hasHit)
+        if (heldObj == null && hasHit)
         {
             // Beispiel: Wenn das getroffene Objekt "glass" heißt, Glovebox aktivieren
             if (hit.collider.name == "glass")
             {
+                Glass glassComponent = hit.collider.GetComponent<Glass>();
+                GloveBoxUseEvent(glassComponent.PlayerPoint);
                 isUsingGlovebox = true;
             }
             else if (hit.collider.name == "terminal_screen")
@@ -349,15 +346,16 @@ public class PickupController : MonoBehaviour
         }
         // Glovebox-Exit verarbeiten
         if (Input.GetKeyDown(keysBindings.exitEquipmentKey))
-    {
-        if(isUsingGlovebox){
-            isUsingGlovebox = false;
-            return;
+        {
+            if(isUsingGlovebox){
+                isUsingGlovebox = false;
+                GloveBoxExitEvent.Invoke();
+                return;
+            }
+            if(gm.isUsingPCGameManager){
+                PcCanvas.TriggerPCQuit();
+            }
         }
-        if(gm.isUsingPCGameManager){
-            PcCanvas.TriggerPCQuit();
-        }
-    }
 
 
     // Wenn ein Objekt gehalten wird, dieses bewegen/rotieren und ggf. Informationen anzeigen
