@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,40 +30,41 @@ public class PatCellAssembly : MonoBehaviour
 
     public bool allAssembled;
 
+    private void Start()
+    {
+        brassTopAssembly.GetComponent<MeshRenderer>().enabled = false;
+        gearAssembly.GetComponent<MeshRenderer>().enabled = false;
+        upperPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
+        upperCathodeAssembly.GetComponent<MeshRenderer>().enabled = false;
+        sleeveAssembly.GetComponent<MeshRenderer>().enabled = false;
+        electrolyteAssembly.GetComponent<MeshRenderer>().enabled = false;
+        lowerCathodeAssembly.GetComponent<MeshRenderer>().enabled = false;
+        lowerPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
+
+        brassTopAssembly.GetComponent<Collider>().enabled = false;
+        gearAssembly.GetComponent<Collider>().enabled = false;
+        upperPlungerAssembly.GetComponent<Collider>().enabled = false;
+        upperCathodeAssembly.GetComponent<Collider>().enabled = false;
+        sleeveAssembly.GetComponent<Collider>().enabled = false;
+        electrolyteAssembly.GetComponent<Collider>().enabled = false;
+        lowerCathodeAssembly.GetComponent<Collider>().enabled = false;
+        lowerPlungerAssembly.GetComponent<Collider>().enabled = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (!baseAssembled)
         {
-            brassTopAssembly.GetComponent<MeshRenderer>().enabled = false;
-            gearAssembly.GetComponent<MeshRenderer>().enabled = false;
-            upperPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
-            upperCathodeAssembly.GetComponent<MeshRenderer>().enabled = false;
-            sleeveAssembly.GetComponent<MeshRenderer>().enabled = false;
-            electrolyteAssembly.GetComponent<MeshRenderer>().enabled = false;
-            lowerCathodeAssembly.GetComponent<MeshRenderer>().enabled = false;
-            lowerPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
-
-
-
-            brassTopAssembly.GetComponent<Collider>().enabled = false;
-            gearAssembly.GetComponent<Collider>().enabled = false;
-            upperPlungerAssembly.GetComponent<Collider>().enabled = false;
-            upperCathodeAssembly.GetComponent<Collider>().enabled = false;
-            sleeveAssembly.GetComponent<Collider>().enabled = false;
-            electrolyteAssembly.GetComponent<Collider>().enabled = false;
-            lowerCathodeAssembly.GetComponent<Collider>().enabled = false;
-            lowerPlungerAssembly.GetComponent<Collider>().enabled = false;
-
-
             baseAssembly.GetComponent<MeshRenderer>().enabled = true;
         }
         if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && !baseAssembled)
         {
             baseAssembly.GetComponent<MeshRenderer>().enabled = true;
+            baseAssembly.GetComponent<Collider>().enabled = true;
         } else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && !lowerPlungerAssembled && baseAssembled)
         {
-            baseAssembly.GetComponent<Collider>().enabled = false;
+            //baseAssembly.GetComponent<Collider>().enabled = false;
             baseAssembly.GetComponent<MeshRenderer>().enabled = false;
             gameManager.GetComponent<GameManager>().patCellBase.GetComponent<Collider>().enabled = false;
 
@@ -71,7 +73,7 @@ public class PatCellAssembly : MonoBehaviour
         } else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager &&  lowerPlungerAssembled && !lowerCathodeAssembled)
         {
             lowerPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
-            lowerPlungerAssembly.GetComponent<Collider>().enabled = false;
+            //lowerPlungerAssembly.GetComponent<Collider>().enabled = false;
             gameManager.GetComponent<GameManager>().patCellLowerPlunger.GetComponent<Collider>().enabled = false;
 
             lowerCathodeAssembly.GetComponent<MeshRenderer>().enabled = true;
@@ -131,7 +133,7 @@ public class PatCellAssembly : MonoBehaviour
         if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && baseAssembled && gearAssembled && brassTopAssembled)
         {
             baseAssembly.GetComponent<MeshRenderer>().enabled = false;
-            baseAssembly.GetComponent<Collider>().enabled = false;
+            //baseAssembly.GetComponent<Collider>().enabled = false;
 
             gearAssembly.GetComponent<MeshRenderer>().enabled = false;
             gearAssembly.GetComponent<Collider>().enabled = false;

@@ -72,13 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.isUsingGloveboxGameManager)
-        {
-            gameObject.transform.position = 
-            new Vector3(gloveBoxPlayerPosotion.transform.position.x, gameObject.transform.position.y, gloveBoxPlayerPosotion.transform.position.z);
-            return;
-        }
-        if(gameManager.isUsingPCGameManager){
+        if(gameManager.isUsingPCGameManager || gameManager.isUsingGloveboxGameManager){
             return;
         }
         

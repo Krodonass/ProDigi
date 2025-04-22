@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -143,7 +145,18 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-       Instance = this;
+        // Überprüft, ob bereits eine Instanz existiert
+        if (Instance != null && Instance != this)
+        {
+            // Falls ja, zerstört dieses Duplikat
+            Destroy(gameObject);
+            return;
+        }
+
+        // Setzt die Instanz auf dieses Objekt
+        Instance = this;
+        // Verhindert, dass das GameObject beim Szenenwechsel zerstört wird
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -151,6 +164,8 @@ public class GameManager : MonoBehaviour
     {
         PickupController.PCStartEvent += StartUsingPC;
         PcCanvas.PCQuitEvent += StopUsingPC;
+        PickupController.GloveBoxUseEvent += StartUsingGloveBox;
+        PickupController.GloveBoxExitEvent += StopUsingGloveBox;
     }
 
     // Update is called once per frame
@@ -318,7 +333,32 @@ public class GameManager : MonoBehaviour
             }
             isUsingPCGameManager = false;
         });
-        return;
     }
 
+    public void StartUsingGloveBox(Transform GloveBoxPoint)
+    {
+        isUsingGloveboxGameManager = true;
+        PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+        if(playerMovement){
+            playerMovement.StopMovement();
+        }
+        playerCam.StartPosition = playerCam.transform.position;
+        playerCam.transform.DOMove(GloveBoxPoint.position, .5f);
+        playerCam.transform.DORotate(GloveBoxPoint.rotation.eulerAngles, 0.5f);
+    }
+    
+    public void StopUsingGloveBox(){
+        print("[GM] Exit");
+        playerCam.transform.DOMove(playerCam.StartRotation.eulerAngles, 0.5f);
+        playerCam.transform.DOMove(playerCam.StartPosition, .5f).OnComplete(() =>
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            if(interactionUI){
+                interactionUI.gameObject.SetActive(true);
+            }
+            isUsingGloveboxGameManager = false;
+        });
+    }
+    
 }

@@ -52,11 +52,17 @@ public class PlayerCam : MonoBehaviour
             yRotation += mouseX;
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-            if (!gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
+            if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager)
             {
+                yRotation =  Mathf.Clamp(yRotation, 0f, 180f);
+                transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             }
+            else
+            {
                 transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
                 orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            }
+
        }
         
     }
