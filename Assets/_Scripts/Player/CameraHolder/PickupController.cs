@@ -206,6 +206,15 @@ public class PickupController : MonoBehaviour
                 {
                     doors.InvokeInteraction();
                 }
+                else
+                {
+                    //open or closes Doors
+                    Drawer drawer = hit.transform.GetComponent<Drawer>();
+                    if (drawer)
+                    {
+                        drawer.ToggleDrawer();
+                    }
+                }
             }
 
             if (isUsable)

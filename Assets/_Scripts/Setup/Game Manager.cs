@@ -185,11 +185,11 @@ public class GameManager : MonoBehaviour
 
             isUsingGloveboxGameManager = pickupController.isUsingGlovebox;
 
-        isCarryingPipetteGameManager = playerCam.GetComponent<PickupController>().isCarryingPipette;
-        activateLaserPointerGameManager = playerCam.GetComponent<PickupController>().activatePipetteLaserpointer;
+            isCarryingPipetteGameManager = playerCam.GetComponent<PickupController>().isCarryingPipette;
+            activateLaserPointerGameManager = playerCam.GetComponent<PickupController>().activatePipetteLaserpointer;
 
-        isOpeneingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isOpeningOutterHatch;
-        isClosingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isClosingOutterHatch;
+            isOpeneingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isOpeningOutterHatch;
+            isClosingOutterHatchGameManager = playerCam.GetComponent<PickupController>().isClosingOutterHatch;
         
             isCarryingPipetteGameManager = pickupController.isCarryingPipette;
             isOpeneingOutterHatchGameManager = pickupController.isOpeningOutterHatch;
