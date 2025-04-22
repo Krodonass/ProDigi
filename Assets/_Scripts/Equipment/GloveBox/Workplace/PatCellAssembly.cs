@@ -98,8 +98,8 @@ public class PatCellAssembly : MonoBehaviour
         }
         else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && GameManager.Instance.electrolyAssembledGameManager && !upperCathodeAssembled)
         {
-            //electrolyteAssembly.GetComponent<MeshRenderer>().enabled = false;
-            //electrolyteAssembly.GetComponent<Collider>().enabled = false;
+            electrolyteAssembly.GetComponent<MeshRenderer>().enabled = false;
+            electrolyteAssembly.GetComponent<Collider>().enabled = false;
             //gameManager.GetComponent<GameManager>().patCellElectrolyte.GetComponent<Collider>().enabled = false;
             upperCathodeAssembly.GetComponent<MeshRenderer>().enabled = true;
             upperCathodeAssembly.GetComponent<Collider>().enabled = true;
