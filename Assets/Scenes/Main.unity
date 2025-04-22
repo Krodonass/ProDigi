@@ -510,6 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 310630295}
   isOpenOutterHatch: 0
+  innerTray: {fileID: 0}
 --- !u!1 &84609814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3360841317287146447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
@@ -688,7 +689,6 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   - {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   upperPlungerAssembly: {fileID: 735416004}
   gearAssembly: {fileID: 1015604897}
   brassTopAssembly: {fileID: 1116791958}
-  assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  assemblyPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   baseAssemblyPossible: 0
   baseAssembled: 0
@@ -3891,14 +3891,14 @@ MonoBehaviour:
   upperPlungerAssembly: {fileID: 735416004}
   gearAssembly: {fileID: 1015604897}
   brassTopAssembly: {fileID: 1116791958}
-  assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  assemblyPossible: {fileID: 2100000, guid: ad618e33d422960448a1b2a754869d3b, type: 2}
   assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   baseAssemblyPossible: 0
   baseAssembled: 0
   lowerPlungerAssemblyPossible: 0
   lowerPlungerAssembled: 0
   lowerCathodeAssemblyPossible: 0
-  lowerCathodeAssembled: 0
+  lowerCathodeAssembled: 1
   sleeveAssemblyPossible: 0
   sleeveAssembled: 0
   electrolyteAssemblyPossible: 0
@@ -3999,7 +3999,7 @@ MonoBehaviour:
   upperPlungerAssembly: {fileID: 735416004}
   gearAssembly: {fileID: 1015604897}
   brassTopAssembly: {fileID: 1116791958}
-  assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  assemblyPossible: {fileID: 2100000, guid: ad618e33d422960448a1b2a754869d3b, type: 2}
   assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   baseAssemblyPossible: 0
   baseAssembled: 0
@@ -6588,7 +6588,7 @@ MonoBehaviour:
   upperPlungerAssembly: {fileID: 735416004}
   gearAssembly: {fileID: 1015604897}
   brassTopAssembly: {fileID: 1116791958}
-  assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  assemblyPossible: {fileID: 2100000, guid: ad618e33d422960448a1b2a754869d3b, type: 2}
   assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   baseAssemblyPossible: 0
   baseAssembled: 0
@@ -7413,7 +7413,6 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   - {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -8302,7 +8301,7 @@ MonoBehaviour:
   upperPlungerAssembly: {fileID: 735416004}
   gearAssembly: {fileID: 1015604897}
   brassTopAssembly: {fileID: 1116791958}
-  assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  assemblyPossible: {fileID: 2100000, guid: ad618e33d422960448a1b2a754869d3b, type: 2}
   assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   baseAssemblyPossible: 0
   baseAssembled: 0
@@ -10319,7 +10318,6 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4748022279747395460, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
   - {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -13529,8 +13527,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
-  - {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
-  - {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14543,7 +14539,7 @@ MonoBehaviour:
   upperPlungerAssembly: {fileID: 735416004}
   gearAssembly: {fileID: 1015604897}
   brassTopAssembly: {fileID: 1116791958}
-  assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  assemblyPossible: {fileID: 2100000, guid: ad618e33d422960448a1b2a754869d3b, type: 2}
   assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   baseAssemblyPossible: 0
   baseAssembled: 0
@@ -15112,7 +15108,7 @@ MonoBehaviour:
   upperPlungerAssembly: {fileID: 735416004}
   gearAssembly: {fileID: 1015604897}
   brassTopAssembly: {fileID: 1116791958}
-  assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  assemblyPossible: {fileID: 2100000, guid: ad618e33d422960448a1b2a754869d3b, type: 2}
   assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   baseAssemblyPossible: 0
   baseAssembled: 0
@@ -15935,7 +15931,7 @@ MonoBehaviour:
   upperPlungerAssembly: {fileID: 735416004}
   gearAssembly: {fileID: 1015604897}
   brassTopAssembly: {fileID: 1116791958}
-  assemblyPossible: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
+  assemblyPossible: {fileID: 2100000, guid: ad618e33d422960448a1b2a754869d3b, type: 2}
   assemblyNotPossible: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   baseAssemblyPossible: 0
   baseAssembled: 0

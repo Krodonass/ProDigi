@@ -168,8 +168,7 @@ public class PatCellAssembly : MonoBehaviour
             Destroy(upperPlungerAssembly.GetComponent<MeshFilter>());
             Destroy(gearAssembly.GetComponent<MeshFilter>());
             Destroy(brassTopAssembly.GetComponent<MeshFilter>());
-
-
+            
             allAssembled = true;
 
             gameObject.SetActive(false);

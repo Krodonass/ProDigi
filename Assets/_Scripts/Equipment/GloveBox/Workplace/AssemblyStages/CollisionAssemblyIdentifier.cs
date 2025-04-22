@@ -45,11 +45,6 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
 
     public bool brasstopAssemblyPossible;
     public bool brasstopAssembled;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -126,7 +121,6 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // "Y"- Rotation
             baseAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
-
         }
 
         if (gameObject.name == "lower_plunger" && collision.gameObject.name == "LowerPlungerAssembly")
@@ -176,7 +170,6 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             Debug.Log("hui");
             upperCathodeAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
-
         }
 
         if (gameObject.name == "upper_plunger" && collision.gameObject.name == "UpperPlungerAssembly")
@@ -185,7 +178,6 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // "Y"- Rotation
             upperPlungerAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
-
         }
 
         if (gameObject.name == "gear" && collision.gameObject.name == "GearAssembly")
