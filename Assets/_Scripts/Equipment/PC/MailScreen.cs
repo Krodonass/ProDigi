@@ -14,8 +14,11 @@ public class MailScreen : MonoBehaviour
     public TextMeshProUGUI  EmailSubjectTMP;
 
     public GameObject EmailPrefab;
+    public GameObject SpacingBarPrefab;
 
     public List<EmailData> emailDataList;
+
+    private int SpacingIndex;
 
     public static event Action<EmailData> OnNewEmail;
 
@@ -25,15 +28,20 @@ public class MailScreen : MonoBehaviour
     {
         foreach(EmailData email in emailDataList){
             GameObject NewEmailWidget = Instantiate(EmailPrefab, ScrollViewContent);
-            NewEmailWidget.transform.SetParent(ScrollViewContent);
+            //NewEmailWidget.transform.SetParent(ScrollViewContent);
             EmailWidget emailWidget = NewEmailWidget.GetComponent<EmailWidget>();
             if(emailWidget){
                 emailWidget.OnEmailClick += ShowEmail;
                 emailWidget.LoadEmail(email);
             }
+           GameObject NewSpacingBar = Instantiate(SpacingBarPrefab, ScrollViewContent);
+           //NewSpacingBar.name = "NewSpacingBar" + SpacingIndex;
+           //SpacingIndex++;
         }
 
         OnNewEmail += OnAddEmail;
+
+        
     }
 
     // Update is called once per frame
