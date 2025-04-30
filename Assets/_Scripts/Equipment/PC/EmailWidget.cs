@@ -10,11 +10,13 @@ public class EmailWidget : MonoBehaviour
 {
     EmailData emailData;
     
-    [SerializeField] private float mailSize = 0.02f;
+    [SerializeField] private float sizingValue = 0.1f;
+    [SerializeField] private float sizingSpeed = 300f;
     [SerializeField] private float maxMailSize = 100f;
     private float minMailSize;
 
     private bool MailOpened = false;
+    private bool animStarted = false;
 
     public TextMeshProUGUI SenderField;
     public TextMeshProUGUI SubjectField;
@@ -32,20 +34,6 @@ public class EmailWidget : MonoBehaviour
             button.onClick.AddListener(SendEmail);
         }
     }
-    
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            while (button.GetComponent<RectTransform>().sizeDelta.y <= maxMailSize)
-            {
-               button.GetComponent<RectTransform>().sizeDelta += new Vector2(0, mailSize*10);
-               transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>().localScale += new Vector3(0, mailSize, 0);
-               LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent.GetComponent<RectTransform>()); 
-            }
-            
-        }
-    }
 
     void SendEmail(){
         OnEmailClick(emailData);
@@ -61,37 +49,50 @@ public class EmailWidget : MonoBehaviour
         return emailData;
     }
 
-    public void OpenMail()
+    public void UpdateMailStatus()
     {
-        if (MailOpened)
+        if(animStarted)
             return;
         
-        while (button.GetComponent<RectTransform>().sizeDelta.y<maxMailSize)
-        {
-            button.GetComponent<RectTransform>().sizeDelta += new Vector2(0, mailSize*10);
-            transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>().localScale += new Vector3(0, mailSize, 0);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent.GetComponent<RectTransform>());
-        }
-
-        MailOpened = true;
-        return;
-        
-        
-    }
-    
-    /*public void CloseMail()
-    {
         if (!MailOpened)
-            return;
-        
-        while (button.GetComponent<RectTransform>().sizeDelta.y>minMailSize)
         {
-            button.GetComponent<RectTransform>().sizeDelta -= new Vector2(0, mailSize*10);
-            transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>().localScale -= new Vector3(0, mailSize, 0);
+            StartCoroutine(OpenMail());
+            MailOpened = true;
+        }
+        else
+        {
+            StartCoroutine(CloseMail());
+            MailOpened = false;
+        }
+    }
+
+    IEnumerator OpenMail()
+    {
+        animStarted = true;
+        
+        while (button.GetComponent<RectTransform>().sizeDelta.y < maxMailSize)
+        {
+            button.GetComponent<RectTransform>().sizeDelta += new Vector2(0, sizingValue * 10 * sizingSpeed * Time.deltaTime);
+            transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>().localScale += new Vector3(0, sizingValue * sizingSpeed * Time.deltaTime, 0);
             LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent.GetComponent<RectTransform>());
+            yield return null;
         }
 
-        MailOpened = false;
-        return;
-    }*/
+        animStarted = false;
+    }
+
+    IEnumerator CloseMail()
+    {
+        animStarted = true;
+        
+        while (button.GetComponent<RectTransform>().sizeDelta.y > minMailSize)
+        {
+            button.GetComponent<RectTransform>().sizeDelta -= new Vector2(0, sizingValue * 10 * sizingSpeed * Time.deltaTime);
+            transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>().localScale -= new Vector3(0, sizingValue * sizingSpeed * Time.deltaTime, 0);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent.GetComponent<RectTransform>());
+            yield return null;
+        }     
+        
+        animStarted = false;
+    }
 }
