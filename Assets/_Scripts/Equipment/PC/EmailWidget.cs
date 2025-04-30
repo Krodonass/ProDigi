@@ -10,6 +10,10 @@ public class EmailWidget : MonoBehaviour
 {
     EmailData emailData;
     
+    public TextMeshProUGUI SenderField;
+    public TextMeshProUGUI SubjectField;
+    [SerializeField] private TextMeshProUGUI MailText;    
+    
     [SerializeField] private float sizingValue = 0.1f;
     [SerializeField] private float sizingSpeed = 300f;
     [SerializeField] private float maxMailSize = 100f;
@@ -17,9 +21,6 @@ public class EmailWidget : MonoBehaviour
 
     private bool MailOpened = false;
     private bool animStarted = false;
-
-    public TextMeshProUGUI SenderField;
-    public TextMeshProUGUI SubjectField;
 
     public Button button;
 
@@ -43,6 +44,7 @@ public class EmailWidget : MonoBehaviour
         this.emailData = emailData;
         SenderField.text = emailData.sender;
         SubjectField.text = emailData.subject;
+        MailText.text = emailData.content;
     }
 
     EmailData GetEmailData(){
@@ -57,11 +59,11 @@ public class EmailWidget : MonoBehaviour
         if (!MailOpened)
         {
             StartCoroutine(OpenMail());
-            MailOpened = true;
+            MailOpened = true; 
         }
-        else
-        {
-            StartCoroutine(CloseMail());
+        else 
+        { 
+            StartCoroutine(CloseMail()); 
             MailOpened = false;
         }
     }
