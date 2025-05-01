@@ -10,9 +10,11 @@ public class EmailWidget : MonoBehaviour
 {
     EmailData emailData;
     
-    public TextMeshProUGUI SenderField;
-    public TextMeshProUGUI SubjectField;
-    [SerializeField] private TextMeshProUGUI MailText;    
+    [SerializeField] private TextMeshProUGUI SenderField;
+    [SerializeField] private TextMeshProUGUI SubjectField;
+    [SerializeField] private TextMeshProUGUI MailText; 
+    
+    [SerializeField] private Button button;    
     
     [SerializeField] private float sizingValue = 0.1f;
     [SerializeField] private float sizingSpeed = 300f;
@@ -22,12 +24,18 @@ public class EmailWidget : MonoBehaviour
     private bool MailOpened = false;
     private bool animStarted = false;
 
-    public Button button;
+    private RectTransform buttonRectTransform;
+    private RectTransform nextChildRectTransform;
+    private RectTransform parentRectTransform;
 
     public event Action<EmailData> OnEmailClick;
     
     void Start()
     {
+        buttonRectTransform = button.GetComponent<RectTransform>();
+        nextChildRectTransform = transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>();
+        parentRectTransform = transform.parent.GetComponent<RectTransform>();
+        
         minMailSize = button.GetComponent<RectTransform>().sizeDelta.y;
         
         if(button)
@@ -72,11 +80,11 @@ public class EmailWidget : MonoBehaviour
     {
         animStarted = true;
         
-        while (button.GetComponent<RectTransform>().sizeDelta.y < maxMailSize)
+        while (buttonRectTransform.sizeDelta.y < maxMailSize)
         {
-            button.GetComponent<RectTransform>().sizeDelta += new Vector2(0, sizingValue * 10 * sizingSpeed * Time.deltaTime);
-            transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>().localScale += new Vector3(0, sizingValue * sizingSpeed * Time.deltaTime, 0);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent.GetComponent<RectTransform>());
+            buttonRectTransform.sizeDelta += new Vector2(0, sizingValue * 10 * sizingSpeed * Time.deltaTime);
+            nextChildRectTransform.localScale += new Vector3(0, sizingValue * sizingSpeed * Time.deltaTime, 0);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentRectTransform);
             yield return null;
         }
 
@@ -87,11 +95,11 @@ public class EmailWidget : MonoBehaviour
     {
         animStarted = true;
         
-        while (button.GetComponent<RectTransform>().sizeDelta.y > minMailSize)
+        while (buttonRectTransform.sizeDelta.y > minMailSize)
         {
-            button.GetComponent<RectTransform>().sizeDelta -= new Vector2(0, sizingValue * 10 * sizingSpeed * Time.deltaTime);
-            transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>().localScale -= new Vector3(0, sizingValue * sizingSpeed * Time.deltaTime, 0);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent.GetComponent<RectTransform>());
+            buttonRectTransform.sizeDelta -= new Vector2(0, sizingValue * 10 * sizingSpeed * Time.deltaTime);
+            nextChildRectTransform.localScale -= new Vector3(0, sizingValue * sizingSpeed * Time.deltaTime, 0);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentRectTransform);
             yield return null;
         }     
         
