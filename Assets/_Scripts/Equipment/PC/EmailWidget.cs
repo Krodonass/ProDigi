@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UI;
@@ -14,7 +15,9 @@ public class EmailWidget : MonoBehaviour
     [SerializeField] private TextMeshProUGUI SubjectField;
     [SerializeField] private TextMeshProUGUI MailText; 
     
-    [SerializeField] private Button button;    
+    [SerializeField] private Button button;
+
+    [SerializeField] private Image mailViewSymbol;
     
     [SerializeField] private float sizingValue = 0.1f;
     [SerializeField] private float sizingSpeed = 300f;
@@ -37,6 +40,9 @@ public class EmailWidget : MonoBehaviour
         parentRectTransform = transform.parent.GetComponent<RectTransform>();
         
         minMailSize = button.GetComponent<RectTransform>().sizeDelta.y;
+
+        MailText.gameObject.SetActive(false);
+        transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<Image>().enabled = false;
         
         if(button)
         {
@@ -44,7 +50,8 @@ public class EmailWidget : MonoBehaviour
         }
     }
 
-    void SendEmail(){
+    void SendEmail()
+    {
         OnEmailClick(emailData);
     }
 
@@ -55,28 +62,29 @@ public class EmailWidget : MonoBehaviour
         MailText.text = emailData.content;
     }
 
-    EmailData GetEmailData(){
+    EmailData GetEmailData()
+    {
         return emailData;
     }
 
-    public void UpdateMailStatus()
+    public void UpdateMailView()
     {
         if(animStarted)
             return;
         
         if (!MailOpened)
         {
-            StartCoroutine(OpenMail());
+            StartCoroutine(OpenMailAnim());
             MailOpened = true; 
         }
         else 
         { 
-            StartCoroutine(CloseMail()); 
+            StartCoroutine(CloseMailAnim()); 
             MailOpened = false;
         }
     }
 
-    IEnumerator OpenMail()
+    IEnumerator OpenMailAnim()
     {
         animStarted = true;
         
@@ -87,13 +95,16 @@ public class EmailWidget : MonoBehaviour
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRectTransform);
             yield return null;
         }
-
+        
+        MailText.gameObject.SetActive(true);
+        mailViewSymbol.transform.Rotate(0,0,180);
         animStarted = false;
     }
 
-    IEnumerator CloseMail()
+    IEnumerator CloseMailAnim()
     {
         animStarted = true;
+        MailText.gameObject.SetActive(false);      
         
         while (buttonRectTransform.sizeDelta.y > minMailSize)
         {
@@ -102,7 +113,8 @@ public class EmailWidget : MonoBehaviour
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRectTransform);
             yield return null;
         }     
-        
+
+        mailViewSymbol.transform.Rotate(0,0,-180);
         animStarted = false;
     }
 }

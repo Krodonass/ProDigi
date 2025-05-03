@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class PcCanvas : MonoBehaviour
 {
-
-    private Canvas canvas;
-
     [SerializeField] private GameObject ControlsScreen;
     [SerializeField] private GameObject MailScreen;
     [SerializeField] private GameObject StartScreen;
@@ -16,25 +13,14 @@ public class PcCanvas : MonoBehaviour
     [SerializeField] private AudioSource MouseClick;
 
     public static event Action PCQuitEvent;
-
-
     
-    // Start is called before the first frame update
     void Start()
     {
-        canvas = gameObject.GetComponent<Canvas>();
-        if (canvas)
-        {
-            //canvas.worldCamera = Camera.current;
-        }
-
         ControlsScreen.SetActive(false);
         MailScreen.SetActive(false);
         StartScreen.SetActive(true);
     }
-
-
-    // Update is called once per frame
+    
     public void PcQuit()
     {
         PCQuitEvent();
@@ -61,7 +47,7 @@ public class PcCanvas : MonoBehaviour
         StartScreen.SetActive(true);
     }
     
-    //opens contol screen and closes every other screen
+    //opens control screen and closes every other screen
     public void OpenControlsScreen()
     {
         MailScreen.SetActive(false);
