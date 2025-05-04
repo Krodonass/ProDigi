@@ -21,11 +21,6 @@ public class PcCanvas : MonoBehaviour
         StartScreen.SetActive(true);
     }
     
-    public void PcQuit()
-    {
-        PCQuitEvent();
-    }
-
     public static void TriggerPCQuit()
     {
         PCQuitEvent.Invoke();

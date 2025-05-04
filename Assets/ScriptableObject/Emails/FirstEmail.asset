@@ -16,3 +16,4 @@ MonoBehaviour:
   sender: Adrian@TU-Braunschweig.de
   content: "Hallo,\nmach Batterie f\xFCr uns sonst gibs auf die Fresse!\n\nFreundliche
     Gr\xFC\xDFe\nAdrian"
+  maxMailSize: 100

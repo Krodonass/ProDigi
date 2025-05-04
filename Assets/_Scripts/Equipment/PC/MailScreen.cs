@@ -13,43 +13,38 @@ public class MailScreen : MonoBehaviour
     [SerializeField] private GameObject EmailPrefab;
     [SerializeField] private GameObject SpacingBarPrefab;
 
-    [SerializeField] private List<EmailData> emailDataList;
-
-    public static event Action<EmailData> OnNewEmail;
-
-
-    // Start is called before the first frame update
+    [Tooltip("A List of EmailData from Emails you get by starting the game.")]
+    [SerializeField] private List<EmailData> firstEmails;
+    
+    [Tooltip("A List of EmailData from Emails you get during the game.")]
+    [SerializeField] private List<EmailData> secondaryEmails;
+    
     void Start()
     {
-        foreach(EmailData email in emailDataList)
+        foreach(EmailData email in firstEmails)
         {
             GameObject NewEmailWidget = Instantiate(EmailPrefab, ScrollViewContent);
             EmailWidget emailWidget = NewEmailWidget.GetComponent<EmailWidget>();
-            if(emailWidget)
-            { 
-                emailWidget.OnEmailClick += ShowEmail;
+            if(emailWidget) 
                 emailWidget.LoadEmail(email);
-            } 
             
-            GameObject NewSpacingBar = Instantiate(SpacingBarPrefab, ScrollViewContent);
+            Instantiate(SpacingBarPrefab, ScrollViewContent);
         }
-
-        OnNewEmail += OnAddEmail;
     }
 
-    public void ShowEmail(EmailData email)
+    private void Update()
     {
+        if(Input.GetKeyUp(KeyCode.H))
+            NextEmail(0);
     }
-    
-    //Call this to add a new EMail to the PCs
-    public static void AddEmail(EmailData email)
+
+    public void NextEmail(int index)
     {
-        OnNewEmail.Invoke(email);
-    }
-    
-    //Will be called when the Event OnNewEmail is called
-    private void OnAddEmail(EmailData email)
-    {
-        emailDataList.Add(email);
+        GameObject NewEmailWidget = Instantiate(EmailPrefab, ScrollViewContent);
+        EmailWidget emailWidget = NewEmailWidget.GetComponent<EmailWidget>();
+        emailWidget.LoadEmail(secondaryEmails[index]);
+        //emailWidget.LoadEmail(secondaryEmails.Find(item => item.name == "Email_02"));
+        
+        Instantiate(SpacingBarPrefab, ScrollViewContent);
     }
 }
