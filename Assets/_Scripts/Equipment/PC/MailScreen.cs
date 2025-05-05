@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MailScreen : MonoBehaviour
 {
-    [SerializeField] private Transform ScrollViewContent;
+    [SerializeField] private Transform scrollViewContent;
 
-    [SerializeField] private GameObject EmailPrefab;
-    [SerializeField] private GameObject SpacingBarPrefab;
+    [SerializeField] private GameObject emailPrefab;
+    [SerializeField] private GameObject spacingBarPrefab;
 
     [Tooltip("A List of EmailData from Emails you get by starting the game.")]
     [SerializeField] private List<EmailData> firstEmails;
@@ -19,16 +20,19 @@ public class MailScreen : MonoBehaviour
     [Tooltip("A List of EmailData from Emails you get during the game.")]
     [SerializeField] private List<EmailData> secondaryEmails;
     
-    void Start()
+    private void Start()
     {
+        // Creates the first emails by starting the email program on the pc. 
         foreach(EmailData email in firstEmails)
         {
-            GameObject NewEmailWidget = Instantiate(EmailPrefab, ScrollViewContent);
-            EmailWidget emailWidget = NewEmailWidget.GetComponent<EmailWidget>();
+            GameObject newEmailWidget = Instantiate(emailPrefab, scrollViewContent);
+            newEmailWidget.transform.SetSiblingIndex(0);
+            EmailWidget emailWidget = newEmailWidget.GetComponent<EmailWidget>();
             if(emailWidget) 
                 emailWidget.LoadEmail(email);
             
-            Instantiate(SpacingBarPrefab, ScrollViewContent);
+            GameObject newSpacingBar = Instantiate(spacingBarPrefab, scrollViewContent);
+            newSpacingBar.transform.SetSiblingIndex(1);
         }
     }
 
@@ -40,11 +44,13 @@ public class MailScreen : MonoBehaviour
 
     public void NextEmail(int index)
     {
-        GameObject NewEmailWidget = Instantiate(EmailPrefab, ScrollViewContent);
-        EmailWidget emailWidget = NewEmailWidget.GetComponent<EmailWidget>();
+        GameObject newEmailWidget = Instantiate(emailPrefab, scrollViewContent);
+        newEmailWidget.transform.SetSiblingIndex(0);
+        EmailWidget emailWidget = newEmailWidget.GetComponent<EmailWidget>();
         emailWidget.LoadEmail(secondaryEmails[index]);
         //emailWidget.LoadEmail(secondaryEmails.Find(item => item.name == "Email_02"));
         
-        Instantiate(SpacingBarPrefab, ScrollViewContent);
+        GameObject newSpacingBar = Instantiate(spacingBarPrefab, scrollViewContent);
+        newSpacingBar.transform.SetSiblingIndex(1);
     }
 }
