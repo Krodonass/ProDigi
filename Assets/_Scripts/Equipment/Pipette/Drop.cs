@@ -14,11 +14,11 @@ public class Drop : MonoBehaviour
         {
             if (GameManager.Instance.patCellElectrolyteAssemblyPossibleGameManager)
             {
+                print("[Drop] ElectrolyteAssembly");
                 electolytAssembled = true;
                 GameManager.Instance.electrolyAssembledGameManager = true;
                 GameManager.Instance.patCellUpperCathodeAssemblyPossibleGameManager = true;
             }
-
         }
     }
     private void OnCollisionEnter(Collision collision)

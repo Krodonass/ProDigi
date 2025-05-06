@@ -142,6 +142,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject drop;
     public bool electrolyAssembledGameManager;
+    
+    public OvenPreset CurrentOvenPreset;
 
     private void Awake()
     {
@@ -229,7 +231,7 @@ public class GameManager : MonoBehaviour
 
         // OvenDoor
         // OvenDoor.cs
-        isOpenOvenDoorGameManager = ovenDoor.GetComponent<OvenDoor>().isOpenOvenDoor;
+        //isOpenOvenDoorGameManager = ovenDoor.GetComponent<OvenDoor>().isOpenOvenDoor;
 
         // Base
         // CollisionAssemblyIdentifier.cs
