@@ -9,4 +9,6 @@ public class EmailData : ScriptableObject
     
     [TextArea(3, 10)]
     public string content;   // Inhalt der E-Mail
+
+    [SerializeField] public float maxMailSize; // Maximum size of the mail content textbox
 }

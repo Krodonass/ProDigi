@@ -19,13 +19,7 @@ public class QuestLog : MonoBehaviour
     public string findBrassTop = "";
 
     public bool placedComponentsInHatch;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         mText.text = main + "\n" + findBase + "\n" + findLowerPlunger + "\n" + findLowerCathode + "\n" + findSleeve + "\n" + findUpperCathode + "\n" + findUpperPlunger + "\n" + findGear + "\n" + findBrassTop;

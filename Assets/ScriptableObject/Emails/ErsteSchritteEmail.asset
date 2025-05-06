@@ -15,3 +15,4 @@ MonoBehaviour:
   subject: Erste Schitte
   sender: Adrian@TU-Braunschweig.de
   content: "Hallo,\nSuche die Teile, aber flott!\n\nFreundliche Gr\xFC\xDFe\nAdrian"
+  maxMailSize: 100
