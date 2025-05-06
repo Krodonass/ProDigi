@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEmail", menuName = "Email/EmailData", order = 0)]
+[CreateAssetMenu(fileName = "NewEmail", menuName = "ScriptableObjects/EmailData", order = 0)]
 public class EmailData : ScriptableObject
 {
     [Header("Email-Daten")]
