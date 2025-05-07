@@ -77,7 +77,8 @@ public class PickupController : MonoBehaviour
     public static event Action<Transform> PCStartEvent;
     public static event Action<Transform> GloveBoxUseEvent;
     public static event Action GloveBoxExitEvent;
- 
+
+    public LayerMask RayCastLayerMask;
 
     private void Update()
 {
@@ -126,7 +127,7 @@ public class PickupController : MonoBehaviour
     }
 
     // Einen Raycast durchführen und Ergebnis zwischenspeichern
-    bool hasHit = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, pickupRange);
+    bool hasHit = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, pickupRange, RayCastLayerMask);
 
     // Überprüfe, ob das getroffene Objekt pickupable oder usable ist
     if (hasHit)

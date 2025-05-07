@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PatCellAssembly : MonoBehaviour
@@ -66,6 +67,7 @@ public class PatCellAssembly : MonoBehaviour
         {
             //baseAssembly.GetComponent<Collider>().enabled = false;
             baseAssembly.GetComponent<MeshRenderer>().enabled = false;
+            baseAssembly.layer = LayerMask.GetMask("Ignore Raycast");
             gameManager.GetComponent<GameManager>().patCellBase.GetComponent<Collider>().enabled = false;
 
             lowerPlungerAssembly.GetComponent<MeshRenderer>().enabled = true;
@@ -73,6 +75,7 @@ public class PatCellAssembly : MonoBehaviour
         } else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager &&  lowerPlungerAssembled && !lowerCathodeAssembled)
         {
             lowerPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
+            lowerPlungerAssembly.layer = LayerMask.GetMask("Ignore Raycast");
             //lowerPlungerAssembly.GetComponent<Collider>().enabled = false;
             gameManager.GetComponent<GameManager>().patCellLowerPlunger.GetComponent<Collider>().enabled = false;
 
@@ -82,6 +85,7 @@ public class PatCellAssembly : MonoBehaviour
         {
             lowerCathodeAssembly.GetComponent<MeshRenderer>().enabled = false;
             lowerCathodeAssembly.GetComponent<Collider>().enabled = false;
+            lowerCathodeAssembly.layer = LayerMask.GetMask("Ignore Raycast");
             gameManager.GetComponent<GameManager>().patCellLowerCathode.GetComponent<Collider>().enabled = false;
 
             sleeveAssembly.GetComponent<MeshRenderer>().enabled = true;
@@ -89,6 +93,7 @@ public class PatCellAssembly : MonoBehaviour
         } else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && sleeveAssembled && !GameManager.Instance.electrolyAssembledGameManager)
         {
             sleeveAssembly.GetComponent<MeshRenderer>().enabled = false;
+            sleeveAssembly.layer = LayerMask.GetMask("Ignore Raycast");
             sleeveAssembly.GetComponent<Collider>().enabled = false;
             gameManager.GetComponent<GameManager>().patCellSleeve.GetComponent<Collider>().enabled = false;
 
@@ -100,6 +105,7 @@ public class PatCellAssembly : MonoBehaviour
         {
             electrolyteAssembly.GetComponent<MeshRenderer>().enabled = false;
             electrolyteAssembly.GetComponent<Collider>().enabled = false;
+            electrolyteAssembly.layer = LayerMask.GetMask("Ignore Raycast");
             //gameManager.GetComponent<GameManager>().patCellElectrolyte.GetComponent<Collider>().enabled = false;
             upperCathodeAssembly.GetComponent<MeshRenderer>().enabled = true;
             upperCathodeAssembly.GetComponent<Collider>().enabled = true;

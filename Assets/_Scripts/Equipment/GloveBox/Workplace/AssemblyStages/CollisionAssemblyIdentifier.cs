@@ -54,6 +54,7 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
         {
             gameObject.transform.position = baseAssembly.transform.position;
             gameObject.transform.rotation = baseAssembly.transform.rotation;
+            gameObject.layer = LayerMask.GetMask("Ignore Raycast");
             gameObject.transform.tag = "Untagged";
         }
         if (gameObject.name == "lower_plunger" && gameManager.GetComponent<GameManager>().assembleLowerPlungerGameManager)
