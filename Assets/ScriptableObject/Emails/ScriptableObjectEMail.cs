@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewEmail", menuName = "Email/EmailData", order = 0)]
+[CreateAssetMenu(fileName = "NewEmail", menuName = "ScriptableObjects/EmailData", order = 0)]
 public class EmailData : ScriptableObject
 {
     [Header("Email-Daten")]
@@ -9,4 +9,6 @@ public class EmailData : ScriptableObject
     
     [TextArea(3, 10)]
     public string content;   // Inhalt der E-Mail
+
+    [SerializeField] public float maxMailSize; // Maximum size of the mail content textbox
 }

@@ -9,7 +9,12 @@ public class InnerHatch : MonoBehaviour
     public bool isOpenInnerHatch = false;
 
     public Doors innerTray;
- 
+
+    void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
+    
     // Update is called once per frame
     void Update()
     {

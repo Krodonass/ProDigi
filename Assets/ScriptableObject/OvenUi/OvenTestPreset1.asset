@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2bed5e614b0dd34485c43fa9f9413fc, type: 3}
-  m_Name: FirstEmail
+  m_Script: {fileID: 11500000, guid: e93f97a5f1907d046b14aeea165e78b8, type: 3}
+  m_Name: OvenTestPreset1
   m_EditorClassIdentifier: 
-  subject: Willkommen Studi
-  sender: Adrian@TU-Braunschweig.de
-  content: "Hallo,\nmach Batterie f\xFCr uns sonst gibs auf die Fresse!\n\nFreundliche
-    Gr\xFC\xDFe\nAdrian"
+  temperature: 0
+  cycles: 47
+  voltage: 0
+  cRate: 0
+  EntladeCRate: 0
+  SoHAbbuch: 0

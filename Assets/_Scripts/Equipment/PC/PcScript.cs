@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class PcScript : MonoBehaviour
 {
-
     public Transform PlayerPCPostion;
 
     private MeshCollider meshCollider;
     
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         PickupController.PCStartEvent += OnEnter;
@@ -20,15 +18,19 @@ public class PcScript : MonoBehaviour
         meshCollider = GetComponent<MeshCollider>();
     }
     
-    public void OnExit(){
-        if(meshCollider){
+    public void OnExit()
+    {
+        if(meshCollider)
+        {
             meshCollider.enabled = true;
         }
     }
 
 //Disables Mesh collider so the collider dont block the ui
-    public void OnEnter(Transform transform){
-        if(meshCollider){
+    public void OnEnter(Transform transform)
+    {
+        if(meshCollider)
+        {
             meshCollider.enabled = false;
         }
     }

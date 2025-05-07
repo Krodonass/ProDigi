@@ -9,6 +9,7 @@ TagManager:
   - NoHitCollider
   - ground
   - Door
+  - InteractiveUI
   layers:
   - Default
   - TransparentFX

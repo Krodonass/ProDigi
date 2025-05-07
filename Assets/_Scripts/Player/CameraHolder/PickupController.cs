@@ -190,7 +190,7 @@ public class PickupController : MonoBehaviour
                 GloveBoxUseEvent(glassComponent.PlayerPoint);
                 isUsingGlovebox = true;
             }
-            else if (hit.collider.name == "terminal_screen")
+            else if (hit.collider.gameObject.CompareTag("InteractiveUI"))
             {
                 PcScript pcScript = hit.collider.GetComponent<PcScript>();
                 if(pcScript)

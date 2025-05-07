@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2bed5e614b0dd34485c43fa9f9413fc, type: 3}
-  m_Name: ErsteSchritteEmail
+  m_Script: {fileID: 11500000, guid: e93f97a5f1907d046b14aeea165e78b8, type: 3}
+  m_Name: OvenTestPreset1 1
   m_EditorClassIdentifier: 
-  subject: Erste Schitte
-  sender: Adrian@TU-Braunschweig.de
-  content: "Hallo,\nSuche die Teile, aber flott!\n\nFreundliche Gr\xFC\xDFe\nAdrian"
+  temperature: 1
+  cycles: 2
+  voltage: 3
+  cRate: 4
+  EntladeCRate: 5
+  SoHAbbuch: 1

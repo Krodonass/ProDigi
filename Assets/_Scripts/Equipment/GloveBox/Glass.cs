@@ -11,6 +11,7 @@ public class Glass : MonoBehaviour
     void Start()
     {
         MeshRenderer m = gameObject.GetComponent<MeshRenderer>();
+        gameManger = GameManager.Instance.gameObject;
     }
 
     // Update is called once per frame
