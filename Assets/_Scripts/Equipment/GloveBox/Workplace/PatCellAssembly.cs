@@ -49,6 +49,8 @@ public class PatCellAssembly : MonoBehaviour
         electrolyteAssembly.GetComponent<Collider>().enabled = false;
         lowerCathodeAssembly.GetComponent<Collider>().enabled = false;
         lowerPlungerAssembly.GetComponent<Collider>().enabled = false;
+        
+        gameManager = GameManager.Instance.gameObject;
     }
 
     // Update is called once per frame
