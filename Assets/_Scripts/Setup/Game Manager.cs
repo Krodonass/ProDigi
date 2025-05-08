@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
     public GameObject drop;
     public bool electrolyAssembledGameManager;
     
-    public OvenPreset CurrentOvenPreset;
+    
 
     private void Awake()
     {
