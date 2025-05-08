@@ -131,7 +131,6 @@ public class OvenUI : MonoBehaviour
         if (currenPresetList == ovenFormatList)
         {
             _formattedPreset = currenPresetList[currentFormatIndex];
-            Res
         }
         else
         {
