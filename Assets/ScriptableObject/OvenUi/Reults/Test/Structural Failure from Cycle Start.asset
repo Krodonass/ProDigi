@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
+  m_Name: Structural Failure from Cycle Start
+  m_EditorClassIdentifier: 
+  header: Short Formation
+  description: "Test aborted at cycle 140\nSEI degradation is more likely when the
+    voltage range is incorrectly set.\n\u2192 Discharge cutoff voltage too low \u2014
+    should be > 2.8 V."
+  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}

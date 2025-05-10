@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
+  m_Name: Unformed Cell
+  m_EditorClassIdentifier: 
+  header: Unformed Cell
+  description: "Test aborted \u2013 Cell failure during first charge\nThe cell was
+    charged without prior formation.\nThis immediately led to lithium plating and
+    internal reactions.\nVoltage drop, temperature rise, and capacity loss occurred
+    simultaneously.\nThe test was stopped for safety reasons."
+  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}

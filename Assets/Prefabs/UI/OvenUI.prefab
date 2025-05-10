@@ -582,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2828405584173782867
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1152,6 +1152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3194176485074232345}
+  - component: {fileID: 1772402628502275445}
   m_Layer: 0
   m_Name: ResultView
   m_TagString: Untagged
@@ -1176,6 +1177,18 @@ Transform:
   - {fileID: 4985083423042937389}
   m_Father: {fileID: 8306369190445684228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1772402628502275445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659247414403958488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f634d523d44f94a8ad9f79511740e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2744795100469583816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,7 +1729,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7680351720584723724}
         m_TargetAssemblyTypeName: OvenUI, Assembly-CSharp
-        m_MethodName: SetTest
+        m_MethodName: SetTestMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2936,7 +2949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5623575445161612865
 Transform:
   m_ObjectHideFlags: 0

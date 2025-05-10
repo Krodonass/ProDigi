@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
+  m_Name: FormResult 2
+  m_EditorClassIdentifier: 
+  header: Accelerated Formation
+  description: 'Formation not optimal!
+
+    A single cycle at 0.2C is too fast for
+    stable SEI formation.
+
+    Too rapid formation and high currents can still lead
+    to lithium plating.'
+  color: {r: 0.97699815, g: 1, b: 0.27044016, a: 0}

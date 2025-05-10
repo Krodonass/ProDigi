@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
+  m_Name: Thermal Weakness Revealed
+  m_EditorClassIdentifier: 
+  header: Thermal Weakness Revealed
+  description: "Test aborted at cycle 160\nDue to the combination of short formation
+    and elevated temperature, the cell was under significant thermal stress.\nThe
+    SEI structure was not robust enough \u2192 accelerated aging \u2192 SoH below
+    80% \u2192 lithium plating and capacity loss."
+  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}

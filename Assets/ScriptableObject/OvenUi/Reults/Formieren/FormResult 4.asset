@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
+  m_Name: FormResult 4
+  m_EditorClassIdentifier: 
+  header: Temperature Too Low
+  description: "Formation failed!\nAt 5\u202F\xB0C, ion flow is significantly slowed.
+    The SEI layer cannot form evenly, which leads to instability.\nA temperature
+    of at least 20\u202F\xB0C is recommended for formation."
+  color: {r: 0.764151, g: 0.18503019, b: 0.22473396, a: 0}

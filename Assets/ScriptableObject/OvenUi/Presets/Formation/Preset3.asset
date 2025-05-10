@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e93f97a5f1907d046b14aeea165e78b8, type: 3}
-  m_Name: OvenTestPreset1
+  m_Name: Preset3
   m_EditorClassIdentifier: 
-  presetName: Preset 177
-  temperature: 1
-  cycles: 2
-  voltageStart: 3
-  voltageEnd: 4
-  chargeCRate: 5
-  DischargeCRate: 6
+  presetName: Preset 3
+  cycles: 1
+  chargeCRate: 1
+  DischargeCRate: 1
+  voltageStart: 30
+  voltageEnd: 4.3
+  temperature: 35
   SoHStop: 2
-  ResultHeadline: 
-  ResultDescription: 
+  OvenResultList:
+  - {fileID: 0}

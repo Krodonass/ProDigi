@@ -16,22 +16,20 @@ public class OvenPreset : ScriptableObject
 {
     public string presetName;
     
-    [Header("Battery Parameters")]
-    public float temperature; // in Celsius
-
     public int cycles; // number of charge/discharge cycles
-
-    public float voltageStart; // in Volts
-    public float voltageEnd;
 
     [Tooltip("Charge/Discharge rate relative to capacity")]
     public float chargeCRate; // (Lade-)C-Rate
     
     public float DischargeCRate;
     
+    public float voltageStart; // in Volts
+    public float voltageEnd;
+    
+    [Header("Battery Parameters")]
+    public float temperature; // in Celsius
+    
     public SoHStates SoHStop;
-
-    public string ResultHeadline;
-
-    public string ResultDescription;
+    
+    public List<OvenResult> OvenResultList;
 }
