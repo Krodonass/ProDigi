@@ -11,8 +11,8 @@ public enum SoHStates
 };
 
 
-[CreateAssetMenu(fileName = "OvenPreset", menuName = "ScriptableObjects/OvenPreset")]
-public class OvenPreset : ScriptableObject
+[CreateAssetMenu(fileName = "OvenFormPreset", menuName = "ScriptableObjects/OvenFormPreset")]
+public class OvenFormPreset : ScriptableObject
 {
     public string presetName;
     
@@ -32,4 +32,5 @@ public class OvenPreset : ScriptableObject
     public SoHStates SoHStop;
     
     public List<OvenResult> OvenResultList;
+
 }

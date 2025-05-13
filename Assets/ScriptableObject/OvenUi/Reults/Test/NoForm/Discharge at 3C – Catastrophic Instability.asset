@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: "Discharge at 3C \u2013 Catastrophic Instability"
   m_EditorClassIdentifier: 
+  presetName: Preset 4
+  cycles: 10
+  chargeCRate: 0.5
+  DischargeCRate: 3
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 25
+  SoHStop: 1
   header: "Discharge at 3C \u2013 Catastrophic Instability"
   description: "Test aborted \u2013 Cell damage due to high current\nThe missing
     formation led to immediate failure during the first high-current discharge.\nVoltage
@@ -19,3 +27,4 @@ MonoBehaviour:
     growth occurred \u2192 risk of internal short circuit and thermal runaway.\nThe
     test was stopped for safety reasons."
   color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
+  OvenResultList: []

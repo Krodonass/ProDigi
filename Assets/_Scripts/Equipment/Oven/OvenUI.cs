@@ -10,13 +10,13 @@ public enum OvenModi
 
 public class OvenUI : MonoBehaviour
 {
-    public List<OvenPreset> ovenFormatList = new List<OvenPreset>();
+    public List<OvenResult> ovenFormatList = new List<OvenResult>();
     
-    public List<OvenPreset> ovenTestList = new List<OvenPreset>();
+    public List<OvenResult> ovenTestList = new List<OvenResult>();
 
     public OvenUIFormatter ovenUIFormatter;
     
-    private List<OvenPreset> currenPresetList;
+    private List<OvenResult> currenPresetList;
     
     private int currentFormatIndex = 0;
     
@@ -28,7 +28,7 @@ public class OvenUI : MonoBehaviour
 
     public GameObject FormatResult;
 
-    private OvenPreset _formattedPreset;
+    private OvenResult _formattedPreset;
     
 
     public void OpenStart()
@@ -45,7 +45,7 @@ public class OvenUI : MonoBehaviour
         FormatResult.SetActive(false);
     }
 
-    public void OpenResultView(OvenPreset ovenPreset)
+    public void OpenResultView(OvenResult ovenPreset)
     {
         FormatView.SetActive(false);
         StartView.SetActive(false);
@@ -71,7 +71,7 @@ public class OvenUI : MonoBehaviour
         SetFormatMode();
     }
 
-    public void LoadOvenPresets(OvenPreset ovenPreset)
+    public void LoadOvenPresets(OvenResult ovenPreset)
     {
         ovenUIFormatter.SetValues(ovenPreset);
     }

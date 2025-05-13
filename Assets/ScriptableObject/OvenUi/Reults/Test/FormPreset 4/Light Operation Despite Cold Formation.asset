@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Light Operation Despite Cold Formation
   m_EditorClassIdentifier: 
+  presetName: Preset 4
+  cycles: 20
+  chargeCRate: 0.2
+  DischargeCRate: 0.2
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 25
+  SoHStop: 0
   header: Light Operation Despite Cold Formation
   description: 'Test completed successfully
 
@@ -21,3 +29,4 @@ MonoBehaviour:
     No critical drops or
     failures occurred. Acceptable for applications with low current demand.'
   color: {r: 0.9764706, g: 1, b: 0.27058825, a: 0}
+  OvenResultList: []

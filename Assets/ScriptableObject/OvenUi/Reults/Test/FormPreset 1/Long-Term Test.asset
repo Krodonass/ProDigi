@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Long-Term Test
   m_EditorClassIdentifier: 
+  presetName: Preset 1
+  cycles: 800
+  chargeCRate: 0.5
+  DischargeCRate: 0.5
+  voltageStart: 2.9
+  voltageEnd: 4.2
+  temperature: 20
+  SoHStop: 0
   header: Long-Term Test
   description: "Test completed successfully!\nThe cell was cycled 800 times to simulate
     a realistic vehicle usage profile.\nThe SoH remained above 80% \u2014 the cell
     demonstrates good long-term stability."
   color: {r: 0, g: 0.7921569, b: 0.23529412, a: 0}
+  OvenResultList: []

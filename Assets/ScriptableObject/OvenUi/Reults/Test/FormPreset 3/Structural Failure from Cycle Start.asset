@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Structural Failure from Cycle Start
   m_EditorClassIdentifier: 
-  header: Short Formation
+  presetName: Preset 1
+  cycles: 800
+  chargeCRate: 0.5
+  DischargeCRate: 0.5
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 25
+  SoHStop: 0
+  header: Structural Failure from Cycle Start
   description: "Test aborted at cycle 140\nSEI degradation is more likely when the
     voltage range is incorrectly set.\n\u2192 Discharge cutoff voltage too low \u2014
     should be > 2.8 V."
   color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
+  OvenResultList: []

@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Hidden Weaknesses
   m_EditorClassIdentifier: 
+  presetName: Preset 1
+  cycles: 800
+  chargeCRate: 0.5
+  DischargeCRate: 0.5
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 25
+  SoHStop: 0
   header: Hidden Weaknesses
   description: "Test aborted at cycle 720\nThe cell started out stable, but the SEI
     layer \u2014 incompletely formed due to low temperature \u2014 led to gradual
     degradation.\nThe SoH dropped just below 80%. The cell is only conditionally
     suitable for long-term applications."
   color: {r: 0.9764706, g: 1, b: 0.27058825, a: 0}
+  OvenResultList: []

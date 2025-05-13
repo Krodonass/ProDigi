@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Unstable Cell
   m_EditorClassIdentifier: 
+  presetName: Preset 3
+  cycles: 30
+  chargeCRate: 0.5
+  DischargeCRate: 3
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 25
+  SoHStop: 1
   header: Unstable Cell
   description: "Test completed \u2013 but voltage behavior unstable!\nThe cell was
     able to discharge at 3.0C, but showed unexpected voltage drops and fluctuating
     curves.\nPossible cause: uneven SEI formation due to cold formation.\nNo clear
     damage, but noticeably irregular behavior."
   color: {r: 0.9764706, g: 1, b: 0.27058825, a: 0}
+  OvenResultList: []

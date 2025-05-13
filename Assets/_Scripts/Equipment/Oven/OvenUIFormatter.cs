@@ -17,7 +17,7 @@ public class OvenUIFormatter : MonoBehaviour
     public TextMeshProUGUI ConcilusionDescription;
 
 
-    public void SetValues(OvenPreset preset)
+    public void SetValues(OvenResult preset)
     {
         Cycles.text = preset.cycles.ToString();
         ChargeCRate.text = preset.chargeCRate.ToString() + "C";

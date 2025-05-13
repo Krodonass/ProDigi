@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Worst Case Test Condition
   m_EditorClassIdentifier: 
+  presetName: Preset 2
+  cycles: 100
+  chargeCRate: 0.5
+  DischargeCRate: 0.5
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 45
+  SoHStop: 0
   header: Worst Case Test Condition
   description: 'Test aborted at cycle 70
 
@@ -21,3 +29,4 @@ MonoBehaviour:
 
     The test had to be terminated for safety reasons.'
   color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
+  OvenResultList: []

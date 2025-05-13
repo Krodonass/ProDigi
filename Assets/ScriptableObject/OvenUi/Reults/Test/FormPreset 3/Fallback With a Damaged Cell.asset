@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Fallback With a Damaged Cell
   m_EditorClassIdentifier: 
+  presetName: Preset 4
+  cycles: 10
+  chargeCRate: 0.1
+  DischargeCRate: 0.2
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 50
+  SoHStop: 0
   header: Fallback With a Damaged Cell
   description: "Test completed \u2013 but unstable behavior\nEven under minimal load,
     the voltage profile was unstable and the capacity visibly reduced.\nThe test
     could be completed, but it clearly shows: the cell is no longer suitable for
     further use.\nThe high temperature damaged the cathode."
   color: {r: 0.9764706, g: 1, b: 0.27058825, a: 0}
+  OvenResultList: []

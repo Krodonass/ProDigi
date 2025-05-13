@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Short Formation
   m_EditorClassIdentifier: 
+  presetName: Preset 1
+  cycles: 800
+  chargeCRate: 0.5
+  DischargeCRate: 0.5
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 25
+  SoHStop: 0
   header: Short Formation
   description: 'Test aborted at cycle 690
 
     Lithium plating became a problem in
     this case. An irreversible capacity loss occurred.'
   color: {r: 0.9764706, g: 1, b: 0.27058825, a: 0}
+  OvenResultList: []

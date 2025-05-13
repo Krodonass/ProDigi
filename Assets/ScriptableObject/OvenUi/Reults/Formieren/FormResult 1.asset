@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: FormResult 1
   m_EditorClassIdentifier: 
+  presetName: Preset 3
+  cycles: 1
+  chargeCRate: 0.05
+  DischargeCRate: 0.05
+  voltageStart: 2.9
+  voltageEnd: 4.2
+  temperature: 40
+  SoHStop: 2
   header: Ideal Formation
   description: 'Formation successful!
 
@@ -23,3 +31,8 @@ MonoBehaviour:
 
     You can now proceed to the actual test.'
   color: {r: 0, g: 0.7924528, b: 0.23499794, a: 0}
+  OvenResultList:
+  - {fileID: 11400000, guid: 91665010a6224414f88a17c1579762f7, type: 2}
+  - {fileID: 11400000, guid: b20f76411b9e13744a8183a83e501bb5, type: 2}
+  - {fileID: 11400000, guid: 0255599569391f742921ca1c67be4e21, type: 2}
+  - {fileID: 11400000, guid: 48346d9a73a3a3a44bbfd036e215f6b8, type: 2}

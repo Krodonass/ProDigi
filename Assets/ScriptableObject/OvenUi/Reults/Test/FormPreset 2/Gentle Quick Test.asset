@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Gentle Quick Test
   m_EditorClassIdentifier: 
+  presetName: Preset 4
+  cycles: 25
+  chargeCRate: 0.2
+  DischargeCRate: 0.2
+  voltageStart: 2.5
+  voltageEnd: 0.2
+  temperature: 25
+  SoHStop: 0
   header: Gentle Quick Test
   description: "Test completed successfully\nDespite only one formation cycle, the
     cell test was completed without issues under low load.\nSoH remained stable \u2014
     the cell is suitable for light load profiles."
   color: {r: 0, g: 0.7921569, b: 0.23529412, a: 0}
+  OvenResultList: []

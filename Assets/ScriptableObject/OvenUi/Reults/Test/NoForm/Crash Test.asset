@@ -12,9 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: Crash Test
   m_EditorClassIdentifier: 
+  presetName: Preset 2
+  cycles: 10
+  chargeCRate: 1
+  DischargeCRate: 1
+  voltageStart: 2.5
+  voltageEnd: 4.2
+  temperature: 25
+  SoHStop: 0
   header: Crash Test
   description: "Test failed \u2013 Cell unstable under load\nWithout formation, no
     SEI is present, and the reaction with the electrolyte was uncontrolled.\nAlready
     during the first cycle, voltage fluctuations, heat generation, and capacity loss
     occurred.\nTest aborted after cycle 3."
   color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
+  OvenResultList: []
