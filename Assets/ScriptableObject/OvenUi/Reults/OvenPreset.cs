@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SoHStates
+{
+    YES,
+    NO,
+    NA,
+};
 
-[CreateAssetMenu(fileName = "OvenResult", menuName = "ScriptableObjects/OvenResult")]
-public class OvenResult : ScriptableObject
+[CreateAssetMenu(fileName = "OvenPreset", menuName = "ScriptableObjects/OvenPreset")]
+public class OvenPreset : ScriptableObject
 {
     
     public string presetName;
@@ -31,5 +37,5 @@ public class OvenResult : ScriptableObject
     
     public Color color;
     
-    public List<OvenResult> OvenResultList;
+    public List<OvenPreset> OvenTestList;
 }

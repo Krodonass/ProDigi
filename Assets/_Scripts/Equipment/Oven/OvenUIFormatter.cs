@@ -17,8 +17,9 @@ public class OvenUIFormatter : MonoBehaviour
     public TextMeshProUGUI ConcilusionDescription;
 
 
-    public void SetValues(OvenResult preset)
+    public void SetValues(int number, OvenPreset preset)
     {
+        PresetName.text = "Preset " + number;
         Cycles.text = preset.cycles.ToString();
         ChargeCRate.text = preset.chargeCRate.ToString() + "C";
         DischargeCRate.text = preset.DischargeCRate.ToString() + "C";
@@ -30,7 +31,7 @@ public class OvenUIFormatter : MonoBehaviour
                 SoHStopAt80.text = "Yes";
                 break;
             case SoHStates.NO:
-                SoHStopAt80.text = "Yes";
+                SoHStopAt80.text = "NO";
                 break;
             case SoHStates.NA:
                 SoHStopAt80.text = "N/A";

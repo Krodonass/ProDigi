@@ -1,10 +1,13 @@
 using System;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class PickupController : MonoBehaviour
 {
+    public static event Action InsertBattery;
+    
     public GameObject gameManager;
     public GameObject keybindings;
     public GameObject holdAreaa;
@@ -350,7 +353,9 @@ public class PickupController : MonoBehaviour
             
         if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().PatCellTesterPlacableGameManager)
         {
+            print("PatCellTesterPlacable");
             placedPatCallInTester = true;
+            InsertBattery?.Invoke();
             DropObject();
         }
         }

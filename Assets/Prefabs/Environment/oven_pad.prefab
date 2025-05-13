@@ -271,30 +271,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3901660905646980181, guid: 05380e81239056245b05b05f80aeb0f9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5930130289063239278}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05380e81239056245b05b05f80aeb0f9, type: 3}
---- !u!1 &793768199840366325 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3901660905646980181, guid: 05380e81239056245b05b05f80aeb0f9, type: 3}
-  m_PrefabInstance: {fileID: 4404938332033876640}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5930130289063239278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793768199840366325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af9f19d0e4c8974fa21715c6ca0633a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OvenPresetList: []
-  OvenModus: 0
 --- !u!224 &5649584133058466980 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8306369190445684228, guid: 05380e81239056245b05b05f80aeb0f9, type: 3}

@@ -10,15 +10,15 @@ public enum OvenModi
 
 public class OvenUI : MonoBehaviour
 {
-    public List<OvenResult> ovenFormatList = new List<OvenResult>();
-    
-    public List<OvenResult> ovenTestList = new List<OvenResult>();
+    public List<OvenPreset> ovenFormatList = new List<OvenPreset>();
+
+    public OvenPreset noFormat;
 
     public OvenUIFormatter ovenUIFormatter;
     
-    private List<OvenResult> currenPresetList;
+    private List<OvenPreset> currenPresetList;
     
-    private int currentFormatIndex = 0;
+    private int currentFormatIndex = -1;
     
     private int currentTestIndex = 0;
 
@@ -26,54 +26,72 @@ public class OvenUI : MonoBehaviour
 
     public GameObject FormatView;
 
-    public GameObject FormatResult;
-
-    private OvenResult _formattedPreset;
+    public GameObject ResultView;
     
+    public GameObject InsertBatteriesView;
+
+    private OvenPreset _formattedPreset;
 
     public void OpenStart()
     {
+        PickupController.InsertBattery -= OpenStart;
         FormatView.SetActive(false);
         StartView.SetActive(true);
-        FormatResult.SetActive(false);
+        ResultView.SetActive(false);
+        InsertBatteriesView.SetActive(false);
     }
 
     public void OpenPresetView()
     {
         FormatView.SetActive(true);
         StartView.SetActive(false);
-        FormatResult.SetActive(false);
+        ResultView.SetActive(false);
+        InsertBatteriesView.SetActive(false);
     }
 
-    public void OpenResultView(OvenResult ovenPreset)
+    public void OpenResultView(OvenPreset ovenPreset)
     {
         FormatView.SetActive(false);
         StartView.SetActive(false);
-        FormatResult.SetActive(true);
+        ResultView.SetActive(true);
+        InsertBatteriesView.SetActive(false);
+        ResultView.GetComponent<OvenResultView>().LoadResult(ovenPreset);
     }
     
     public void SetTestMode()
     {
-        currenPresetList = ovenTestList;
-        LoadOvenPresets(currenPresetList[currentTestIndex]);
+        if (currentFormatIndex < 0)
+        {
+            if (noFormat != null)
+            {
+                currenPresetList = noFormat.OvenTestList;
+            }
+        }
+        else
+        {
+            currenPresetList = ovenFormatList[currentFormatIndex].OvenTestList;
+        }
+        LoadOvenPresets(currentTestIndex+1, currenPresetList[currentTestIndex]);
         OpenPresetView();
     }
 
     public void SetFormatMode()
     {
+        currentFormatIndex = 0;
         currenPresetList = ovenFormatList;
-        LoadOvenPresets(currenPresetList[currentFormatIndex]);
+        LoadOvenPresets(currentFormatIndex+1, currenPresetList[currentFormatIndex]);
         OpenPresetView();
     }
 
     private void Start()
     {
-        SetFormatMode();
+        //OpenStart();
+        PickupController.InsertBattery += OpenStart;
     }
 
-    public void LoadOvenPresets(OvenResult ovenPreset)
+    public void LoadOvenPresets(int number, OvenPreset ovenPreset)
     {
-        ovenUIFormatter.SetValues(ovenPreset);
+        ovenUIFormatter.SetValues(number,ovenPreset);
     }
 
     public void NextPreset()
@@ -85,7 +103,7 @@ public class OvenUI : MonoBehaviour
             {
                 currentFormatIndex = 0;
             }
-            LoadOvenPresets(currenPresetList[currentFormatIndex]);
+            LoadOvenPresets(currentFormatIndex+1, currenPresetList[currentFormatIndex]);
         }
         else
         {
@@ -94,7 +112,7 @@ public class OvenUI : MonoBehaviour
             {
                 currentTestIndex = 0;
             }
-            LoadOvenPresets(currenPresetList[currentTestIndex]);
+            LoadOvenPresets(currentTestIndex+1, currenPresetList[currentTestIndex]);
         }
 
     }
@@ -108,7 +126,7 @@ public class OvenUI : MonoBehaviour
             {
                 currentFormatIndex = currenPresetList.Count - 1;
             }
-            LoadOvenPresets(currenPresetList[currentFormatIndex]);
+            LoadOvenPresets(currentFormatIndex +1, currenPresetList[currentFormatIndex]);
         }
         else
         {
@@ -117,13 +135,15 @@ public class OvenUI : MonoBehaviour
             {
                 currentTestIndex = currenPresetList.Count - 1;
             }
-            LoadOvenPresets(currenPresetList[currentTestIndex]);   
+            LoadOvenPresets(currentTestIndex+1, currenPresetList[currentTestIndex]);   
         }
     }
 
     public void Reset()
     {
-        
+        OpenStart();
+        currentFormatIndex = -1;
+        _formattedPreset = null;
     }
 
     public void FormatBattery()
@@ -131,10 +151,11 @@ public class OvenUI : MonoBehaviour
         if (currenPresetList == ovenFormatList)
         {
             _formattedPreset = currenPresetList[currentFormatIndex];
+            OpenResultView(currenPresetList[currentFormatIndex]);
         }
         else
         {
-            
+            OpenResultView(currenPresetList[currentTestIndex]);
         }
     }
 }

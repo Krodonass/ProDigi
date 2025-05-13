@@ -25,7 +25,7 @@ MonoBehaviour:
     The SEI layer cannot form evenly, which leads to instability.\nA temperature
     of at least 20\u202F\xB0C is recommended for formation."
   color: {r: 0.764151, g: 0.18503019, b: 0.22473396, a: 0}
-  OvenResultList:
+  OvenTestList:
   - {fileID: 11400000, guid: 06e68b1c455a2f54cbc9f93c8c207252, type: 2}
   - {fileID: 11400000, guid: a89f12692a5bd554f84665e91067b7c5, type: 2}
   - {fileID: 11400000, guid: 8e0a37f8614f42e4a91ad51da82abba1, type: 2}
