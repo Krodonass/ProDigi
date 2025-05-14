@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df82f9fed3b5d8f4384f881c635f4f65, type: 3}
   m_Name: FormResult 1
   m_EditorClassIdentifier: 
-  presetName: Preset 3
+  presetName: Preset 1
   cycles: 1
   chargeCRate: 0.05
   DischargeCRate: 0.05
