@@ -1587,6 +1587,7 @@ MonoBehaviour:
   patCellAssemblyPossibleMaterial: {fileID: 2100000, guid: c13060bf84006ff4688f104c16331a50, type: 2}
   patCellAssemblyNotPossibleMaterial: {fileID: 2100000, guid: a523d2c93ed01ae41bf52d0a8aebfba8, type: 2}
   Quastlog: {fileID: 1963513650}
+  UIMailNotification: {fileID: 562886573}
   CellHatchTrigger: {fileID: 772932107}
   basePlacedInOuterHatchGameManager: 0
   lowerPlungerPlacedInOuterHatchGameManager: 0
@@ -3802,6 +3803,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 78bee38c5eded7243a9f051bc6f4da17, type: 3}
     volume: 1
     source: {fileID: 0}
+--- !u!1 &562886573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 982700793150188737, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+  m_PrefabInstance: {fileID: 3403771088343036282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &573441122 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 084c6ddcd57128b449ee8e5143cf2406, type: 3}
@@ -6348,6 +6354,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1844853621}
     m_Modifications:
+    - target: {fileID: 1156134267254457400, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156134267254457400, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1527079607858492037, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_Camera
       value: 
@@ -6363,6 +6377,10 @@ PrefabInstance:
     - target: {fileID: 4333255769060185244, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_Name
       value: terminal_v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046703508618355977, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376724767819053895, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6403,6 +6421,10 @@ PrefabInstance:
     - target: {fileID: 7376724767819053895, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405083308146624909, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8578181858100034382, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14837,6 +14859,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.165
       objectReference: {fileID: 0}
+    - target: {fileID: 1156134267254457400, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156134267254457400, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1527079607858492037, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_Camera
       value: 
@@ -14852,6 +14882,10 @@ PrefabInstance:
     - target: {fileID: 4333255769060185244, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_Name
       value: terminal_v1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046703508618355977, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376724767819053895, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17321,6 +17355,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1844853621}
     m_Modifications:
+    - target: {fileID: 1156134267254457400, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156134267254457400, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1527079607858492037, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_Camera
       value: 
@@ -17332,6 +17374,10 @@ PrefabInstance:
     - target: {fileID: 4333255769060185244, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_Name
       value: terminal_v1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046703508618355977, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376724767819053895, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17434,6 +17480,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.165
       objectReference: {fileID: 0}
+    - target: {fileID: 1156134267254457400, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156134267254457400, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1527079607858492037, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_Camera
       value: 
@@ -17445,6 +17499,10 @@ PrefabInstance:
     - target: {fileID: 4333255769060185244, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_Name
       value: terminal_v1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046703508618355977, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376724767819053895, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_LocalPosition.x

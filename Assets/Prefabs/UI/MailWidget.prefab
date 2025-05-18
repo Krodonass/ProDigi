@@ -312,6 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3551608376752950106}
   - component: {fileID: 8434360417744719589}
+  - component: {fileID: 724476545725464502}
   m_Layer: 5
   m_Name: MailWidget
   m_TagString: Untagged
@@ -359,7 +360,22 @@ MonoBehaviour:
   mailViewSymbol: {fileID: 9081570613267768181}
   sizingValue: 0.1
   sizingSpeed: 300
-  maxMailSize: 100
+--- !u!114 &724476545725464502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484161123357276354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e16d32d7b3f5204da49f0aa87df3faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementRectTransform: {fileID: 0}
+  minElementPos: 190
+  movingValue: 1
+  movingSpeed: 1
 --- !u!1 &6488512783360372584
 GameObject:
   m_ObjectHideFlags: 0

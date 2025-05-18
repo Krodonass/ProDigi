@@ -17,7 +17,7 @@ public class PcCanvas : MonoBehaviour
     void Start()
     {
         ControlsScreen.SetActive(false);
-        MailScreen.SetActive(false);
+        MailScreen.SetActive(true); //NICHT VERGESSEN ZU BEACHTEN
         StartScreen.SetActive(true);
     }
     
@@ -48,12 +48,6 @@ public class PcCanvas : MonoBehaviour
         MailScreen.SetActive(false);
         StartScreen.SetActive(false);
         ControlsScreen.SetActive(true);
-    }
-    
-    //Opens a specific mail
-    public void OpenMail()
-    {
-
     }
 
     //plays mouse click sound

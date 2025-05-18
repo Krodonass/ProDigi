@@ -118,6 +118,8 @@ public class GameManager : MonoBehaviour
     [Header("QuestLog")]
     public TMP_Text Quastlog;
 
+    public GameObject UIMailNotification;
+
     public GameObject CellHatchTrigger;
     public bool basePlacedInOuterHatchGameManager;
     public bool lowerPlungerPlacedInOuterHatchGameManager;
@@ -160,8 +162,7 @@ public class GameManager : MonoBehaviour
         // Verhindert, dass das GameObject beim Szenenwechsel zerstört wird
         DontDestroyOnLoad(gameObject);
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         PickupController.PCStartEvent += StartUsingPC;
@@ -169,8 +170,7 @@ public class GameManager : MonoBehaviour
         PickupController.GloveBoxUseEvent += StartUsingGloveBox;
         PickupController.GloveBoxExitEvent += StopUsingGloveBox;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         //electrolyAssembledGameManager = drop.GetComponent<Drop>().electolytAssembled;

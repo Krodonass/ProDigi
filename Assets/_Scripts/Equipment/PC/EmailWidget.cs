@@ -45,7 +45,8 @@ public class EmailWidget : MonoBehaviour
         transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<Image>().enabled = false;
     }
 
-    public void LoadEmail(EmailData emailData){
+    public void LoadEmail(EmailData emailData)
+    {
         //this.emailData = emailData;
         _maxMailSize = emailData.maxMailSize;
         senderField.text = emailData.sender;
@@ -103,4 +104,5 @@ public class EmailWidget : MonoBehaviour
         mailViewSymbol.transform.Rotate(0,0,-180);
         _animStarted = false;
     }
+    
 }
