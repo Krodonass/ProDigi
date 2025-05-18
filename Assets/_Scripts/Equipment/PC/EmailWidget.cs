@@ -22,12 +22,13 @@ public class EmailWidget : MonoBehaviour
     
     [SerializeField] private float sizingValue = 0.1f;
     [SerializeField] private float sizingSpeed = 300f;
+    
     //[SerializeField] private float maxMailSize = 100f;
     private float _maxMailSize;
     private float _minMailSize;
 
-    private bool _mailOpened = false;
-    private bool _animStarted = false;
+    private bool _mailOpened;
+    private bool _animStarted;
 
     private RectTransform _buttonRectTransform;
     private RectTransform _nextChildRectTransform;

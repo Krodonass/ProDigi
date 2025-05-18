@@ -19,9 +19,13 @@ public class MailScreen : MonoBehaviour
     
     [Tooltip("A List of EmailData from Emails you get during the game.")]
     [SerializeField] private List<EmailData> secondaryEmails;
+
+    public static int NewMailCount;
     
     private void Start()
     {
+        NewMailCount = 0;
+        
         // Creates the first emails by starting the email program on the pc. 
         foreach(EmailData email in firstEmails)
         {
@@ -33,6 +37,8 @@ public class MailScreen : MonoBehaviour
             
             GameObject newSpacingBar = Instantiate(spacingBarPrefab, scrollViewContent);
             newSpacingBar.transform.SetSiblingIndex(1);
+
+            NewMailCount++;
         }
     }
 
@@ -52,5 +58,7 @@ public class MailScreen : MonoBehaviour
         
         GameObject newSpacingBar = Instantiate(spacingBarPrefab, scrollViewContent);
         newSpacingBar.transform.SetSiblingIndex(1);
+
+        NewMailCount++;
     }
 }

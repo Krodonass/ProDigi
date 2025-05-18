@@ -1605,6 +1605,7 @@ MonoBehaviour:
   PatCellTesterTrigger: {fileID: 1056791372}
   PatCellTesterPlacableGameManager: 0
   interactionUI: {fileID: 1885756683}
+  cursorIcon: {fileID: 577200008}
   drop: {fileID: 2072842301}
   electrolyAssembledGameManager: 0
 --- !u!114 &310630296
@@ -2462,9 +2463,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2718227501147427869, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8360688458593908950, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
       propertyPath: m_Name
       value: oven_pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412700502494315765, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412700502494315765, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412700502494315765, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412700502494315765, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3887,6 +3908,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea71d146902b6443aea524f2444ab9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &577200008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5178650063471046280, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+  m_PrefabInstance: {fileID: 3403771088343036282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &581458399
 PrefabInstance:
   m_ObjectHideFlags: 0

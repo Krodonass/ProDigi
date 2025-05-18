@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class UIMailNotification : MonoBehaviour
 {
-    [SerializeField] private float rightElementPos = 190;
-    [SerializeField] private float movingValue = 1;
-    [SerializeField] private float movingSpeed = 1;
+    [SerializeField] private float passivElementPos = 190;
+    [SerializeField] private float movingValue = 1f;
+    [SerializeField] private float movingSpeed = 100;
 
     private bool _mailNew = true;
     private bool _animStarted = false;
@@ -17,41 +17,35 @@ public class UIMailNotification : MonoBehaviour
     private void Start()
     {
         _elementRectTransform = GameManager.Instance.UIMailNotification.GetComponent<RectTransform>();
+        passivElementPos = _elementRectTransform.localPosition.x + passivElementPos;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            Debug.Log("L pressed" + " "+_elementRectTransform.localPosition.x);
-            UpdateUIMailNotification();    
-        } 
-
-    }
-
-    private void UpdateUIMailNotification()
+    //COUNTING MUST BE TESTED AGAIN WHEN ADDED TO THE BUTTON CLICK FUNCTION
+    public void UpdateUIMailNotification()
     { 
-        if(_animStarted)
+        if(_animStarted || !_mailNew)
             return;
         
-        if (_mailNew)
+        if (MailScreen.NewMailCount == 1)
         {
             StartCoroutine(CloseUINotification());
+            MailScreen.NewMailCount--;
             _mailNew = false; 
         }
-       /* else
+        else
         {
-            Destroy(this);
-        }*/
+            MailScreen.NewMailCount--;
+            _mailNew = false;
+        }
     }
     
     private IEnumerator CloseUINotification()
     {
         _animStarted = true;
         
-        while (_elementRectTransform.position.x < _elementRectTransform.position.x + rightElementPos)
+        while (_elementRectTransform.localPosition.x < passivElementPos)
         {
-            _elementRectTransform.position += new Vector3(movingValue * movingSpeed * Time.deltaTime,0,0 );
+            _elementRectTransform.localPosition += new Vector3(movingValue * movingSpeed * Time.deltaTime,0,0 );
             yield return null;
         }     
         
