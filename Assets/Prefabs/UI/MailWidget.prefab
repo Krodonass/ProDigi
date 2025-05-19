@@ -386,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passivElementPos: 190
   movingValue: 1
-  movingSpeed: 50
+  movingSpeed: 150
 --- !u!1 &6488512783360372584
 GameObject:
   m_ObjectHideFlags: 0
