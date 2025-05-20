@@ -46,6 +46,8 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
     public bool brasstopAssemblyPossible;
     public bool brasstopAssembled;
 
+    public Collider Collider;
+
     // Update is called once per frame
     void Update()
     {
@@ -111,8 +113,13 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-    }
 
+        if (Collider)
+        {
+            Collider.enabled = true;
+        }
+    }
+    
     private void OnTriggerStay(Collider collision)
     {
 

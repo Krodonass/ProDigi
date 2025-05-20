@@ -18,7 +18,7 @@ MonoBehaviour:
   DischargeCRate: 0.5
   voltageStart: 2.5
   voltageEnd: 4.2
-  temperature: 50
+  temperature: 40
   SoHStop: 0
   header: Increased Degradation After Cold Formation
   description: 'Test aborted at cycle 190
@@ -31,4 +31,4 @@ MonoBehaviour:
 
     Aging progressed noticeably faster.'
   color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
-  OvenResultList: []
+  OvenTestList: []
