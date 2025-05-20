@@ -34,6 +34,4 @@ public class PcScript : MonoBehaviour
             meshCollider.enabled = false;
         }
     }
-
-
 }

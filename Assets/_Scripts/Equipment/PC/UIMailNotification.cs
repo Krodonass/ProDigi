@@ -2,22 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIMailNotification : MonoBehaviour
 {
-    [SerializeField] private float passivElementPos = 190;
+    [SerializeField] private float passiveElementPos = 190;
     [SerializeField] private float movingValue = 1f;
-    [SerializeField] private float movingSpeed = 100;
+    [SerializeField] private float movingSpeed = 150;
 
     private bool _mailNew = true;
-    private bool _animStarted = false;
+    private bool _animStarted;
 
     private RectTransform _elementRectTransform;
     
     private void Start()
     {
         _elementRectTransform = GameManager.Instance.UIMailNotification.GetComponent<RectTransform>();
-        passivElementPos = _elementRectTransform.localPosition.x + passivElementPos;
+        passiveElementPos = _elementRectTransform.localPosition.x + passiveElementPos;
     }
 
     //COUNTING MUST BE TESTED AGAIN WHEN ADDED TO THE BUTTON CLICK FUNCTION
@@ -43,7 +44,7 @@ public class UIMailNotification : MonoBehaviour
     {
         _animStarted = true;
         
-        while (_elementRectTransform.localPosition.x < passivElementPos)
+        while (_elementRectTransform.localPosition.x < passiveElementPos)
         {
             _elementRectTransform.localPosition += new Vector3(movingValue * movingSpeed * Time.deltaTime,0,0 );
             yield return null;

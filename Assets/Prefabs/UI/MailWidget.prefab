@@ -384,9 +384,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e16d32d7b3f5204da49f0aa87df3faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passivElementPos: 190
+  passiveElementPos: 190
   movingValue: 1
   movingSpeed: 150
+  InsertBatteryQuestResults:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6488512783360372584
 GameObject:
   m_ObjectHideFlags: 0

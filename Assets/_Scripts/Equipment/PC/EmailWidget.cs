@@ -33,17 +33,19 @@ public class EmailWidget : MonoBehaviour
     private RectTransform _buttonRectTransform;
     private RectTransform _nextChildRectTransform;
     private RectTransform _parentRectTransform;
+    private Transform _parent;
     
     void Start()
     {
+        _parent = transform.parent;
         _buttonRectTransform = button.GetComponent<RectTransform>();
-        _nextChildRectTransform = transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>();
-        _parentRectTransform = transform.parent.GetComponent<RectTransform>();
+        _nextChildRectTransform = _parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>();
+        _parentRectTransform = _parent.GetComponent<RectTransform>();
         
         _minMailSize = button.GetComponent<RectTransform>().sizeDelta.y;
 
         mailText.gameObject.SetActive(false);
-        transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<Image>().enabled = false;
+        _parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<Image>().enabled = false;
     }
 
     public void LoadEmail(EmailData emailData)

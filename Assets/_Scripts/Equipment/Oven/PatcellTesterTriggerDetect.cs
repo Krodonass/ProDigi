@@ -16,13 +16,8 @@ public class PatcellTesterTriggerDetect : MonoBehaviour
 
     public Material assemblyPossible;
     public Material assemblyNotPossible;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    
+    
     void Update()
     {
         //Debug.Log(gameManager.GetComponent<GameManager>().placedPatcellInTesterGameManager);

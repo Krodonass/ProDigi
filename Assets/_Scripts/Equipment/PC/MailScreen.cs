@@ -24,8 +24,6 @@ public class MailScreen : MonoBehaviour
     
     private void Start()
     {
-        NewMailCount = 0;
-        
         // Creates the first emails by starting the email program on the pc. 
         foreach(EmailData email in firstEmails)
         {
@@ -37,13 +35,17 @@ public class MailScreen : MonoBehaviour
             
             GameObject newSpacingBar = Instantiate(spacingBarPrefab, scrollViewContent);
             newSpacingBar.transform.SetSiblingIndex(1);
-
-            NewMailCount++;
         }
+        
+        NewMailCount = firstEmails.Count;        
     }
 
+    //only for testing
     private void Update()
     {
+        if(Input.GetKeyUp(KeyCode.K))
+            Debug.Log(NewMailCount);
+        
         if(Input.GetKeyUp(KeyCode.H))
             NextEmail(0);
     }
@@ -58,7 +60,5 @@ public class MailScreen : MonoBehaviour
         
         GameObject newSpacingBar = Instantiate(spacingBarPrefab, scrollViewContent);
         newSpacingBar.transform.SetSiblingIndex(1);
-
-        NewMailCount++;
     }
 }
