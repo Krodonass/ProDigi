@@ -2481,6 +2481,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8019852757935150326, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8360688458593908950, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
       propertyPath: m_Name
       value: oven_pad
