@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bed5e614b0dd34485c43fa9f9413fc, type: 3}
+  m_Name: 02_StartingTheTest
+  m_EditorClassIdentifier: 
+  subject: Starting the Test
+  sender: Message
+  content: "Dear Student,\n\r\nI\u2019m not sure whether you\u2019ve been diligently
+    assembling the cell or just standing blankly in front of the terminal\r\nwaiting
+    for my emails\u2014but if you\u2019ve completed the assembly: well done!\n\r\nWe\u2019ve
+    had some hiccups with the docking stations in the past (loose cables, overheating,
+    the usual), but yours\r\nshould be in working order. To initiate the test, use
+    the pad attached directly to the testing chamber. Normally,\r\nyou\u2019d set
+    the parameters at a separate terminal, but that interface is currently out of
+    order. So, we\u2019ve rerouted\r\neverything through the chamber pad\u2014convenient,
+    right?\n\r\nNow pay close attention: once the cell is inserted and the oven door
+    is closed, you must form the cell before\r\nstarting the test. I cannot stress
+    this enough. If we burn out another cell because someone skipped this step, I\r\nmay
+    lose what little composure I have left.\n\r\nOnce the cell is formed, start the
+    test. The system will automatically analyze the data for you.\n\r\nOh\u2014and
+    here\u2019s a neat trick: if you press \"Reset\" on the machine, it\u2019ll activate
+    a built-in time-loop feature, sending\r\nyou and the cell back to just before
+    the first testing cycle. Handy for undoing mistakes!\n\r\nKeep going\u2014you\u2019re
+    almost there.\n\r\nYour favorite docent,\n\r\nH. Graunt"
+  maxMailSize: 220

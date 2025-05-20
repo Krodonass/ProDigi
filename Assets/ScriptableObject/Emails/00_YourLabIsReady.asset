@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bed5e614b0dd34485c43fa9f9413fc, type: 3}
+  m_Name: 00_YourLabIsReady
+  m_EditorClassIdentifier: 
+  subject: "Your Lab Is Ready \u2013 Let\u2019s Begin!"
+  sender: Message
+  content: "Dear Student,\n\nGood news! I\u2019ve found you a small test lab to work
+    in. It may be a bit disorganized (the last users weren\u2019t exactly\ntidy),
+    but it\u2019s equipped and ready for your battery cell experiments.\n\nYour professors
+    are keen for you to get hands-on experience with electrochemical testing, and
+    you\u2019ll be working\nwith a PAT-Cell\xAE. The process is simple, but precision
+    matters:\n\n1. Assemble the PAT-Cell\xAE inside the vacuum chamber (there\u2019s
+    a schematic somewhere in the lab).\n2. Place the assembled cell into the test
+    chamber (that\u2019s the big blue oven).\n3. Set the parameters and hit \u201CStart.\u201D\n4.
+    That\u2019s it!\n\nJust a quick heads-up: some of the components you\u2019ll
+    need might not be in their proper places. They\u2019re supposed\nto be stored
+    in the wall rack, but previous users may have left parts in drawers, on desks,
+    or wherever they last\nused them\u2014so you might need to do a bit of searching.\n\nI\u2019ll
+    be sending you follow-up emails explaining each step in more detail. If you ever
+    feel stuck, just check your\ninbox\u2014the emails should guide you through.\n\nYour
+    favorite docent,\n\nH. Graunt!\n\nP.S.: You can receive emails on any of the
+    terminals, they\u2019re all signed in to the guest user by default."
+  maxMailSize: 220

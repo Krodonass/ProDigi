@@ -6419,6 +6419,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: firstEmails.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: secondaryEmails.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: secondaryEmails.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9efbde4786a091641956052583c64884, type: 2}
+    - target: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: secondaryEmails.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7101a0881ced70c49bb5c15ce6771b10, type: 2}
+    - target: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+      propertyPath: secondaryEmails.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e1265c07d502f0428932c70fa0da8d0, type: 2}
     - target: {fileID: 7376724767819053895, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.775
