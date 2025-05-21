@@ -198,7 +198,10 @@ public class Doors : MonoBehaviour
         transform.localEulerAngles = finalRot;
 
         isOpen = !isOpen;
-        OnOpenDoor.Invoke(isOpen);
+        if (OnOpenDoor != null)
+        {
+            OnOpenDoor.Invoke(isOpen);
+        }
         isAnimating = false;
     }
 
