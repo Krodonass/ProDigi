@@ -1486,6 +1486,7 @@ GameObject:
   - component: {fileID: 310630294}
   - component: {fileID: 310630295}
   - component: {fileID: 310630296}
+  - component: {fileID: 310630297}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1617,6 +1618,172 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75786eea796b6da4da3efadfb64b8de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &310630297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310630293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9378f0781d9aa3642a921f392af2cc75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectVacuumQuestResults:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1480223245}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1083979086}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 345618919}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 366101998}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  insertBatteryQuestResults:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1480223245}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1083979086}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 345618919}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 366101998}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  testFormBatteryQuestResults:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1480223245}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1083979086}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 345618919}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 366101998}
+        m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
+        m_MethodName: NextEmail
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  testFormBatteryQuestTrigger: {fileID: 1429574408}
 --- !u!1 &315802967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +2092,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333567479}
   m_Mesh: {fileID: 2268009731598283440, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &345618919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+  m_PrefabInstance: {fileID: 26473131454679012}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee208c3f07a5bb24ab9a95689469f67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &359150118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2300131365160700528, guid: 6ad4ee5337f0c2b41b420a616bdb008b, type: 3}
@@ -2080,6 +2258,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364485858}
   m_Mesh: {fileID: 4543181339811975790, guid: 93f780e15f4ca3f45b7f99a72ef743a7, type: 3}
+--- !u!114 &366101998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+  m_PrefabInstance: {fileID: 1820815854}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee208c3f07a5bb24ab9a95689469f67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &371260441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2458,6 +2647,34 @@ PrefabInstance:
     - target: {fileID: 2718227501147427869, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255181921930168438, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255181921930168438, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255181921930168438, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 310630297}
+    - target: {fileID: 3255181921930168438, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255181921930168438, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TestFormateBatteryQuestDone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255181921930168438, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: QuestManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255181921930168438, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4929759365984377883, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
       propertyPath: m_fontColor.b
@@ -8628,6 +8845,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1134704255}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1083979086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+  m_PrefabInstance: {fileID: 10887649266465760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee208c3f07a5bb24ab9a95689469f67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1087266320 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6492120722012160535, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
@@ -11258,6 +11486,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea71d146902b6443aea524f2444ab9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1429574408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3255181921930168438, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
+  m_PrefabInstance: {fileID: 426609597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1446170590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93f780e15f4ca3f45b7f99a72ef743a7, type: 3}
@@ -11587,6 +11826,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81e69de8a302c8d4d96d46e34e97f237, type: 3}
   m_PrefabInstance: {fileID: 1562635440}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1480223245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7224536708714625414, guid: 832fb573da3ec8d4296393329dcccaee, type: 3}
+  m_PrefabInstance: {fileID: 888608290}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee208c3f07a5bb24ab9a95689469f67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1484800168 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4211230855568825734, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}

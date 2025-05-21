@@ -37,7 +37,7 @@ public class MailScreen : MonoBehaviour
             newSpacingBar.transform.SetSiblingIndex(1);
         }
         
-        NewMailCount = firstEmails.Count;        
+        NewMailCount = firstEmails.Count;
     }
 
     //only for testing
