@@ -24,7 +24,7 @@ public class PatcellTesterTriggerDetect : MonoBehaviour
 
         if (gameManager.GetComponent<GameManager>().placedPatcellInTesterGameManager)
         {
-  
+            CollisionAssemblyIdentifier.HideMouseInteractable();
             PatCellInTester.SetActive(true);
             PatCellAssembled.SetActive(false);
             Trigger.SetActive(false);
@@ -40,6 +40,7 @@ public class PatcellTesterTriggerDetect : MonoBehaviour
             // "Y"- Rotation
             placingPossible = true;
             Trigger.GetComponent<Renderer>().material = assemblyPossible;
+            CollisionAssemblyIdentifier.ShowMouseInteractable();
         }
     }
 
@@ -47,5 +48,6 @@ public class PatcellTesterTriggerDetect : MonoBehaviour
     {
         placingPossible = false;
         Trigger.GetComponent<Renderer>().material = assemblyNotPossible;
+        CollisionAssemblyIdentifier.HideMouseInteractable();
     }
 }

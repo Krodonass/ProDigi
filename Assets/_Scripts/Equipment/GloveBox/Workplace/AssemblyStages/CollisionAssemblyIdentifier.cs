@@ -113,14 +113,6 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             gameObject.transform.tag = "Untagged";
         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (HideMouseInput != null)
-            {
-                HideMouseInput.Invoke();
-            }
-        }
-
         if (gameManager.GetComponent<GameManager>().allAssembledGameManager)
         {
             gameObject.SetActive(false);
@@ -142,6 +134,7 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
             if (!GameManager.Instance.assembleBaseGameManager && ShowMouseInput != null)
             {
+                print("baseAssemblyPossible");
                 ShowMouseInput.Invoke();
             }
         }
@@ -203,7 +196,6 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
         {
             // Zum Spieler kippen
             // "Y"- Rotation
-            Debug.Log("hui");
             upperCathodeAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
             if (!GameManager.Instance.assembleUpperCathodeGameManager && ShowMouseInput != null)
@@ -346,6 +338,22 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             {
                 HideMouseInput.Invoke();
             }
+        }
+    }
+    
+    public static void ShowMouseInteractable()
+    {
+        if (ShowMouseInput != null)
+        {
+            ShowMouseInput.Invoke();
+        }
+    }
+    
+    public static void HideMouseInteractable()
+    {
+        if (HideMouseInput != null)
+        {
+            HideMouseInput.Invoke();
         }
     }
 }

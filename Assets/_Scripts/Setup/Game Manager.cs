@@ -293,7 +293,7 @@ public class GameManager : MonoBehaviour
 
         if (allAssembledGameManager)
         {
-            patCellAssembled.SetActive(true);
+            //patCellAssembled.SetActive(true);
         }
 
         if (PatCellTesterTrigger)

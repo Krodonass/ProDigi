@@ -45,6 +45,7 @@ public class PickupController : MonoBehaviour
     public bool isUsable;
     public bool isUsing;
     public bool isUsingGlovebox;
+    public bool isUsingPC;
     public bool isPlacable;
 
     public bool assembleBase;
@@ -55,6 +56,7 @@ public class PickupController : MonoBehaviour
     public bool assembleUpperPlunger;
     public bool assembleGear;
     public bool assembleBrassTop;
+    private bool ispatCellFullyAssembelt = false;
 
     public bool placedPatCallInTester; 
 
@@ -150,7 +152,7 @@ public class PickupController : MonoBehaviour
             highlight = hit.transform;
             EnableOutline(highlight);
             isUsable = true;
-        }else if (hit.transform.CompareTag("InteractiveUI") && !isCarrying)
+        }else if (hit.transform.CompareTag("InteractiveUI") && !isCarrying && !isUsingPC)
         {
             OnHoverInteractable.Invoke();
             highlight = hit.transform;
@@ -190,7 +192,7 @@ public class PickupController : MonoBehaviour
 
         if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gm.GetComponent<GameManager>().PatCellTesterPlacableGameManager)
         {
-                Debug.Log("lol");
+            Debug.Log("lol");
             placedPatCallInTester = true;
             DropObject();
         }
@@ -204,14 +206,23 @@ public class PickupController : MonoBehaviour
                 Glass glassComponent = hit.collider.GetComponent<Glass>();
                 GloveBoxUseEvent(glassComponent.PlayerPoint);
                 isUsingGlovebox = true;
+                if (OnNotHoverInteractable != null)
+                {
+                    OnNotHoverInteractable.Invoke();
+                }
             }
             else if (hit.collider.gameObject.CompareTag("InteractiveUI"))
             {
                 PcScript pcScript = hit.collider.GetComponent<PcScript>();
                 if(pcScript)
                 {
+                    isUsingPC = true;
                     //gm.StartUsingPC(pcScript.PlayerPCPostion);
                     PCStartEvent(pcScript.PlayerPCPostion);
+                    if (OnNotHoverInteractable != null)
+                    {
+                        OnNotHoverInteractable.Invoke();
+                    }
                 }
                 print("HackerMan!!!");
             }else
@@ -312,51 +323,64 @@ public class PickupController : MonoBehaviour
             if (GameManager.Instance.baseAssemblyPossibleGameManager)
             {
                 assembleBase = true;
+                gm.assembleBaseGameManager = true;
                 DropObject();
             }
             if (GameManager.Instance.lowerPlungerAssemblyPossibleGameManager)
             {
                 assembleLowerPlunger = true;
+                gm.assembleLowerPlungerGameManager = true;
                 DropObject();
             }
             if (GameManager.Instance.patCellLowerCathodeAssemblyPossibleGameManager)
             {
                 assembleLowerCathode = true;
+                gm.assembleLowerCathodeGameManager = true;
                 DropObject();
             }
             if (GameManager.Instance.patCellSleeveAssemblyPossibleGameManager)
             {
                 assembleSleeve = true;
+                gm.assembleSleeveGameManager = true;
                 DropObject();
             }
             if (GameManager.Instance.patCellUpperCathodeAssemblyPossibleGameManager)
             {
                 assembleUpperCathode = true;
+                gm.assembleUpperCathodeGameManager = true;
                 DropObject();
             }
             if (GameManager.Instance.patCellUpperPlungerAssemblyPossibleGameManager)
             {
                 assembleUpperPlunger = true;
+                gm.assembleUpperPlungerGameManager = true;
                 DropObject();
             }
             if (GameManager.Instance.gearAssemblyPossibleGameManager)
             {
                 assembleGear = true;
+                gm.assembleGearGameManager = true;
                 DropObject();
             }
-            if (GameManager.Instance.brassTopAssemblyPossibleGameManager)
+            if (GameManager.Instance.brassTopAssemblyPossibleGameManager && ispatCellFullyAssembelt == false)
             {
+                ispatCellFullyAssembelt = true;
                 assembleBrassTop = true;
+                gm.assembleBrassTopGameManager = true;
                 DropObject();
+                GameManager.Instance.patCellAssembled.SetActive(true);
             }
             if (GameManager.Instance.PatCellTesterPlacableGameManager)
             {
                 DropObject();
-                Debug.Log("PatCellTesterPlacable");
                 placedPatCallInTester = true;
                 InsertBattery?.Invoke();
             }
         } 
+        }
+        else
+        {
+            CollisionAssemblyIdentifier.ShowMouseInteractable();
         }
         // Glovebox-Exit verarbeiten
         if (Input.GetKeyDown(keysBindings.exitEquipmentKey))
@@ -368,6 +392,7 @@ public class PickupController : MonoBehaviour
             }
             if(gm.isUsingPCGameManager){
                 PcCanvas.TriggerPCQuit();
+                isUsingPC = false;
             }
         }
 
@@ -463,6 +488,7 @@ private void EnableOutline(Transform obj)
 
     void DropObject()
     {
+        CollisionAssemblyIdentifier.HideMouseInteractable();
         isCarrying = false;
         isRotatingObject = false;
         heldObjRB.useGravity = true;
@@ -480,5 +506,7 @@ private void EnableOutline(Transform obj)
     {
         return targetFrom + (source - sourceFrom) * (targetTo - targetFrom) / (sourceTo - sourceFrom);
     }
+
+
 
 }

@@ -42,6 +42,11 @@ public class InteractionUI : MonoBehaviour
         {
             mText.text = "";
         }
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            HideMouseInteraction();
+        }
     }
     
     void PcCanvasOnPCStartEvent(Transform PC)
