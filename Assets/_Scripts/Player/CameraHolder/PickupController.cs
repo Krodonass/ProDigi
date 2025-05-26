@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class PickupController : MonoBehaviour
 {
     public static event Action InsertBattery;
+    public static event Action OnHoverInteractable;
+    public static event Action OnNotHoverInteractable;
     
     public GameObject gameManager;
     public GameObject keybindings;
@@ -137,23 +139,33 @@ public class PickupController : MonoBehaviour
     {
         if (hit.transform.CompareTag("Pickupable") && !isCarrying && !isUsable)
         {
+            OnHoverInteractable.Invoke();
             highlight = hit.transform;
             EnableOutline(highlight);
             isPickupable = true;
         }
         else if (hit.transform.CompareTag("Usable") && !isCarrying)
         {
+            OnHoverInteractable.Invoke();
+            highlight = hit.transform;
+            EnableOutline(highlight);
+            isUsable = true;
+        }else if (hit.transform.CompareTag("InteractiveUI") && !isCarrying)
+        {
+            OnHoverInteractable.Invoke();
             highlight = hit.transform;
             EnableOutline(highlight);
             isUsable = true;
         }else
         {
+            OnNotHoverInteractable.Invoke();
             isPickupable = false;
             isUsable = false;
         }
     }
     else
     {
+        OnNotHoverInteractable.Invoke();
         isPickupable = false;
         isUsable = false;
     }
@@ -294,70 +306,57 @@ public class PickupController : MonoBehaviour
 
         if (!isCarryingPipette)
         {
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().baseAssemblyPossibleGameManager)
+        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey))
         {
-            assembleBase = true;
-            isPlacable = false;
-            DropObject();
-        }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().lowerPlungerAssemblyPossibleGameManager)
-        {
-            assembleLowerPlunger = true;
-            isPlacable = false;
-            DropObject();
-        }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellLowerCathodeAssemblyPossibleGameManager)
-        {
-
-            assembleLowerCathode = true;
-            isPlacable = false;
-            DropObject();
-        }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellSleeveAssemblyPossibleGameManager)
-        {
-            assembleSleeve = true;
-            isPlacable = false;
-            DropObject();
-        }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellUpperCathodeAssemblyPossibleGameManager)
-        {
-            assembleUpperCathode = true;
-            isPlacable = false;
-            DropObject();
-        }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().patCellUpperPlungerAssemblyPossibleGameManager)
-        {
-            assembleUpperPlunger = true;
-            isPlacable = false;
-            DropObject();
-        }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().gearAssemblyPossibleGameManager)
-        {
-            assembleGear = true;
-            isPlacable = false;
-            DropObject();
-        }
-
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().brassTopAssemblyPossibleGameManager)
-        {
-            assembleBrassTop = true;
-            isPlacable = false;
-            DropObject();
-        }
-            
-        if (Input.GetKeyDown(keybindings.GetComponent<KeysBindings>().placeItemKey) && gameManager.GetComponent<GameManager>().PatCellTesterPlacableGameManager)
-        {
-            print("PatCellTesterPlacable");
-            placedPatCallInTester = true;
-            InsertBattery?.Invoke();
-            DropObject();
-        }
+            // In einer klaren Reihenfolge prüfen, nur der erste Treffer wird ausgeführt
+            if (GameManager.Instance.baseAssemblyPossibleGameManager)
+            {
+                assembleBase = true;
+                DropObject();
+            }
+            if (GameManager.Instance.lowerPlungerAssemblyPossibleGameManager)
+            {
+                assembleLowerPlunger = true;
+                DropObject();
+            }
+            if (GameManager.Instance.patCellLowerCathodeAssemblyPossibleGameManager)
+            {
+                assembleLowerCathode = true;
+                DropObject();
+            }
+            if (GameManager.Instance.patCellSleeveAssemblyPossibleGameManager)
+            {
+                assembleSleeve = true;
+                DropObject();
+            }
+            if (GameManager.Instance.patCellUpperCathodeAssemblyPossibleGameManager)
+            {
+                assembleUpperCathode = true;
+                DropObject();
+            }
+            if (GameManager.Instance.patCellUpperPlungerAssemblyPossibleGameManager)
+            {
+                assembleUpperPlunger = true;
+                DropObject();
+            }
+            if (GameManager.Instance.gearAssemblyPossibleGameManager)
+            {
+                assembleGear = true;
+                DropObject();
+            }
+            if (GameManager.Instance.brassTopAssemblyPossibleGameManager)
+            {
+                assembleBrassTop = true;
+                DropObject();
+            }
+            if (GameManager.Instance.PatCellTesterPlacableGameManager)
+            {
+                DropObject();
+                Debug.Log("PatCellTesterPlacable");
+                placedPatCallInTester = true;
+                InsertBattery?.Invoke();
+            }
+        } 
         }
         // Glovebox-Exit verarbeiten
         if (Input.GetKeyDown(keysBindings.exitEquipmentKey))
