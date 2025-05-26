@@ -30,7 +30,7 @@ MonoBehaviour:
     to form.
 
     You can now proceed to the actual test.'
-  color: {r: 0, g: 0.7924528, b: 0.23499794, a: 0}
+  color: {r: 0, g: 0.7924528, b: 0.23499794, a: 1}
   OvenTestList:
   - {fileID: 11400000, guid: 91665010a6224414f88a17c1579762f7, type: 2}
   - {fileID: 11400000, guid: b20f76411b9e13744a8183a83e501bb5, type: 2}

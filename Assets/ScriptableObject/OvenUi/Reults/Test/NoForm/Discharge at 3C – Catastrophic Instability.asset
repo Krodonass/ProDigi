@@ -26,5 +26,5 @@ MonoBehaviour:
     collapsed, the cell overheated and remained unstable.\nLithium plating and dendrite
     growth occurred \u2192 risk of internal short circuit and thermal runaway.\nThe
     test was stopped for safety reasons."
-  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
-  OvenResultList: []
+  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 1}
+  OvenTestList: []

@@ -28,7 +28,7 @@ MonoBehaviour:
 
     The
     cell quickly loses capacity. Use a maximum of 0.1C for formation.'
-  color: {r: 0.764151, g: 0.18503019, b: 0.22473396, a: 0}
+  color: {r: 0.764151, g: 0.18503019, b: 0.22473396, a: 1}
   OvenTestList:
   - {fileID: 11400000, guid: 5f014d15e8c68fb429340e61d6847ebb, type: 2}
   - {fileID: 11400000, guid: 29271b3b8651f0c42bc647d8714f7baa, type: 2}

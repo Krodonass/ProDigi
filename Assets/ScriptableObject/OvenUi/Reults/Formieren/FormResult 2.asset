@@ -28,7 +28,7 @@ MonoBehaviour:
 
     Too rapid formation and high currents can still lead
     to lithium plating.'
-  color: {r: 0.97699815, g: 1, b: 0.27044016, a: 0}
+  color: {r: 0.97699815, g: 1, b: 0.27044016, a: 1}
   OvenTestList:
   - {fileID: 11400000, guid: a28ff80ed4a3247459d1dbb12e99d0a0, type: 2}
   - {fileID: 11400000, guid: f557f5c2c3b94664698366a3f9cb0552, type: 2}

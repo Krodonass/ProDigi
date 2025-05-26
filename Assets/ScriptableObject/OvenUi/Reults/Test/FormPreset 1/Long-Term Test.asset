@@ -24,5 +24,5 @@ MonoBehaviour:
   description: "Test completed successfully!\nThe cell was cycled 800 times to simulate
     a realistic vehicle usage profile.\nThe SoH remained above 80% \u2014 the cell
     demonstrates good long-term stability."
-  color: {r: 0, g: 0.7921569, b: 0.23529412, a: 0}
-  OvenResultList: []
+  color: {r: 0, g: 0.7921569, b: 0.23529412, a: 1}
+  OvenTestList: []

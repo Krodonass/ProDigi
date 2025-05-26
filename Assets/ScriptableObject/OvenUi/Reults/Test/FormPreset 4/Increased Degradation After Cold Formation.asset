@@ -30,5 +30,5 @@ MonoBehaviour:
     leading to significant capacity loss.
 
     Aging progressed noticeably faster.'
-  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
+  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 1}
   OvenTestList: []
