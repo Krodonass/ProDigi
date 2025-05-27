@@ -16352,6 +16352,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888743763}
   m_Mesh: {fileID: 7989083189981622287, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
+--- !u!1 &1918671628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 795176363299136239, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
+  m_PrefabInstance: {fileID: 2693754601924945671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1918671635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918671628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d47c85b1a93e849a9fc02dc00da8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batteryParts:
+  - {fileID: 1450625504}
+  - {fileID: 839320710}
+  - {fileID: 684687744}
+  - {fileID: 1525966147}
+  - {fileID: 1348902520}
+  - {fileID: 452999757}
+  - {fileID: 297561771}
+  - {fileID: 449972558}
+  - {fileID: 2039006419}
+  batteryPartsCount: 0
 --- !u!1 &1944701879
 GameObject:
   m_ObjectHideFlags: 0
@@ -18597,13 +18625,28 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 310630293}
+    - target: {fileID: 8375715013624432474, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
+      propertyPath: questManager
+      value: 
+      objectReference: {fileID: 310630293}
+    - target: {fileID: 8375715013624432474, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
+      propertyPath: vacuumChamberCheckerScript
+      value: 
+      objectReference: {fileID: 1918671628}
+    - target: {fileID: 8375715013624432474, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
+      propertyPath: vaccumChamberCheckerScriptHolder
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1650904293028123108, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1859855150}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 795176363299136239, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1918671635}
   m_SourcePrefab: {fileID: 100100000, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
 --- !u!1 &2935779633941624445
 GameObject:

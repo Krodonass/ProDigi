@@ -18,6 +18,10 @@ public class VacuumDial : MonoBehaviour
     public float air = 0;
     public float rotation = 0;
 
+    [SerializeField] private GameObject vacuumChamberCheckerScript;
+
+    private bool questFinished;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,14 @@ public class VacuumDial : MonoBehaviour
                 FindAnyObjectByType<AudioManager>().Play("Flood_Evacuate");
                 sound = false;
             }
+
+            if (vacuumChamberCheckerScript.GetComponent<VacuumChamberChecker>().batteryPartsCount == vacuumChamberCheckerScript.GetComponent<VacuumChamberChecker>().batteryParts.Length &&
+                !questFinished)
+            {
+                gameManager.GetComponent<QuestManager>().CollectVacuumQuestDone();
+                questFinished = true;
+            }
+                
         }   
 
         if (gameManager.GetComponent<GameManager>().isFloodingGameManager)

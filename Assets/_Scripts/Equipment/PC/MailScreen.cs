@@ -24,13 +24,6 @@ public class MailScreen : MonoBehaviour
     
     private void Start()
     {
-        UIMailNotification.OpenUINotificationAdded = true;
-        UIMailNotification.StartMailNew = false;
-        UIMailNotification.CollectVacuumQuestMailNew = false;
-        UIMailNotification.InsertBatteryQuestMailNew = false;
-        UIMailNotification.TestFormBatteryQuestMailNew = false;
-
-        
         // Creates the first emails by starting the email program on the pc. 
         foreach(EmailData email in firstEmails)
         {
