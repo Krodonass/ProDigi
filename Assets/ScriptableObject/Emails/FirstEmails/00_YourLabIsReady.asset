@@ -31,3 +31,4 @@ MonoBehaviour:
     favorite docent,\n\nH. Graunt!\n\nP.S.: You can receive emails on any of the
     terminals, they\u2019re all signed in to the guest user by default."
   maxMailSize: 220
+  questOrder: 0

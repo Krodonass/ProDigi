@@ -30,3 +30,4 @@ MonoBehaviour:
     incident) and place it into the docking station inside the test oven.\n\r\nYour
     favorite docent,\n\r\nH. Graunt"
   maxMailSize: 185
+  questOrder: 1

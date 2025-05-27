@@ -15,10 +15,18 @@ public class UIMailNotification : MonoBehaviour
     
     private bool _mailNew = true;
     private bool _animStarted;
+    private bool _openedUINotification = true;
+
+    public static bool StartMailNew;
+    public static bool CollectVacuumQuestMailNew;
+    public static bool InsertBatteryQuestMailNew;
+    public static bool TestFormBatteryQuestMailNew;
 
     private RectTransform _elementRectTransform;
 
     private Component _questManager;
+
+    public static bool OpenUINotificationAdded;
     
     private void Start()
     {
@@ -26,31 +34,30 @@ public class UIMailNotification : MonoBehaviour
         _activeElementPos = _elementRectTransform.localPosition.x;
         passiveElementPos = _activeElementPos + passiveElementPos;
         
-        GameManager.Instance.GetComponent<QuestManager>().insertBatteryQuestResults.AddListener(GotNewMail);
-    }
+        GameManager.Instance.GetComponent<QuestManager>().collectVacuumQuestResults.AddListener(GotNewMail); 
+        GameManager.Instance.GetComponent<QuestManager>().insertBatteryQuestResults.AddListener(GotNewMail);   
+        GameManager.Instance.GetComponent<QuestManager>().testFormBatteryQuestResults.AddListener(GotNewMail); 
+        
+        if(OpenUINotificationAdded)
+            return;
 
-    //COUNTING MUST BE TESTED AGAIN WHEN ADDED TO THE BUTTON CLICK FUNCTION
+        GameManager.Instance.GetComponent<QuestManager>().collectVacuumQuestResults.AddListener(StartOpenUINotification); 
+        GameManager.Instance.GetComponent<QuestManager>().insertBatteryQuestResults.AddListener(StartOpenUINotification);   
+        GameManager.Instance.GetComponent<QuestManager>().testFormBatteryQuestResults.AddListener(StartOpenUINotification);
+    }
+    
     public void UpdateUIMailNotification()
     { 
-        if(_animStarted)
+        if(_animStarted || !_mailNew)
             return;
         
-        if (!_mailNew)
-        {
-            //StartCoroutine(OpenUINotification());
-            //_mailNew = true;
-            return;
-        }        
-        
-        if (MailScreen.NewMailCount == 1)//&& _mailNew)
+        if (MailScreen.NewMailCount == 1)
         {
             StartCoroutine(CloseUINotification());
-            MailScreen.NewMailCount--;
             _mailNew = false; 
         }
-        else //if (_mailNew)
+        else
         {
-            MailScreen.NewMailCount--;
             _mailNew = false;
         }
     }
@@ -58,6 +65,15 @@ public class UIMailNotification : MonoBehaviour
     public void GotNewMail()
     {
         _mailNew = true;
+    }
+
+    void StartOpenUINotification()
+    {
+        if(_openedUINotification)
+            return;
+        
+        StartCoroutine(OpenUINotification());
+        OpenUINotificationAdded = true;
     }
     
     private IEnumerator OpenUINotification()
@@ -81,8 +97,9 @@ public class UIMailNotification : MonoBehaviour
         {
             _elementRectTransform.localPosition += new Vector3(movingValue * movingSpeed * Time.deltaTime,0,0 );
             yield return null;
-        }     
-        
+        }
+
+        _openedUINotification = false;
         _animStarted = false;
     }
 }

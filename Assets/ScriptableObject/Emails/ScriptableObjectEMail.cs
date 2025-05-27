@@ -11,4 +11,6 @@ public class EmailData : ScriptableObject
     public string content;   // Inhalt der E-Mail
 
     public float maxMailSize; // Maximum size of the mail content textbox
+    
+    public int questOrder;
 }
