@@ -24,5 +24,5 @@ MonoBehaviour:
   description: "Test aborted at cycle 140\nSEI degradation is more likely when the
     voltage range is incorrectly set.\n\u2192 Discharge cutoff voltage too low \u2014
     should be > 2.8 V."
-  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
-  OvenResultList: []
+  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 1}
+  OvenTestList: []

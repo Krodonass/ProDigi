@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum OvenModi
 {
@@ -29,16 +31,26 @@ public class OvenUI : MonoBehaviour
     public GameObject ResultView;
     
     public GameObject InsertBatteriesView;
+    
+    public GameObject CloseDoorView;
+    
+    public bool Batteryinserted = false;
 
-    private OvenPreset _formattedPreset;
+    public Doors OvenDoor;
+
+    private OvenPreset _formattedPreset = null;
+
+    [SerializeField] private UnityEngine.UI.Button FormButton;
+    
+    [SerializeField] private UnityEngine.UI.Button TestButton;
 
     public void OpenStart()
     {
-        PickupController.InsertBattery -= OpenStart;
         FormatView.SetActive(false);
         StartView.SetActive(true);
         ResultView.SetActive(false);
         InsertBatteriesView.SetActive(false);
+        CloseDoorView.SetActive(false);
     }
 
     public void OpenPresetView()
@@ -47,6 +59,7 @@ public class OvenUI : MonoBehaviour
         StartView.SetActive(false);
         ResultView.SetActive(false);
         InsertBatteriesView.SetActive(false);
+        CloseDoorView.SetActive(false);
     }
 
     public void OpenResultView(OvenPreset ovenPreset)
@@ -55,12 +68,13 @@ public class OvenUI : MonoBehaviour
         StartView.SetActive(false);
         ResultView.SetActive(true);
         InsertBatteriesView.SetActive(false);
+        CloseDoorView.SetActive(false);
         ResultView.GetComponent<OvenResultView>().LoadResult(ovenPreset);
     }
     
     public void SetTestMode()
     {
-        if (currentFormatIndex < 0)
+        if (_formattedPreset == null)
         {
             if (noFormat != null)
             {
@@ -83,10 +97,79 @@ public class OvenUI : MonoBehaviour
         OpenPresetView();
     }
 
+    public void DeactivateForm()
+    {
+        if (FormButton != null)
+        {
+            FormButton.interactable = false;
+        }
+    }
+
+    public void AcivateForm()
+    {
+        if (FormButton != null)
+        {
+            FormButton.interactable = true;
+        }
+    }
+
+    public void DeactivateTest()
+    {
+        if (TestButton != null)
+        {
+            TestButton.interactable = false;
+        }
+    }
+
+    public void AcivateTest()
+    {
+        if (TestButton != null)
+        {
+            TestButton.interactable = true;
+        }
+    }
+
+    public void OnOpenDoorHandler(Boolean isOpen)
+    {
+        print("IS OPEN");
+        if (Batteryinserted)
+        {
+            if (isOpen)
+            {
+                CloseDoorView.SetActive(true);
+                FormatView.SetActive(false);
+                StartView.SetActive(false);
+                ResultView.SetActive(false);
+                InsertBatteriesView.SetActive(false);
+            }
+            else
+            {
+                CloseDoorView.SetActive(false);
+                FormatView.SetActive(false);
+                StartView.SetActive(true);
+                ResultView.SetActive(false);
+                InsertBatteriesView.SetActive(false);
+            }
+        }
+    }
+
+    public void OnInsertBatterieHandler()
+    {
+        print("Insert Battery");
+        Batteryinserted = true;
+        PickupController.InsertBattery -= OnInsertBatterieHandler;
+        CloseDoorView.SetActive(true);
+        FormatView.SetActive(false);
+        StartView.SetActive(false);
+        ResultView.SetActive(false);
+        InsertBatteriesView.SetActive(false);
+    }
+
     private void Start()
     {
         //OpenStart();
-        PickupController.InsertBattery += OpenStart;
+        PickupController.InsertBattery += OnInsertBatterieHandler;
+        OvenDoor.OnOpenDoor += OnOpenDoorHandler;
     }
 
     public void LoadOvenPresets(int number, OvenPreset ovenPreset)
@@ -143,19 +226,26 @@ public class OvenUI : MonoBehaviour
     {
         OpenStart();
         currentFormatIndex = -1;
+        currentTestIndex = 0;
         _formattedPreset = null;
+        AcivateTest();
+        AcivateForm();
     }
 
     public void FormatBattery()
     {
+        print("FORMieren!");
         if (currenPresetList == ovenFormatList)
         {
             _formattedPreset = currenPresetList[currentFormatIndex];
             OpenResultView(currenPresetList[currentFormatIndex]);
+            DeactivateForm();
         }
         else
         {
             OpenResultView(currenPresetList[currentTestIndex]);
+            DeactivateForm();
+            DeactivateTest();
         }
     }
 }

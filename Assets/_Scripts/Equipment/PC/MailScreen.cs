@@ -19,6 +19,8 @@ public class MailScreen : MonoBehaviour
     
     [Tooltip("A List of EmailData from Emails you get during the game.")]
     [SerializeField] private List<EmailData> secondaryEmails;
+
+    public static int NewMailCount;
     
     private void Start()
     {
@@ -30,16 +32,13 @@ public class MailScreen : MonoBehaviour
             EmailWidget emailWidget = newEmailWidget.GetComponent<EmailWidget>();
             if(emailWidget) 
                 emailWidget.LoadEmail(email);
+            emailWidget.GetComponent<EmailWidget>().SetMailNewStatus();
             
             GameObject newSpacingBar = Instantiate(spacingBarPrefab, scrollViewContent);
             newSpacingBar.transform.SetSiblingIndex(1);
         }
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.H))
-            NextEmail(0);
+        
+        NewMailCount = firstEmails.Count;
     }
 
     public void NextEmail(int index)
@@ -48,6 +47,7 @@ public class MailScreen : MonoBehaviour
         newEmailWidget.transform.SetSiblingIndex(0);
         EmailWidget emailWidget = newEmailWidget.GetComponent<EmailWidget>();
         emailWidget.LoadEmail(secondaryEmails[index]);
+        emailWidget.GetComponent<EmailWidget>().SetMailNewStatus();
         //emailWidget.LoadEmail(secondaryEmails.Find(item => item.name == "Email_02"));
         
         GameObject newSpacingBar = Instantiate(spacingBarPrefab, scrollViewContent);

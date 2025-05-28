@@ -16,20 +16,15 @@ public class PatcellTesterTriggerDetect : MonoBehaviour
 
     public Material assemblyPossible;
     public Material assemblyNotPossible;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    
+    
     void Update()
     {
         //Debug.Log(gameManager.GetComponent<GameManager>().placedPatcellInTesterGameManager);
 
         if (gameManager.GetComponent<GameManager>().placedPatcellInTesterGameManager)
         {
-  
+            CollisionAssemblyIdentifier.HideMouseInteractable();
             PatCellInTester.SetActive(true);
             PatCellAssembled.SetActive(false);
             Trigger.SetActive(false);
@@ -45,6 +40,7 @@ public class PatcellTesterTriggerDetect : MonoBehaviour
             // "Y"- Rotation
             placingPossible = true;
             Trigger.GetComponent<Renderer>().material = assemblyPossible;
+            CollisionAssemblyIdentifier.ShowMouseInteractable();
         }
     }
 
@@ -52,5 +48,6 @@ public class PatcellTesterTriggerDetect : MonoBehaviour
     {
         placingPossible = false;
         Trigger.GetComponent<Renderer>().material = assemblyNotPossible;
+        CollisionAssemblyIdentifier.HideMouseInteractable();
     }
 }

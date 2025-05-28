@@ -17,8 +17,11 @@ public class PcCanvas : MonoBehaviour
     void Start()
     {
         ControlsScreen.SetActive(false);
-        MailScreen.SetActive(false);
         StartScreen.SetActive(true);
+
+        //Mailscreen needs to stay active for creating Emails during the whole game!
+        MailScreen.SetActive(true);
+        SetAllMailScreenChildren(false);
     }
     
     public static void TriggerPCQuit()
@@ -31,13 +34,13 @@ public class PcCanvas : MonoBehaviour
     {
         ControlsScreen.SetActive(false);
         StartScreen.SetActive(false);
-        MailScreen.SetActive(true);
+        SetAllMailScreenChildren(true);
     }
     
     //opens start screen and closes every other screen
     public void OpenStartScreen()
     {
-        MailScreen.SetActive(false);
+        SetAllMailScreenChildren(false);
         ControlsScreen.SetActive(false);
         StartScreen.SetActive(true);
     }
@@ -45,20 +48,22 @@ public class PcCanvas : MonoBehaviour
     //opens control screen and closes every other screen
     public void OpenControlsScreen()
     {
-        MailScreen.SetActive(false);
+        SetAllMailScreenChildren(false);
         StartScreen.SetActive(false);
         ControlsScreen.SetActive(true);
     }
     
-    //Opens a specific mail
-    public void OpenMail()
+    //plays mouse click sound
+    public void MouseClickSound(AudioSource audioSource)
     {
-
+        audioSource.Play();
     }
 
-    //plays mouse click sound
-    public void MouseClickSound()
+    private void SetAllMailScreenChildren(bool state)
     {
-        MouseClick.Play();
+        foreach (Transform child in MailScreen.transform)
+        {
+            child.gameObject.SetActive(state);
+        }
     }
 }

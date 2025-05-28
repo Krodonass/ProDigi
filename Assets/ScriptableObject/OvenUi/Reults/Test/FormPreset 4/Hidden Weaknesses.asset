@@ -25,5 +25,5 @@ MonoBehaviour:
     layer \u2014 incompletely formed due to low temperature \u2014 led to gradual
     degradation.\nThe SoH dropped just below 80%. The cell is only conditionally
     suitable for long-term applications."
-  color: {r: 0.9764706, g: 1, b: 0.27058825, a: 0}
-  OvenResultList: []
+  color: {r: 0.9764706, g: 1, b: 0.27058825, a: 1}
+  OvenTestList: []

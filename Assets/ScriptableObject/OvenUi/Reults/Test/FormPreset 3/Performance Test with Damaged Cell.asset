@@ -25,5 +25,5 @@ MonoBehaviour:
     had already been structurally weakened by aggressive formation.\nUnder 3.0C discharge,
     the voltage immediately collapsed.\nThe cell responded unstably and is no longer
     usable."
-  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
-  OvenResultList: []
+  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 1}
+  OvenTestList: []

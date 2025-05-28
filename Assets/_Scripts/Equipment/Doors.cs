@@ -9,13 +9,26 @@ public enum OpenDiretionTypes
     Right,
 }
 
+
+public enum Axis
+{
+    X,
+    Y,
+    Z,
+}
+
 public class Doors : MonoBehaviour
 {
+
+    public event Action<Boolean> OnOpenDoor;
+    
     //----------------Needs Door Tag!!!!------------------------------
     public GameObject gameManager;
 
     public OpenDiretionTypes OpenDiretion;
 
+    public Axis Axis = Axis.Y;
+    
     //Wie schnell die Animation abgespielt wird
     public float toggleTime = .5f;
 
@@ -146,35 +159,49 @@ public class Doors : MonoBehaviour
     // Coroutine: rotiert das GameObject von startAngle zu targetAngle
     private IEnumerator RotateDoor()
     {
+        if (isAnimating)
+            yield break;
+
         isAnimating = true;
 
+        int axisIndex = (int)Axis;
         float timeElapsed = 0f;
-        float startAngle = transform.localEulerAngles.y;
-        float endAngle = isOpen ? closedAngle : openAngle;
-        endAngle = (OpenDiretion == OpenDiretionTypes.Left) ? endAngle : -endAngle;
 
-        // Unitys Euler-Angles sind 0-360 → sicherstellen, dass Zielwinkel stimmt
-        if (endAngle - startAngle > 180f) startAngle += 360f;
-        if (startAngle - endAngle > 180f) endAngle += 360f;
+        // aktuellen Startwinkel auf der gewählten Achse holen
+        float startAngle = transform.localEulerAngles[axisIndex];
 
+        // Zielwinkel bestimmen
+        float targetAngle = isOpen ? closedAngle : openAngle;
+        targetAngle = (OpenDiretion == OpenDiretionTypes.Left) ? targetAngle : -targetAngle;
+
+        // Unitys Euler-Werte normalisieren (0–360)
+        if (targetAngle - startAngle > 180f) startAngle += 360f;
+        if (startAngle - targetAngle > 180f) targetAngle += 360f;
+
+        // sanftes Interpolieren
         while (timeElapsed < toggleTime)
         {
             timeElapsed += Time.deltaTime;
-            float t = timeElapsed / toggleTime;
-            float currentAngle = Mathf.Lerp(startAngle, endAngle, t);
+            float t = Mathf.Clamp01(timeElapsed / toggleTime);
+            float currentAngle = Mathf.Lerp(startAngle, targetAngle, t);
 
             Vector3 rotation = transform.localEulerAngles;
-            rotation.y = currentAngle;
+            rotation[axisIndex] = currentAngle;
             transform.localEulerAngles = rotation;
 
             yield return null;
         }
 
-        Vector3 finalRotation = transform.localEulerAngles;
-        finalRotation.y = endAngle % 360f;
-        transform.localEulerAngles = finalRotation;
+        // Endrotation exakt setzen und wieder in 0–360 umwandeln
+        Vector3 finalRot = transform.localEulerAngles;
+        finalRot[axisIndex] = targetAngle % 360f;
+        transform.localEulerAngles = finalRot;
 
         isOpen = !isOpen;
+        if (OnOpenDoor != null)
+        {
+            OnOpenDoor.Invoke(isOpen);
+        }
         isAnimating = false;
     }
 

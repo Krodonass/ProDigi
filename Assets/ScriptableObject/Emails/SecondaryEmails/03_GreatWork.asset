@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bed5e614b0dd34485c43fa9f9413fc, type: 3}
+  m_Name: 03_GreatWork
+  m_EditorClassIdentifier: 
+  subject: Great Work! (Probably.)
+  sender: Message
+  content: "Dear Student,\n\r\nSince I don\u2019t have any eyes in the lab (at least...
+    none that I\u2019m aware of), I\u2019m going to assume you\u2019ve completed\r\nthe
+    battery test. So\u2014how did it go? Great? Terrible? \u201CYellow\u201D? Either
+    way, I\u2019m confident you handled it admirably.\n\r\nNow, you still have access
+    to the lab for a little while longer. Why not run a few more tests? Or completely
+    destroy\r\nthe place to show future students exactly what not to do. Lead by
+    example, as they say (nothing is nailed down).\n\r\nIf you have any questions
+    about this experiment, feel free to ask. And hey\u2014if this were a digital
+    world, wouldn\u2019t\r\nit be convenient if you could just hit the Esc key and
+    click \u201CHelp\u201D to see a visual summary of the entire process?\n\r\nAnyway,
+    thanks for participating. I\u2019m proud of you. Probably.\n\r\nYour favorite
+    docent,\n\r\nH. Graunt"
+  maxMailSize: 155
+  questOrder: 3

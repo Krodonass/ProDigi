@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bed5e614b0dd34485c43fa9f9413fc, type: 3}
+  m_Name: 01_ElectrolyteDispensingAndCallAssembly
+  m_EditorClassIdentifier: 
+  subject: Electrolyte Dispensing and Cell Assembly
+  sender: Message
+  content: "Dear Student,\n\r\nI nearly forgot to mention something important: once
+    you've placed all the parts on the tray and evacuated the\r\nvacuum chamber,
+    you'll find that the electrolyte dispenser is already inside. It\u2019s a fairly
+    precise tool\u2014just click it\r\nonce, and it should release a single drop
+    of electrolyte onto the cathode (aim is important here).\n\r\nIt\u2019s essential
+    that you assemble the PAT-Cell\xAE correctly, or the cell won\u2019t function
+    as intended. Fortunately, all\r\nparts are designed to interlock, so improper
+    assembly is nearly impossible. Still, if the schematic leaves you\r\nuncertain,
+    here\u2019s a step-by-step list to guide you:\n\r\nBase \u2192 Lower Plunger
+    \u2192 Lower Cathode \u2192 Plastic Sleeve \u2192 Drop of Electrolyte \u2192
+    Upper Cathode \u2192 Upper\r\nPlunger \u2192 Washer \u2192 Gear \u2192 Brass
+    Top\n\r\nOnce the assembly is complete, carefully remove the cell from the vacuum
+    chamber (and I do mean carefully\u2014\r\nplease don\u2019t repeat last semester\u2019s
+    incident) and place it into the docking station inside the test oven.\n\r\nYour
+    favorite docent,\n\r\nH. Graunt"
+  maxMailSize: 185
+  questOrder: 1

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -31,8 +32,14 @@ public class PatCellAssembly : MonoBehaviour
 
     public bool allAssembled;
 
+    public GameObject Prisma;
+    
     private void Start()
     {
+        if (Prisma)
+        {
+            Prisma.SetActive(false);
+        }
         brassTopAssembly.GetComponent<MeshRenderer>().enabled = false;
         gearAssembly.GetComponent<MeshRenderer>().enabled = false;
         upperPlungerAssembly.GetComponent<MeshRenderer>().enabled = false;
@@ -55,6 +62,7 @@ public class PatCellAssembly : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (!baseAssembled)
         {
             baseAssembly.GetComponent<MeshRenderer>().enabled = true;
@@ -65,6 +73,10 @@ public class PatCellAssembly : MonoBehaviour
             baseAssembly.GetComponent<Collider>().enabled = true;
         } else if (gameManager.GetComponent<GameManager>().isUsingGloveboxGameManager && !lowerPlungerAssembled && baseAssembled)
         {
+            if (Prisma)
+            {
+                Prisma.SetActive(true);
+            }
             //baseAssembly.GetComponent<Collider>().enabled = false;
             baseAssembly.GetComponent<MeshRenderer>().enabled = false;
             baseAssembly.layer = LayerMask.GetMask("Ignore Raycast");

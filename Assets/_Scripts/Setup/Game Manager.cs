@@ -118,6 +118,8 @@ public class GameManager : MonoBehaviour
     [Header("QuestLog")]
     public TMP_Text Quastlog;
 
+    public GameObject UIMailNotification;
+
     public GameObject CellHatchTrigger;
     public bool basePlacedInOuterHatchGameManager;
     public bool lowerPlungerPlacedInOuterHatchGameManager;
@@ -139,6 +141,7 @@ public class GameManager : MonoBehaviour
     public bool PatCellTesterPlacableGameManager;
 
     public InteractionUI interactionUI;
+    public GameObject cursorIcon;
 
     public GameObject drop;
     public bool electrolyAssembledGameManager;
@@ -157,11 +160,11 @@ public class GameManager : MonoBehaviour
 
         // Setzt die Instanz auf dieses Objekt
         Instance = this;
+        
         // Verhindert, dass das GameObject beim Szenenwechsel zerstört wird
         DontDestroyOnLoad(gameObject);
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         PickupController.PCStartEvent += StartUsingPC;
@@ -169,8 +172,7 @@ public class GameManager : MonoBehaviour
         PickupController.GloveBoxUseEvent += StartUsingGloveBox;
         PickupController.GloveBoxExitEvent += StopUsingGloveBox;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         //electrolyAssembledGameManager = drop.GetComponent<Drop>().electolytAssembled;
@@ -291,48 +293,49 @@ public class GameManager : MonoBehaviour
 
         if (allAssembledGameManager)
         {
-            patCellAssembled.SetActive(true);
+            //patCellAssembled.SetActive(true);
         }
 
         if (PatCellTesterTrigger)
         {
             PatCellTesterPlacableGameManager = PatCellTesterTrigger.GetComponent<PatcellTesterTriggerDetect>().placingPossible;
         }
-
-        
-    }
-
-    public enum GameState
-    {
-
     }
 
     //Call when you use a PC
-    public void StartUsingPC(Transform PC){
+    public void StartUsingPC(Transform PC)
+    {
         isUsingPCGameManager = true;
         PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        if(playerMovement){
+        if(playerMovement)
+        {
             playerMovement.StopMovement();
         }
         playerCam.StartPosition = playerCam.transform.position;
         playerCam.transform.DOMove(PC.position, .5f);
         playerCam.transform.DORotate(PC.rotation.eulerAngles, 0.5f);
-        if(interactionUI){
-                interactionUI.gameObject.SetActive(false);
-        }
+        
+        cursorIcon.SetActive(false);
+        
+        //if(interactionUI) 
+          //  interactionUI.gameObject.SetActive(false);
     }
 
-    public void StopUsingPC(){
+    public void StopUsingPC()
+    {
         playerCam.transform.DOMove(playerCam.StartRotation.eulerAngles, 0.5f);
         playerCam.transform.DOMove(playerCam.StartPosition, .5f).OnComplete(() =>
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            if(interactionUI){
-                interactionUI.gameObject.SetActive(true);
-            }
+            
+            //if(interactionUI) 
+              //  interactionUI.gameObject.SetActive(true);
+              
+            cursorIcon.SetActive(true);
+            
             isUsingPCGameManager = false;
         });
     }
@@ -356,7 +359,8 @@ public class GameManager : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            if(interactionUI){
+            if(interactionUI)
+            {
                 interactionUI.gameObject.SetActive(true);
             }
             isUsingGloveboxGameManager = false;

@@ -22,35 +22,42 @@ public class EmailWidget : MonoBehaviour
     
     [SerializeField] private float sizingValue = 0.1f;
     [SerializeField] private float sizingSpeed = 300f;
-    //[SerializeField] private float maxMailSize = 100f;
+    
     private float _maxMailSize;
     private float _minMailSize;
 
-    private bool _mailOpened = false;
-    private bool _animStarted = false;
+    private bool _mailOpened;
+    private bool _animStarted;
+
+    private int _questOrder;
 
     private RectTransform _buttonRectTransform;
     private RectTransform _nextChildRectTransform;
     private RectTransform _parentRectTransform;
+    private Transform _parent;
     
     void Start()
     {
+        //SetMailNewStatus();
+        _parent = transform.parent;
         _buttonRectTransform = button.GetComponent<RectTransform>();
-        _nextChildRectTransform = transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>();
-        _parentRectTransform = transform.parent.GetComponent<RectTransform>();
+        _nextChildRectTransform = _parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>();
+        _parentRectTransform = _parent.GetComponent<RectTransform>();
         
         _minMailSize = button.GetComponent<RectTransform>().sizeDelta.y;
 
         mailText.gameObject.SetActive(false);
-        transform.parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<Image>().enabled = false;
+        _parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<Image>().enabled = false;
     }
 
-    public void LoadEmail(EmailData emailData){
+    public void LoadEmail(EmailData emailData)
+    {
         //this.emailData = emailData;
         _maxMailSize = emailData.maxMailSize;
         senderField.text = emailData.sender;
         subjectField.text = emailData.subject;
         mailText.text = emailData.content;
+        _questOrder = emailData.questOrder;
     }
     
     public void UpdateMailView()
@@ -84,6 +91,7 @@ public class EmailWidget : MonoBehaviour
         
         mailText.gameObject.SetActive(true);
         mailViewSymbol.transform.Rotate(0,0,180);
+        
         _animStarted = false;
     }
 
@@ -103,4 +111,79 @@ public class EmailWidget : MonoBehaviour
         mailViewSymbol.transform.Rotate(0,0,-180);
         _animStarted = false;
     }
+
+    public void SetMailNewStatus()
+    { 
+        switch (_questOrder)
+        {
+            case 0:
+                if(UIMailNotification.StartMailNew)
+                    return;
+               
+                UIMailNotification.StartMailNew = true;
+                break;
+           
+            case 1:
+                if (UIMailNotification.CollectVacuumQuestMailNew)
+                    return;
+               
+                UIMailNotification.CollectVacuumQuestMailNew = true;
+                break;
+           
+            case 2:
+                if (UIMailNotification.InsertBatteryQuestMailNew)
+                    return;
+               
+                UIMailNotification.InsertBatteryQuestMailNew = true;
+                break;
+           
+            case 3:
+                if (UIMailNotification.TestFormBatteryQuestMailNew)
+                    return;
+               
+                UIMailNotification.TestFormBatteryQuestMailNew = true;
+                break;
+        }
+        Debug.Log(MailScreen.NewMailCount + " " + UIMailNotification.StartMailNew);
+    }
+
+    public void UpdateMailNewStatus()
+    {
+        switch (_questOrder)
+        {
+            case 0:
+                if(!UIMailNotification.StartMailNew)
+                    return;
+               
+                UIMailNotification.StartMailNew = false;
+                MailScreen.NewMailCount--;
+                break;
+           
+            case 1:
+                if (!UIMailNotification.CollectVacuumQuestMailNew)
+                    return;
+               
+                UIMailNotification.CollectVacuumQuestMailNew = false;
+                MailScreen.NewMailCount--;
+                break;
+           
+            case 2:
+                if (!UIMailNotification.InsertBatteryQuestMailNew)
+                    return;
+               
+                UIMailNotification.InsertBatteryQuestMailNew = false;
+                MailScreen.NewMailCount--;
+                break;
+           
+            case 3:
+                if (!UIMailNotification.TestFormBatteryQuestMailNew)
+                    return;
+               
+                UIMailNotification.TestFormBatteryQuestMailNew = false;
+                MailScreen.NewMailCount--;
+                break;
+        }  
+        Debug.Log(MailScreen.NewMailCount+ " " + UIMailNotification.StartMailNew);
+    }
+    
 }

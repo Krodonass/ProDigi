@@ -24,5 +24,5 @@ MonoBehaviour:
   description: "Test aborted at cycle 390!\nThe thermal load was too high \u2014
     severe capacity loss and early aging occurred.\nThe safety cutoff at SoH < 80%
     was reached."
-  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 0}
-  OvenResultList: []
+  color: {r: 0.7647059, g: 0.18431373, b: 0.22352941, a: 1}
+  OvenTestList: []

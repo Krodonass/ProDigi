@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionAssemblyIdentifier : MonoBehaviour
 {
+    public static event Action ShowMouseInput; 
+    public static event Action HideMouseInput; 
+    
     public GameObject gameManager;
 
     public GameObject baseAssembly;
@@ -45,6 +49,8 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
 
     public bool brasstopAssemblyPossible;
     public bool brasstopAssembled;
+
+    public Collider Collider;
 
     // Update is called once per frame
     void Update()
@@ -111,17 +117,26 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-    }
 
+        if (Collider)
+        {
+            Collider.enabled = true;
+        }
+    }
+    
     private void OnTriggerStay(Collider collision)
     {
-
         if (gameObject.name == "base" && collision.gameObject.name == "BaseAssembly")
         {
             // Zum Spieler kippen
             // "Y"- Rotation
             baseAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
+            if (!GameManager.Instance.assembleBaseGameManager && ShowMouseInput != null)
+            {
+                print("baseAssemblyPossible");
+                ShowMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "lower_plunger" && collision.gameObject.name == "LowerPlungerAssembly")
@@ -130,7 +145,10 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // "Y"- Rotation
             lowerPlungerAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
-
+            if (!GameManager.Instance.assembleLowerPlungerGameManager && ShowMouseInput != null)
+            {
+                ShowMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "positive_lower_cathode" && collision.gameObject.name == "LowerCathodeAssembly")
@@ -139,7 +157,10 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // "Y"- Rotation
             lowerCathodeAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
-
+            if (!GameManager.Instance.assembleLowerCathodeGameManager && ShowMouseInput != null)
+            {
+                ShowMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "sleeve" && collision.gameObject.name == "SleeveAssembly")
@@ -148,7 +169,10 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // "Y"- Rotation
             sleeveAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
-
+            if (!GameManager.Instance.assembleSleeveGameManager && ShowMouseInput != null)
+            {
+                ShowMouseInput.Invoke();
+            }
         }
         
         if (gameObject.name == "PipetteLaserPointer" && collision.gameObject.name == "ElectrolyteAssembly")
@@ -161,6 +185,10 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             List<Material> materialList = new List<Material>();
             materialList.Add(assemblyPossible);
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
+            if (!GameManager.Instance.assembleElectrolyteGameManager && ShowMouseInput != null)
+            {
+                ShowMouseInput.Invoke();
+            }
 
         }
 
@@ -168,9 +196,12 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
         {
             // Zum Spieler kippen
             // "Y"- Rotation
-            Debug.Log("hui");
             upperCathodeAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
+            if (!GameManager.Instance.assembleUpperCathodeGameManager && ShowMouseInput != null)
+            {
+                ShowMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "upper_plunger" && collision.gameObject.name == "UpperPlungerAssembly")
@@ -179,27 +210,37 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
             // "Y"- Rotation
             upperPlungerAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
+            if (!GameManager.Instance.assembleUpperPlungerGameManager && ShowMouseInput != null)
+            {
+                ShowMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "gear" && collision.gameObject.name == "GearAssembly")
         {
             gearAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
+            if (!GameManager.Instance.assembleGearGameManager && ShowMouseInput != null)
+            {
+                ShowMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "brass_top" && collision.gameObject.name == "BrassTopAssembly")
         {
             brasstopAssemblyPossible = true;
             collision.gameObject.GetComponent<Renderer>().material = assemblyPossible;
+            if (!GameManager.Instance.assembleBrassTopGameManager && ShowMouseInput != null)
+            {
+                ShowMouseInput.Invoke();
+            }
         }
     }
-
+    
     private void OnTriggerEnter(Collider collision)
     {
-        if (gameObject.name == "PipetteLaserPointer")
-        {
-            
-        }
+        
+        
 
         if (collision.gameObject.tag == "ground")
         {
@@ -213,54 +254,106 @@ public class CollisionAssemblyIdentifier : MonoBehaviour
         {
             baseAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "lower_plunger" && collision.gameObject.name == "LowerPlungerAssembly")
         {
             lowerPlungerAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "positive_lower_cathode" && collision.gameObject.name == "LowerCathodeAssembly")
         {
             lowerCathodeAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "sleeve" && collision.gameObject.name == "SleeveAssembly")
         {
             sleeveAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "PipetteLaserPointer" && collision.gameObject.name == "ElectrolyteAssembly")
         {
             electrolyteAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "negative_upper_cathode" && collision.gameObject.name == "UpperCathodeAssembly")
         {
             upperCathodeAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "upper_plunger" && collision.gameObject.name == "UpperPlungerAssembly")
         {
             upperPlungerAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "gear" && collision.gameObject.name == "GearAssembly")
         {
             gearAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
         }
 
         if (gameObject.name == "brass_top" && collision.gameObject.name == "BrassTopAssembly")
         {
             brasstopAssemblyPossible = false;
             collision.gameObject.GetComponent<Renderer>().material = assemblyNotPossible;
+            if (HideMouseInput != null)
+            {
+                HideMouseInput.Invoke();
+            }
+        }
+    }
+    
+    public static void ShowMouseInteractable()
+    {
+        if (ShowMouseInput != null)
+        {
+            ShowMouseInput.Invoke();
+        }
+    }
+    
+    public static void HideMouseInteractable()
+    {
+        if (HideMouseInput != null)
+        {
+            HideMouseInput.Invoke();
         }
     }
 }

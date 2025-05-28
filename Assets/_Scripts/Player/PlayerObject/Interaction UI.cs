@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class InteractionUI : MonoBehaviour
 {
@@ -12,10 +13,17 @@ public class InteractionUI : MonoBehaviour
     public TMP_Text mText;
     public Canvas canvas;
 
+    public TMP_Text InteractableKey;
+    public Image MouseInteraction;
+
     private void Start()
     {
         PickupController.PCStartEvent += PcCanvasOnPCStartEvent;
         PcCanvas.PCQuitEvent += PcCanvasOnPCQuitEvent;
+        PickupController.OnHoverInteractable += ShowInterActionKey;
+        PickupController.OnNotHoverInteractable += HideInteractionKey;
+        CollisionAssemblyIdentifier.ShowMouseInput += ShowMouseInteraction;
+        CollisionAssemblyIdentifier.HideMouseInput += HideMouseInteraction;
     }
 
     // Update is called once per frame
@@ -34,6 +42,11 @@ public class InteractionUI : MonoBehaviour
         {
             mText.text = "";
         }
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            HideMouseInteraction();
+        }
     }
     
     void PcCanvasOnPCStartEvent(Transform PC)
@@ -41,6 +54,7 @@ public class InteractionUI : MonoBehaviour
         if (canvas)
         {
             canvas.gameObject.SetActive(false);
+            InteractableKey.gameObject.SetActive(false);
         }
     }
     
@@ -50,5 +64,25 @@ public class InteractionUI : MonoBehaviour
         {
             canvas.gameObject.SetActive(true);
         }
+    }
+
+    void ShowInterActionKey()
+    {
+        InteractableKey.gameObject.SetActive(true);
+    }
+
+    void HideInteractionKey()
+    {
+        InteractableKey.gameObject.SetActive(false);
+    }
+
+    void ShowMouseInteraction()
+    {
+        MouseInteraction.gameObject.SetActive(true);
+    }
+
+    void HideMouseInteraction()
+    {
+        MouseInteraction.gameObject.SetActive(false);
     }
 }
