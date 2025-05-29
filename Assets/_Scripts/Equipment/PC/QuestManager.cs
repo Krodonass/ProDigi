@@ -11,6 +11,10 @@ public class QuestManager : MonoBehaviour
     public UnityEvent testFormBatteryQuestResults;
 
     [SerializeField] private Button testFormBatteryQuestTrigger;
+
+    private bool _collectVacuumQuestFinished;
+    private bool _insertBatteryQuestFinished;
+    private bool _testFormBatteryQuestFinished;
     
     void Start()
     {
@@ -26,20 +30,32 @@ public class QuestManager : MonoBehaviour
 
     public void CollectVacuumQuestDone()
     {
+        if(_collectVacuumQuestFinished)
+            return;
+        
         collectVacuumQuestResults?.Invoke();
         MailScreen.NewMailCount++;
+        _collectVacuumQuestFinished = true;
     }
     
     private void InsertBatteryQuestDone()
     {
+        if (_insertBatteryQuestFinished)
+            return;
+        
         insertBatteryQuestResults?.Invoke();
         MailScreen.NewMailCount++;
         PickupController.InsertBattery -= InsertBatteryQuestDone;
+        _insertBatteryQuestFinished = true;
     }
 
     private void TestFormBatteryQuestDone()
     {
+        if(_testFormBatteryQuestFinished)
+            return;
+        
         testFormBatteryQuestResults?.Invoke();
         MailScreen.NewMailCount++;
+        _testFormBatteryQuestFinished = true;
     }
 }
