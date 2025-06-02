@@ -1005,6 +1005,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3963922160094309382, guid: 74b4b20232ef6184d9f84fb52ffa6d7e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4213669427519827376, guid: 74b4b20232ef6184d9f84fb52ffa6d7e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 2
@@ -1044,6 +1048,14 @@ PrefabInstance:
     - target: {fileID: 6892978580921601698, guid: 74b4b20232ef6184d9f84fb52ffa6d7e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989790943071800631, guid: 74b4b20232ef6184d9f84fb52ffa6d7e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989790943071800631, guid: 74b4b20232ef6184d9f84fb52ffa6d7e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7325402219212664160, guid: 74b4b20232ef6184d9f84fb52ffa6d7e, type: 3}
       propertyPath: m_Pivot.x

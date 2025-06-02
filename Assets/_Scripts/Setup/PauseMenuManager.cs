@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PauseMenuManager : MonoBehaviour
@@ -8,13 +9,13 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject[] activeInGameUIObjects;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseMenuLayout;
-    [SerializeField] private GameObject helpScreen;
 
     [SerializeField] private Transform playerTransform;
 
     private void Start()
     {
-        pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);            
+        pauseMenuLayout.SetActive(true);
     }
 
     void Update()
@@ -40,16 +41,18 @@ public class PauseMenuManager : MonoBehaviour
         GameManager.Instance.StopUsingPC();
     }
 
-    public void OpenHelp()
+    public void OpenScreen(GameObject screen)
     {
-        helpScreen.SetActive(true);
-        pauseMenuLayout.SetActive(false);
+        foreach (Transform child  in pauseMenu.transform)
+            child.gameObject.SetActive(false);
+        
+        screen.SetActive(true);
     }
     
-    public void CloseHelp()
+    public void CloseScreen(GameObject screen)
     {
         pauseMenuLayout.SetActive(true);
-        helpScreen.SetActive(false);
+        screen.SetActive(false);
     }
 
     public void QuitApplication()
