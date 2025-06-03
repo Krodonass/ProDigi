@@ -51,7 +51,7 @@ public class Doors : MonoBehaviour
     private Coroutine _currentCoroutine;
 
     //Opens or close the door
-    public void InvokeInteraction()
+    public virtual void InvokeInteraction()
     {
         if (CompareTag("Door"))
         {

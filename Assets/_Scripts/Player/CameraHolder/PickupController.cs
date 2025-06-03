@@ -254,6 +254,7 @@ public class PickupController : MonoBehaviour
             {
                 if (hit.collider.name == "OutterHatch")
                 {
+                    if(!gm.isOpenInnerHatchGameManager)
                     if (!gm.isOpenOutterHatchGameManager)
                     {
                         isOpeningOutterHatch = true;
@@ -293,12 +294,12 @@ public class PickupController : MonoBehaviour
                 }
                 else if (hit.collider.name == "vacq_handle")
                 {
-                    if (!gm.isEvacuatedGameManager && gm.isFloodedGameManager)
+                    if (!gm.isEvacuatedGameManager && gm.isFloodedGameManager && !gm.isOpenInnerHatchGameManager && !gm.isOpenOutterHatchGameManager)
                     {
                         isFlooding = false;
                         isEvacuating = true;
                     }
-                    else if (gm.isEvacuatedGameManager && !gm.isFloodedGameManager)
+                    else if (gm.isEvacuatedGameManager && !gm.isFloodedGameManager && !gm.isOpenInnerHatchGameManager && !gm.isOpenOutterHatchGameManager)
                     {
                         isEvacuating = false;
                         isFlooding = true;
