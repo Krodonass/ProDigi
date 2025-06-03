@@ -158,6 +158,12 @@ public class PickupController : MonoBehaviour
             highlight = hit.transform;
             EnableOutline(highlight);
             isUsable = true;
+        }else if (hit.transform.CompareTag("Door") && !isCarrying && !isUsingPC)
+        {
+            OnHoverInteractable.Invoke();
+            highlight = hit.transform;
+            EnableOutline(highlight);
+            isUsable = true;
         }else
         {
             OnNotHoverInteractable.Invoke();

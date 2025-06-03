@@ -431,27 +431,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 2
   m_CollisionDetection: 0
---- !u!114 &84609820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 84609814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!65 &84609821
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -494,6 +473,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.002543726, y: 0.004802913, z: 0.00029659693}
   m_Center: {x: 0.000039156675, y: -4.527751e-11, z: -0.00075963046}
+--- !u!114 &84609827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84609814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &87522780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8167378558919398883, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
@@ -3373,14 +3367,13 @@ GameObject:
   - component: {fileID: 461637972}
   - component: {fileID: 461637979}
   - component: {fileID: 461637978}
-  - component: {fileID: 461637977}
   - component: {fileID: 461637976}
-  - component: {fileID: 461637975}
   - component: {fileID: 461637974}
   - component: {fileID: 461637973}
+  - component: {fileID: 461637980}
   m_Layer: 0
   m_Name: benching_drawer_05
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3442,27 +3435,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.003279917, y: 0.004802913, z: 0.0004795564}
   m_Center: {x: -5.9604643e-10, y: -9.5158575e-11, z: -0.0015964956}
---- !u!114 &461637975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461637971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!54 &461637976
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3490,27 +3462,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &461637977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461637971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!23 &461637978
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3561,6 +3512,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461637971}
   m_Mesh: {fileID: -2131836757811607068, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &461637980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461637971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &462126426
 GameObject:
   m_ObjectHideFlags: 0
@@ -5923,14 +5889,13 @@ GameObject:
   - component: {fileID: 798611639}
   - component: {fileID: 798611646}
   - component: {fileID: 798611645}
-  - component: {fileID: 798611644}
   - component: {fileID: 798611643}
-  - component: {fileID: 798611642}
   - component: {fileID: 798611641}
   - component: {fileID: 798611640}
+  - component: {fileID: 798611647}
   m_Layer: 0
   m_Name: benching_drawer_04
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5992,27 +5957,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.003279917, y: 0.004802913, z: 0.0004795564}
   m_Center: {x: -5.9604643e-10, y: -9.5158575e-11, z: -0.0015964956}
---- !u!114 &798611642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798611638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!54 &798611643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6040,27 +5984,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &798611644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798611638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!23 &798611645
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6111,6 +6034,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798611638}
   m_Mesh: {fileID: -2131836757811607068, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &798611647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798611638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &802167039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,14 +6158,13 @@ GameObject:
   - component: {fileID: 825870595}
   - component: {fileID: 825870602}
   - component: {fileID: 825870601}
-  - component: {fileID: 825870600}
   - component: {fileID: 825870599}
-  - component: {fileID: 825870598}
   - component: {fileID: 825870597}
   - component: {fileID: 825870596}
+  - component: {fileID: 825870603}
   m_Layer: 0
   m_Name: benching_drawer_05
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6289,27 +6226,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.003279917, y: 0.004802913, z: 0.0004795564}
   m_Center: {x: -5.9604643e-10, y: -9.5158575e-11, z: -0.0015964956}
---- !u!114 &825870598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825870594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!54 &825870599
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6337,27 +6253,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &825870600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825870594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!23 &825870601
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6408,6 +6303,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825870594}
   m_Mesh: {fileID: -2131836757811607068, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &825870603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825870594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &832544117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3092298552201564850, guid: c829ec858e67fbf4998d6c3169288f96, type: 3}
@@ -6604,12 +6514,12 @@ GameObject:
   - component: {fileID: 873622962}
   - component: {fileID: 873622961}
   - component: {fileID: 873622960}
-  - component: {fileID: 873622959}
   - component: {fileID: 873622958}
   - component: {fileID: 873622957}
+  - component: {fileID: 873622963}
   m_Layer: 0
   m_Name: mobile_cabinet_drawer_01
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6671,27 +6581,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.004160601, y: 0.005011855, z: 0.00016540769}
   m_Center: {x: -0.000009630471, y: 0.002318233, z: -0.0006329916}
---- !u!114 &873622959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873622955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!54 &873622960
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6769,6 +6658,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873622955}
   m_Mesh: {fileID: 1182075634246590196, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &873622963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873622955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1001 &888608290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7035,13 +6939,13 @@ GameObject:
   - component: {fileID: 923552411}
   - component: {fileID: 923552410}
   - component: {fileID: 923552409}
-  - component: {fileID: 923552408}
   - component: {fileID: 923552407}
   - component: {fileID: 923552406}
   - component: {fileID: 923552405}
+  - component: {fileID: 923552412}
   m_Layer: 0
   m_Name: benching_drawer_03
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7130,27 +7034,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 2
   m_CollisionDetection: 0
---- !u!114 &923552408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923552403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!64 &923552409
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7223,6 +7106,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923552403}
   m_Mesh: {fileID: -7965724618424867271, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &923552412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923552403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &930009884
 GameObject:
   m_ObjectHideFlags: 0
@@ -7858,13 +7756,13 @@ GameObject:
   - component: {fileID: 1004074251}
   - component: {fileID: 1004074250}
   - component: {fileID: 1004074249}
-  - component: {fileID: 1004074248}
   - component: {fileID: 1004074247}
   - component: {fileID: 1004074246}
   - component: {fileID: 1004074245}
+  - component: {fileID: 1004074252}
   m_Layer: 0
   m_Name: benching_drawer_01
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7953,27 +7851,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 2
   m_CollisionDetection: 0
---- !u!114 &1004074248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004074243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!64 &1004074249
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8046,6 +7923,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004074243}
   m_Mesh: {fileID: -7965724618424867271, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &1004074252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004074243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &1008840454
 GameObject:
   m_ObjectHideFlags: 0
@@ -8146,13 +8038,13 @@ GameObject:
   - component: {fileID: 1024127155}
   - component: {fileID: 1024127154}
   - component: {fileID: 1024127153}
-  - component: {fileID: 1024127152}
   - component: {fileID: 1024127151}
   - component: {fileID: 1024127150}
   - component: {fileID: 1024127149}
+  - component: {fileID: 1024127156}
   m_Layer: 0
   m_Name: benching_drawer_02
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8241,27 +8133,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 2
   m_CollisionDetection: 0
---- !u!114 &1024127152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1024127147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!64 &1024127153
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8334,6 +8205,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024127147}
   m_Mesh: {fileID: -7965724618424867271, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &1024127156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024127147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &1036356679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 135261021924147831, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
@@ -9898,13 +9784,13 @@ GameObject:
   - component: {fileID: 1154897226}
   - component: {fileID: 1154897225}
   - component: {fileID: 1154897224}
-  - component: {fileID: 1154897223}
   - component: {fileID: 1154897222}
   - component: {fileID: 1154897221}
   - component: {fileID: 1154897220}
+  - component: {fileID: 1154897227}
   m_Layer: 0
   m_Name: benching_drawer_01
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9993,27 +9879,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 2
   m_CollisionDetection: 0
---- !u!114 &1154897223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154897218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!64 &1154897224
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10086,6 +9951,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154897218}
   m_Mesh: {fileID: -7965724618424867271, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &1154897227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154897218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &1170936542
 GameObject:
   m_ObjectHideFlags: 0
@@ -10384,13 +10264,13 @@ GameObject:
   - component: {fileID: 1266736661}
   - component: {fileID: 1266736660}
   - component: {fileID: 1266736659}
-  - component: {fileID: 1266736658}
   - component: {fileID: 1266736657}
   - component: {fileID: 1266736656}
   - component: {fileID: 1266736655}
+  - component: {fileID: 1266736662}
   m_Layer: 0
   m_Name: benching_drawer_03
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10479,27 +10359,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 2
   m_CollisionDetection: 0
---- !u!114 &1266736658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266736653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!64 &1266736659
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10572,6 +10431,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266736653}
   m_Mesh: {fileID: -7965724618424867271, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &1266736662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266736653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &1267669219
 GameObject:
   m_ObjectHideFlags: 0
@@ -10689,14 +10563,13 @@ GameObject:
   - component: {fileID: 1270387349}
   - component: {fileID: 1270387356}
   - component: {fileID: 1270387355}
-  - component: {fileID: 1270387354}
   - component: {fileID: 1270387353}
-  - component: {fileID: 1270387352}
   - component: {fileID: 1270387351}
   - component: {fileID: 1270387350}
+  - component: {fileID: 1270387357}
   m_Layer: 0
   m_Name: benching_drawer_05
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10758,27 +10631,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.003279917, y: 0.004802913, z: 0.0004795564}
   m_Center: {x: -5.9604643e-10, y: -9.5158575e-11, z: -0.0015964956}
---- !u!114 &1270387352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270387348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!54 &1270387353
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10806,27 +10658,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1270387354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270387348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!23 &1270387355
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10877,6 +10708,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270387348}
   m_Mesh: {fileID: -2131836757811607068, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &1270387357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270387348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &1292576244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4345481264733673542, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
@@ -12075,27 +11921,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1484800174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484800168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!65 &1484800177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12138,6 +11963,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0041974937, y: 0.00503656, z: 0.0002053878}
   m_Center: {x: -0.000013950466, y: 0.0023305854, z: -0.0006627806}
+--- !u!114 &1484800182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484800168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &1490767185
 GameObject:
   m_ObjectHideFlags: 0
@@ -13592,7 +13432,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 204302579417445634, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_TagString
-      value: ground
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 209518776841518088, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_Convex
@@ -13646,6 +13486,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2d5e54118c84f14c8b6e3d9e56b3b8d, type: 2}
+    - target: {fileID: 820702769754415678, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 820702769754415678, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.005247017
+      objectReference: {fileID: 0}
     - target: {fileID: 1721343416384812149, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_Convex
       value: 0
@@ -13676,7 +13524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3360841317287146447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_TagString
-      value: ground
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 3418743313510223522, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_Convex
@@ -13724,7 +13572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4211230855568825734, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 4266781188414676771, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13773,6 +13621,10 @@ PrefabInstance:
     - target: {fileID: 6541782540841765163, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_Convex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801388054711251254, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 6858758262035475447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_TagString
@@ -13939,9 +13791,6 @@ PrefabInstance:
       addedObject: {fileID: 1087266330}
     - targetCorrespondingSourceObject: {fileID: 3360841317287146447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 84609820}
-    - targetCorrespondingSourceObject: {fileID: 3360841317287146447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 84609819}
     - targetCorrespondingSourceObject: {fileID: 3360841317287146447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
@@ -13949,21 +13798,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3360841317287146447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 84609822}
-    - targetCorrespondingSourceObject: {fileID: 204302579417445634, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3360841317287146447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1741261267}
+      addedObject: {fileID: 84609827}
     - targetCorrespondingSourceObject: {fileID: 204302579417445634, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1741261266}
-    - targetCorrespondingSourceObject: {fileID: 204302579417445634, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1741261265}
     - targetCorrespondingSourceObject: {fileID: 204302579417445634, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1741261268}
     - targetCorrespondingSourceObject: {fileID: 204302579417445634, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1741261269}
+    - targetCorrespondingSourceObject: {fileID: 204302579417445634, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1741261273}
     - targetCorrespondingSourceObject: {fileID: 6801388054711251254, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1620067859}
@@ -13975,13 +13824,13 @@ PrefabInstance:
       addedObject: {fileID: 1484800173}
     - targetCorrespondingSourceObject: {fileID: 4211230855568825734, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1484800174}
-    - targetCorrespondingSourceObject: {fileID: 4211230855568825734, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1484800177}
     - targetCorrespondingSourceObject: {fileID: 4211230855568825734, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1484800178}
+    - targetCorrespondingSourceObject: {fileID: 4211230855568825734, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1484800182}
   m_SourcePrefab: {fileID: 100100000, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
 --- !u!1 &1601167551
 GameObject:
@@ -15333,27 +15182,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 204302579417445634, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
   m_PrefabInstance: {fileID: 1594813714}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1741261265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741261260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!54 &1741261266
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15381,27 +15209,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1741261267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741261260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!65 &1741261268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15444,6 +15251,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.003279917, y: 0.004802913, z: 0.0004795564}
   m_Center: {x: -5.9604643e-10, y: -9.5158575e-11, z: -0.0015964956}
+--- !u!114 &1741261273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741261260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!4 &1754974899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7964868906737697515, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
@@ -17825,14 +17647,13 @@ GameObject:
   - component: {fileID: 2133001573}
   - component: {fileID: 2133001580}
   - component: {fileID: 2133001579}
-  - component: {fileID: 2133001578}
   - component: {fileID: 2133001577}
-  - component: {fileID: 2133001576}
   - component: {fileID: 2133001575}
   - component: {fileID: 2133001574}
+  - component: {fileID: 2133001581}
   m_Layer: 0
   m_Name: benching_drawer_04
-  m_TagString: ground
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17894,27 +17715,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.003279917, y: 0.004802913, z: 0.0004795564}
   m_Center: {x: -5.9604643e-10, y: -9.5158575e-11, z: -0.0015964956}
---- !u!114 &2133001576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133001572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!54 &2133001577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17942,27 +17742,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2133001578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133001572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!23 &2133001579
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18013,6 +17792,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133001572}
   m_Mesh: {fileID: -2131836757811607068, guid: 91db13b5e2ac1494e8777b4ce11d6a6b, type: 3}
+--- !u!114 &2133001581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133001572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPosition: {x: 0, y: 0, z: 0}
+  openPosition: {x: 0, y: -0.0042, z: 0}
+  animationTime: 0.5
 --- !u!1 &2140426049
 GameObject:
   m_ObjectHideFlags: 0
@@ -19407,6 +19201,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -42.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5932290814957227382, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932290814957227382, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932290814957227382, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932290814957227382, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6269756472207297288, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -19493,6 +19303,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7390358484581125096, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628616982678705155, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628616982678705155, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628616982678705155, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628616982678705155, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7961714124847621179, guid: d00e9349d85b5074baa72ed4e1405e6e, type: 3}
@@ -19751,6 +19577,10 @@ PrefabInstance:
     - target: {fileID: 5164805432994449681, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801388054711251254, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 6858758262035475447, guid: 3349cf6a542dbe04587c5cdcd6fdf24e, type: 3}
       propertyPath: m_TagString
