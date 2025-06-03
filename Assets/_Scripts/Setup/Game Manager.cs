@@ -145,6 +145,7 @@ public class GameManager : MonoBehaviour
 
     public InteractionUI interactionUI;
     public GameObject cursorIcon;
+    public GameObject infoText;
 
     public GameObject drop;
     public bool electrolyAssembledGameManager;
@@ -321,6 +322,7 @@ public class GameManager : MonoBehaviour
         playerCam.transform.DORotate(PC.rotation.eulerAngles, 0.5f);
         
         cursorIcon.SetActive(false);
+        infoText.SetActive(false);
         
         //if(interactionUI) 
           //  interactionUI.gameObject.SetActive(false);
@@ -338,6 +340,7 @@ public class GameManager : MonoBehaviour
               //  interactionUI.gameObject.SetActive(true);
               
             cursorIcon.SetActive(true);
+            infoText.SetActive(true);
             
             isUsingPCGameManager = false;
         });

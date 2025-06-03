@@ -38,7 +38,6 @@ public class EmailWidget : MonoBehaviour
     
     void Start()
     {
-        //SetMailNewStatus();
         _parent = transform.parent;
         _buttonRectTransform = button.GetComponent<RectTransform>();
         _nextChildRectTransform = _parent.GetChild(transform.GetSiblingIndex() + 1).GetComponent<RectTransform>();
@@ -52,7 +51,6 @@ public class EmailWidget : MonoBehaviour
 
     public void LoadEmail(EmailData emailData)
     {
-        //this.emailData = emailData;
         _maxMailSize = emailData.maxMailSize;
         senderField.text = emailData.sender;
         subjectField.text = emailData.subject;
@@ -117,7 +115,7 @@ public class EmailWidget : MonoBehaviour
         switch (_questOrder)
         {
             case 0:
-                if(UIMailNotification.StartMailNew)
+                if(UIMailNotification.StartMailNew) 
                     return;
                
                 UIMailNotification.StartMailNew = true;
@@ -144,7 +142,6 @@ public class EmailWidget : MonoBehaviour
                 UIMailNotification.TestFormBatteryQuestMailNew = true;
                 break;
         }
-        Debug.Log(MailScreen.NewMailCount + " " + UIMailNotification.StartMailNew);
     }
 
     public void UpdateMailNewStatus()
@@ -156,6 +153,7 @@ public class EmailWidget : MonoBehaviour
                     return;
                
                 UIMailNotification.StartMailNew = false;
+                GameManager.Instance.GetComponent<UIMailNotification>().CloseUIMailNotification();
                 MailScreen.NewMailCount--;
                 break;
            
@@ -164,6 +162,7 @@ public class EmailWidget : MonoBehaviour
                     return;
                
                 UIMailNotification.CollectVacuumQuestMailNew = false;
+                GameManager.Instance.GetComponent<UIMailNotification>().CloseUIMailNotification();
                 MailScreen.NewMailCount--;
                 break;
            
@@ -172,6 +171,7 @@ public class EmailWidget : MonoBehaviour
                     return;
                
                 UIMailNotification.InsertBatteryQuestMailNew = false;
+                GameManager.Instance.GetComponent<UIMailNotification>().CloseUIMailNotification();
                 MailScreen.NewMailCount--;
                 break;
            
@@ -180,10 +180,10 @@ public class EmailWidget : MonoBehaviour
                     return;
                
                 UIMailNotification.TestFormBatteryQuestMailNew = false;
+                GameManager.Instance.GetComponent<UIMailNotification>().CloseUIMailNotification();
                 MailScreen.NewMailCount--;
                 break;
         }  
-        Debug.Log(MailScreen.NewMailCount+ " " + UIMailNotification.StartMailNew);
     }
     
 }

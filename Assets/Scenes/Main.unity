@@ -1536,6 +1536,7 @@ GameObject:
   - component: {fileID: 310630294}
   - component: {fileID: 310630295}
   - component: {fileID: 310630298}
+  - component: {fileID: 310630299}
   - component: {fileID: 310630297}
   m_Layer: 0
   m_Name: GameManager
@@ -1655,6 +1656,7 @@ MonoBehaviour:
   PatCellTesterPlacableGameManager: 0
   interactionUI: {fileID: 1885756683}
   cursorIcon: {fileID: 577200008}
+  infoText: {fileID: 841938580}
   drop: {fileID: 2072842301}
   electrolyAssembledGameManager: 0
 --- !u!114 &310630297
@@ -1720,6 +1722,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 310630299}
+        m_TargetAssemblyTypeName: UIMailNotification, Assembly-CSharp
+        m_MethodName: OpenUINotification
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   insertBatteryQuestResults:
     m_PersistentCalls:
       m_Calls:
@@ -1763,6 +1777,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MailScreen, Assembly-CSharp
         m_MethodName: NextEmail
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 310630299}
+        m_TargetAssemblyTypeName: UIMailNotification, Assembly-CSharp
+        m_MethodName: OpenUINotification
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1822,6 +1848,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 310630299}
+        m_TargetAssemblyTypeName: UIMailNotification, Assembly-CSharp
+        m_MethodName: OpenUINotification
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   testFormBatteryQuestTrigger: {fileID: 1429574408}
 --- !u!114 &310630298
 MonoBehaviour:
@@ -1842,7 +1880,21 @@ MonoBehaviour:
   - {fileID: 562886573}
   pauseMenu: {fileID: 1036356679}
   pauseMenuLayout: {fileID: 1916131777}
-  playerTransform: {fileID: 963194228}
+--- !u!114 &310630299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310630293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e16d32d7b3f5204da49f0aa87df3faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveElementPos: 190
+  movingValue: 1
+  movingSpeed: 150
 --- !u!1 &315802967
 GameObject:
   m_ObjectHideFlags: 0
@@ -13017,7 +13069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6737385770243752509, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.973
+      value: -2.908
       objectReference: {fileID: 0}
     - target: {fileID: 6737385770243752509, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13025,7 +13077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6737385770243752509, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.391
+      value: -1.714
       objectReference: {fileID: 0}
     - target: {fileID: 7330762057889809632, guid: 90ed2a1fde15e1e47a1b44385a1ad780, type: 3}
       propertyPath: m_Layer

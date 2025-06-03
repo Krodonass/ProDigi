@@ -18,12 +18,6 @@ public class QuestManager : MonoBehaviour
     
     void Start()
     {
-        UIMailNotification.OpenUINotificationAdded = false;
-        UIMailNotification.StartMailNew = false;
-        UIMailNotification.CollectVacuumQuestMailNew = false;
-        UIMailNotification.InsertBatteryQuestMailNew = false;
-        UIMailNotification.TestFormBatteryQuestMailNew = false;
-        
         PickupController.InsertBattery += InsertBatteryQuestDone;
         testFormBatteryQuestTrigger.onClick.AddListener(TestFormBatteryQuestDone);
     }

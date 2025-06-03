@@ -52,6 +52,7 @@ public class PauseMenuManager : MonoBehaviour
         {
             GameManager.Instance.isUsingPauseMenuGameManager = false;
             GameManager.Instance.cursorIcon.SetActive(false);
+            GameManager.Instance.infoText.SetActive(false);
             return;
         }
         

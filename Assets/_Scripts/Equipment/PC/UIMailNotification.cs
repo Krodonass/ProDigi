@@ -13,9 +13,7 @@ public class UIMailNotification : MonoBehaviour
 
     private float _activeElementPos;
     
-    private bool _mailNew = true;
     private bool _animStarted;
-    private bool _openedUINotification = true;
 
     public static bool StartMailNew;
     public static bool CollectVacuumQuestMailNew;
@@ -25,58 +23,32 @@ public class UIMailNotification : MonoBehaviour
     private RectTransform _elementRectTransform;
 
     private Component _questManager;
-
-    public static bool OpenUINotificationAdded;
     
     private void Start()
     {
+        StartMailNew = false;
+        CollectVacuumQuestMailNew = false;
+        InsertBatteryQuestMailNew = false;
+        TestFormBatteryQuestMailNew = false;
+        
         _elementRectTransform = GameManager.Instance.UIMailNotification.GetComponent<RectTransform>();
         _activeElementPos = _elementRectTransform.localPosition.x;
         passiveElementPos = _activeElementPos + passiveElementPos;
-        
-        GameManager.Instance.GetComponent<QuestManager>().collectVacuumQuestResults.AddListener(GotNewMail); 
-        GameManager.Instance.GetComponent<QuestManager>().insertBatteryQuestResults.AddListener(GotNewMail);   
-        GameManager.Instance.GetComponent<QuestManager>().testFormBatteryQuestResults.AddListener(GotNewMail); 
-        
-        if(OpenUINotificationAdded)
-            return;
-
-        GameManager.Instance.GetComponent<QuestManager>().collectVacuumQuestResults.AddListener(StartOpenUINotification); 
-        GameManager.Instance.GetComponent<QuestManager>().insertBatteryQuestResults.AddListener(StartOpenUINotification);   
-        GameManager.Instance.GetComponent<QuestManager>().testFormBatteryQuestResults.AddListener(StartOpenUINotification);
     }
     
-    public void UpdateUIMailNotification()
+    public void CloseUIMailNotification()
     { 
-        if(_animStarted || !_mailNew)
-            return;
-        
-        if (MailScreen.NewMailCount == 1)
-        {
-            StartCoroutine(CloseUINotification());
-            _mailNew = false; 
-        }
-        else
-        {
-            _mailNew = false;
-        }
+        if (!_animStarted && MailScreen.NewMailCount == 1)
+            StartCoroutine(ClosingUINotification());
     }
 
-    public void GotNewMail()
+    public void OpenUINotification()
     {
-        _mailNew = true;
-    }
-
-    public void StartOpenUINotification()
-    {
-        if(_openedUINotification)
-            return;
-        
-        StartCoroutine(OpenUINotification());
-        OpenUINotificationAdded = true;
+        if (!_animStarted)
+            StartCoroutine(OpeningUINotification());
     }
     
-    private IEnumerator OpenUINotification()
+    private IEnumerator OpeningUINotification()
     {
         _animStarted = true;
         
@@ -89,7 +61,7 @@ public class UIMailNotification : MonoBehaviour
         _animStarted = false;
     }
     
-    private IEnumerator CloseUINotification()
+    private IEnumerator ClosingUINotification()
     {
         _animStarted = true;
         
@@ -98,8 +70,7 @@ public class UIMailNotification : MonoBehaviour
             _elementRectTransform.localPosition += new Vector3(movingValue * movingSpeed * Time.deltaTime,0,0 );
             yield return null;
         }
-
-        _openedUINotification = false;
+        
         _animStarted = false;
     }
 }
