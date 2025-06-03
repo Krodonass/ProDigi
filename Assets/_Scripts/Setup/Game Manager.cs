@@ -24,8 +24,11 @@ public class GameManager : MonoBehaviour
     public bool isUsableGameManager;
     public bool isRotatingObjectGameManager;
     public bool isGettingObjectInformationGameManager;
+    
     public bool isUsingGloveboxGameManager;
     public bool isUsingPCGameManager = false;
+    public bool isUsingPauseMenuGameManager = false;
+    
     public bool isCarryingPipetteGameManager;
     public bool activateLaserPointerGameManager;
     public GameObject heldObjInGloveBoxGameManager;

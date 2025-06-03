@@ -50,7 +50,7 @@ public class InteractionUI : MonoBehaviour
             HideMouseInteraction();
         }
 
-        if (GameManager.Instance.isUsingPCGameManager || GameManager.Instance.isUsingGloveboxGameManager)
+        if (GameManager.Instance.isUsingPCGameManager || GameManager.Instance.isUsingGloveboxGameManager || GameManager.Instance.isUsingPauseMenuGameManager)
         {
             if (ExitKeyNotification)
             {

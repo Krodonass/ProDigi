@@ -10,8 +10,6 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseMenuLayout;
 
-    [SerializeField] private Transform playerTransform;
-
     private void Start()
     {
         pauseMenu.SetActive(false);            
@@ -20,17 +18,49 @@ public class PauseMenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && !GameManager.Instance.isUsingPauseMenuGameManager)
         {
-            GameManager.Instance.StartUsingPC(playerTransform);
+            EnterPauseMenuConditions();
             
             foreach (GameObject activeInGameUIObject in activeInGameUIObjects)
                 activeInGameUIObject.SetActive(false);
             
             pauseMenu.SetActive(true);
+            return;
         }
+
+        if (Input.GetKeyUp(KeyCode.Escape) && GameManager.Instance.isUsingPauseMenuGameManager)
+            Continue();
     }
 
+    private void EnterPauseMenuConditions()
+    {
+        GameManager.Instance.isUsingPauseMenuGameManager = true;
+        if (GameManager.Instance.isUsingPCGameManager)
+            return;
+        
+        GameManager.Instance.playerObject.GetComponent<PlayerMovement>().StopMovement();
+        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        GameManager.Instance.cursorIcon.SetActive(false);
+    }
+
+    private void ExitPauseMenuConditions()
+    {
+        if (GameManager.Instance.isUsingPCGameManager)
+        {
+            GameManager.Instance.isUsingPauseMenuGameManager = false;
+            GameManager.Instance.cursorIcon.SetActive(false);
+            return;
+        }
+        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        
+        GameManager.Instance.isUsingPauseMenuGameManager = false;
+    }
+    
     public void Continue()
     {
         foreach (GameObject activeInGameUIObject in activeInGameUIObjects)
@@ -38,7 +68,7 @@ public class PauseMenuManager : MonoBehaviour
         
         pauseMenu.SetActive(false);
         
-        GameManager.Instance.StopUsingPC();
+         ExitPauseMenuConditions();        
     }
 
     public void OpenScreen(GameObject screen)

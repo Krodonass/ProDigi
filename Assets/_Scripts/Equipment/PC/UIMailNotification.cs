@@ -67,7 +67,7 @@ public class UIMailNotification : MonoBehaviour
         _mailNew = true;
     }
 
-    void StartOpenUINotification()
+    public void StartOpenUINotification()
     {
         if(_openedUINotification)
             return;

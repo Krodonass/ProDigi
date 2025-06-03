@@ -139,26 +139,26 @@ public class PickupController : MonoBehaviour
     // Überprüfe, ob das getroffene Objekt pickupable oder usable ist
     if (hasHit)
     {
-        if (hit.transform.CompareTag("Pickupable") && !isCarrying && !isUsable)
+        if (hit.transform.CompareTag("Pickupable") && !isCarrying && !isUsable && !gm.isUsingPauseMenuGameManager)
         {
             OnHoverInteractable.Invoke();
             highlight = hit.transform;
             EnableOutline(highlight);
             isPickupable = true;
         }
-        else if (hit.transform.CompareTag("Usable") && !isCarrying)
+        else if (hit.transform.CompareTag("Usable") && !isCarrying && !gm.isUsingPauseMenuGameManager)
         {
             OnHoverInteractable.Invoke();
             highlight = hit.transform;
             EnableOutline(highlight);
             isUsable = true;
-        }else if (hit.transform.CompareTag("InteractiveUI") && !isCarrying && !isUsingPC)
+        }else if (hit.transform.CompareTag("InteractiveUI") && !isCarrying && !isUsingPC && !gm.isUsingPauseMenuGameManager)
         {
             OnHoverInteractable.Invoke();
             highlight = hit.transform;
             //EnableOutline(highlight);
             isUsable = true;
-        }else if (hit.transform.CompareTag("Door") && !isCarrying && !isUsingPC)
+        }else if (hit.transform.CompareTag("Door") && !isCarrying && !isUsingPC && !gm.isUsingPauseMenuGameManager)
         {
             OnHoverInteractable.Invoke();
             highlight = hit.transform;
@@ -181,9 +181,9 @@ public class PickupController : MonoBehaviour
     // Grab-Input verarbeiten
     if (Input.GetKeyDown(keysBindings.grabKey))
     {
-        if(gm.isUsingPCGameManager){
+        if (gm.isUsingPCGameManager || gm.isUsingPauseMenuGameManager)
             return;
-        }
+        
         if (heldObj == null)
         {
             if (hasHit && hit.transform.CompareTag("Pickupable"))
@@ -390,7 +390,7 @@ public class PickupController : MonoBehaviour
             CollisionAssemblyIdentifier.ShowMouseInteractable();
         }
         // Glovebox-Exit verarbeiten
-        if (Input.GetKeyDown(keysBindings.exitEquipmentKey))
+        if (Input.GetKeyDown(keysBindings.exitEquipmentKey) && !GameManager.Instance.isUsingPauseMenuGameManager)
         {
             if(isUsingGlovebox){
                 isUsingGlovebox = false;

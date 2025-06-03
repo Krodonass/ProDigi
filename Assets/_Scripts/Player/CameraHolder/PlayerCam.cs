@@ -38,9 +38,9 @@ public class PlayerCam : MonoBehaviour
     private void Update()
     {
 
-        if(gameManager.isUsingPCGameManager){
+        if (gameManager.isUsingPCGameManager || gameManager.isUsingPauseMenuGameManager)
             return;
-        }
+        
         // get mouse input
         float mouseX = Input.GetAxis("Mouse X") * sensX;
         float mouseY = Input.GetAxis("Mouse Y") * sensY;

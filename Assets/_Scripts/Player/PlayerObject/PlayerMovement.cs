@@ -72,9 +72,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if(gameManager.isUsingPCGameManager || gameManager.isUsingGloveboxGameManager){
+        if (gameManager.isUsingPCGameManager || gameManager.isUsingGloveboxGameManager || gameManager.isUsingPauseMenuGameManager)
             return;
-        }
         
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
