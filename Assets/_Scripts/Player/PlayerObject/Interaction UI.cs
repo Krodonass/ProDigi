@@ -15,6 +15,8 @@ public class InteractionUI : MonoBehaviour
 
     public TMP_Text InteractableKey;
     public Image MouseInteraction;
+    
+    public TMP_Text ExitKeyNotification;
 
     private void Start()
     {
@@ -46,6 +48,21 @@ public class InteractionUI : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             HideMouseInteraction();
+        }
+
+        if (GameManager.Instance.isUsingPCGameManager || GameManager.Instance.isUsingGloveboxGameManager)
+        {
+            if (ExitKeyNotification)
+            {
+                ExitKeyNotification.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (ExitKeyNotification)
+            {
+                ExitKeyNotification.gameObject.SetActive(false);
+            }
         }
     }
     

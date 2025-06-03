@@ -18653,6 +18653,10 @@ PrefabInstance:
       propertyPath: patCellAssembled
       value: 
       objectReference: {fileID: 1999862237}
+    - target: {fileID: 1081070365659811483, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 1216599524753704689, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
       propertyPath: m_Name
       value: m_braun_labster_v4
@@ -18660,7 +18664,7 @@ PrefabInstance:
     - target: {fileID: 2510507139649377179, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 310630295}
+      objectReference: {fileID: 0}
     - target: {fileID: 3162267886095733430, guid: fbbc691bbc53a374aadd3a91ea36e099, type: 3}
       propertyPath: gameManager
       value: 
