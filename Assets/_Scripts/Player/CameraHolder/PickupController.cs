@@ -156,13 +156,13 @@ public class PickupController : MonoBehaviour
         {
             OnHoverInteractable.Invoke();
             highlight = hit.transform;
-            EnableOutline(highlight);
+            //EnableOutline(highlight);
             isUsable = true;
         }else if (hit.transform.CompareTag("Door") && !isCarrying && !isUsingPC)
         {
             OnHoverInteractable.Invoke();
             highlight = hit.transform;
-            EnableOutline(highlight);
+            //EnableOutline(highlight);
             isUsable = true;
         }else
         {
@@ -449,7 +449,10 @@ private void EnableOutline(Transform obj)
             outline.OutlineColor = Color.magenta;
             outline.OutlineWidth = 7.0f;
         }
-        outline.enabled = true;
+        else
+        {
+            outline.enabled = true;
+        }
     }
 }
 
