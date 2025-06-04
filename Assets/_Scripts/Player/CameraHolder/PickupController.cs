@@ -1,7 +1,5 @@
 using System;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.Events;
 
 
 public class PickupController : MonoBehaviour
