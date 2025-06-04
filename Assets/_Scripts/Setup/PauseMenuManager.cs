@@ -9,6 +9,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject[] activeInGameUIObjects;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseMenuLayout;
+    [SerializeField] private GameObject ExitNotification;
 
     private void Start()
     {

@@ -54,6 +54,12 @@ public class InteractionUI : MonoBehaviour
         {
             if (ExitKeyNotification)
             {
+                if (GameManager.Instance.isUsingPauseMenuGameManager)
+                {
+                    ExitKeyNotification.gameObject.SetActive(false);
+                    return;
+                }
+                    
                 ExitKeyNotification.gameObject.SetActive(true);
             }
         }
