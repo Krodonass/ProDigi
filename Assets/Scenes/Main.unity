@@ -16564,7 +16564,6 @@ MonoBehaviour:
   - {fileID: 452999757}
   - {fileID: 297561771}
   - {fileID: 449972558}
-  - {fileID: 2039006419}
   batteryPartsCount: 0
 --- !u!1 &1944701879
 GameObject:
