@@ -50,12 +50,27 @@ public class Doors : MonoBehaviour
     
     private Coroutine _currentCoroutine;
 
+    private bool canOpen = true;
+    
+    public Drawer DrawerThatIsInWay;
+
+    void Start()
+    {
+        if (DrawerThatIsInWay)
+        {
+            DrawerThatIsInWay.OnUse += ToggleCanOpen;
+        }
+    }
+
     //Opens or close the door
     public virtual void InvokeInteraction()
     {
         if (CompareTag("Door"))
         {
-            StartCoroutine(RotateDoor());
+            if (canOpen)
+            {
+                StartCoroutine(RotateDoor());
+            }
             return;
         }
         
@@ -234,5 +249,10 @@ public class Doors : MonoBehaviour
         {
             isTDopen = "n";
         }
+    }
+
+    private void ToggleCanOpen()
+    {
+        canOpen = !canOpen;
     }
 }

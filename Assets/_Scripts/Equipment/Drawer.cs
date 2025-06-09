@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Drawer : MonoBehaviour
 {
+    public event Action OnUse;
+    
     [HideInInspector]
     public Vector3 closedPosition = Vector3.zero;      // Start-/Closed-Position (wird in Start übernommen)
     public Vector3 openPosition = new Vector3(0, 0, -0.4f); // Offset zur Closed-Position für das Öffnen
@@ -42,6 +45,10 @@ public class Drawer : MonoBehaviour
         targetPos = isOpen
             ? closedPosition
             : closedPosition + openPosition;
+        if (OnUse != null)
+        {
+            OnUse.Invoke();
+        }
     }
 
     void FixedUpdate()
