@@ -59,7 +59,7 @@ public class Doors : MonoBehaviour
             return;
         }
         
-         if (gameObject.name == "mobile_cabinet_door_01" || gameObject.name == "OvenDoor")
+        if (gameObject.name == "mobile_cabinet_door_01" || gameObject.name == "OvenDoor")
         {
             Debug.Log("lelelel");
             if (isLDopen == "n")
