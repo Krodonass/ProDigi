@@ -2918,7 +2918,7 @@ PrefabInstance:
     - target: {fileID: 6320638393896320940, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
       propertyPath: OvenDoor
       value: 
-      objectReference: {fileID: 9129330120154524630}
+      objectReference: {fileID: 0}
     - target: {fileID: 7340550142407556032, guid: 34b2a26e5ee7dd84c93b4a79f7d3d04f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -20093,8 +20093,8 @@ GameObject:
   - component: {fileID: 462402058808089601}
   - component: {fileID: 6279720344335917007}
   - component: {fileID: 1733775593}
-  - component: {fileID: 9129330120154524630}
   - component: {fileID: 9129330120154524631}
+  - component: {fileID: 9129330120154524632}
   m_Layer: 0
   m_Name: OvenDoor
   m_TagString: Door
@@ -20647,27 +20647,6 @@ Transform:
   - {fileID: 1856313971}
   m_Father: {fileID: 5852253017156368813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9129330120154524630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7002023727493317085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  OpenDiretion: 0
-  Axis: 2
-  toggleTime: 0.5
-  openAngle: 90
-  isLDopen: n
-  isTDopen: n
-  isOpen: 0
-  isAnimating: 0
 --- !u!65 &9129330120154524631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20689,6 +20668,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0108739985, y: 0.0023231818, z: 0.011811029}
   m_Center: {x: -0.0053012427, y: -0.0010258387, z: 0.000000003548214}
+--- !u!114 &9129330120154524632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7002023727493317085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f051c8336960cf419de10ada439146c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushPull: 0
+  rotateOpenClose: 0
+  targetAngle: 300
+  rotationSpeed: 0.1
+  interactDistance: 5
+  transformAxis: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
