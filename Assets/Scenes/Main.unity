@@ -20682,10 +20682,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushPull: 0
   rotateOpenClose: 0
-  targetAngle: 300
-  rotationSpeed: 0.1
+  targetAngle: 90
   interactDistance: 5
-  transformAxis: 0
+  transformAxis: 2
+  duration: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
