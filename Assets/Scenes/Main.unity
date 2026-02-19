@@ -5062,6 +5062,7 @@ MonoBehaviour:
   isTDopen: n
   isOpen: 0
   isAnimating: 0
+  DrawerThatIsInWay: {fileID: 0}
 --- !u!65 &684268145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8932,6 +8933,7 @@ MonoBehaviour:
   isTDopen: n
   isOpen: 0
   isAnimating: 0
+  DrawerThatIsInWay: {fileID: 0}
 --- !u!1 &1076947035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2314306198333534940, guid: 6ad4ee5337f0c2b41b420a616bdb008b, type: 3}
@@ -11005,6 +11007,7 @@ MonoBehaviour:
   isTDopen: n
   isOpen: 0
   isAnimating: 0
+  DrawerThatIsInWay: {fileID: 0}
 --- !u!65 &1348013940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12682,6 +12685,7 @@ MonoBehaviour:
   isTDopen: n
   isOpen: 0
   isAnimating: 0
+  DrawerThatIsInWay: {fileID: 0}
 --- !u!65 &1535978143
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14083,6 +14087,7 @@ MonoBehaviour:
   isTDopen: n
   isOpen: 0
   isAnimating: 0
+  DrawerThatIsInWay: {fileID: 0}
 --- !u!65 &1620067861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16071,6 +16076,7 @@ MonoBehaviour:
   isTDopen: n
   isOpen: 0
   isAnimating: 0
+  DrawerThatIsInWay: {fileID: 0}
 --- !u!65 &1859108875
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19441,6 +19447,7 @@ MonoBehaviour:
   isTDopen: n
   isOpen: 0
   isAnimating: 0
+  DrawerThatIsInWay: {fileID: 0}
 --- !u!54 &4904457269990381700
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20677,15 +20684,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7002023727493317085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f051c8336960cf419de10ada439146c, type: 3}
+  m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushPull: 0
-  rotateOpenClose: 0
-  targetAngle: 90
-  interactDistance: 5
-  transformAxis: 2
-  duration: 2
+  gameManager: {fileID: 0}
+  OpenDiretion: 0
+  Axis: 2
+  toggleTime: 0.5
+  openAngle: 90
+  isLDopen: n
+  isTDopen: n
+  isOpen: 0
+  isAnimating: 0
+  DrawerThatIsInWay: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
