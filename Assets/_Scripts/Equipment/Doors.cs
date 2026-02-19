@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum OpenDiretionTypes
@@ -20,7 +19,7 @@ public enum Axis
 public class Doors : MonoBehaviour
 {
 
-    public event Action<Boolean> OnOpenDoor;
+    public event Action<bool> OnOpenDoor;
     
     //----------------Needs Door Tag!!!!------------------------------
     public GameObject gameManager;
@@ -37,16 +36,11 @@ public class Doors : MonoBehaviour
 
     private float closedAngle = 0;
     
-    [HideInInspector]
-    public string isLDopen = "n";
-    [HideInInspector]
-    public string isTDopen = "n";
+    [HideInInspector] public string isLDopen = "n";
+    [HideInInspector] public string isTDopen = "n";
 
-    [HideInInspector] 
-    public Boolean isOpen = false;
-
-    [HideInInspector] 
-    public Boolean isAnimating = false;
+    [HideInInspector] public bool isOpen = false;
+    [HideInInspector] public bool isAnimating = false;
     
     private Coroutine _currentCoroutine;
 
@@ -74,7 +68,7 @@ public class Doors : MonoBehaviour
             return;
         }
         
-         if (gameObject.name == "mobile_cabinet_door_01" || gameObject.name == "OvenDoor")
+        if (gameObject.name == "mobile_cabinet_door_01" || gameObject.name == "OvenDoor")
         {
             Debug.Log("lelelel");
             if (isLDopen == "n")
