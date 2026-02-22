@@ -5,15 +5,17 @@ using UnityEngine;
 
 namespace _Scripts.Equipment 
 {
+    public enum Axis { X, Y, Z }
+    
     public class OpenCloseObj : MonoBehaviour
     {
-        [SerializeField] private bool pushPull;
-        [SerializeField] private bool rotateOpenClose;
-        
         [SerializeField] private float targetAngle = 90f;
+        [SerializeField] private float targetMovement = 90f;
+        
         [SerializeField] private float interactDistance = 5f;
         
         [SerializeField] private Axis transformAxis;
+        [SerializeField] private bool mustRotate = false;
         
         public float duration = 2f;
         
@@ -23,9 +25,17 @@ namespace _Scripts.Equipment
         private Quaternion _openRotationY;
         private Quaternion _openRotationZ;
         
-        private bool _isRotating = false;
+        private Vector3 _closePosition;
         
-        private bool _opens = false;
+        private Vector3 _openPositionX;       
+        private Vector3 _openPositionY;
+        private Vector3 _openPositionZ; 
+        
+        private bool _isRotating = false;
+        private bool _isMoving = false;
+        
+        private bool _rotatesToOpen = false;
+        private bool _movesToOpen = false;
 
 
         private void Start()
@@ -35,6 +45,12 @@ namespace _Scripts.Equipment
             _openRotationX = _closeRotation * Quaternion.Euler(targetAngle, 0f, 0f);
             _openRotationY = _closeRotation * Quaternion.Euler(0f, targetAngle, 0f);
             _openRotationZ = _closeRotation * Quaternion.Euler(0f, 0f, targetAngle);
+            
+            _closePosition = transform.localPosition;
+            
+            _openPositionX = _closePosition + new Vector3(targetMovement, 0f, 0f);
+            _openPositionY = _closePosition + new Vector3(0f, targetMovement, 0f);
+            _openPositionZ = _closePosition + new Vector3(0f, 0f, targetMovement);
         }
 
         private void Update()
@@ -54,42 +70,52 @@ namespace _Scripts.Equipment
                     
                     if (hit.collider.CompareTag("Door"))
                     {
-                        RotateOpenClose();
+                        OpenClose();
                     }
                 }
             }
         }
 
 
-        public void RotateOpenClose()
+        public void OpenClose()
         {
-            switch (transformAxis)
+            if (mustRotate)
             {
-                case Axis.X:
-                    StartCoroutine(RotateInTime(_openRotationX));
-                    break;
-                
-                case Axis.Y:
-                    StartCoroutine(RotateInTime(_openRotationY));
-                    break;
-                
-                case Axis.Z:
-                    StartCoroutine(RotateInTime(_openRotationZ));
-                    break;
+                Quaternion rotation = transformAxis switch
+                {
+                    Axis.X => _openRotationX,
+                    Axis.Y => _openRotationY,
+                    Axis.Z => _openRotationZ,
+                    _ => Quaternion.identity
+                };
+
+                StartCoroutine(RotateInTime(rotation));
+            }
+            else
+            {
+                Vector3 position = transformAxis switch
+                {
+                    Axis.X => _openPositionX,
+                    Axis.Y => _openPositionY,
+                    Axis.Z => _openPositionZ,
+                    _ => Vector3.zero
+                };
+
+                StartCoroutine(PushPullInTime(position));
             }
         }
         
-
+        
         private IEnumerator RotateInTime(Quaternion openRotation)
         {
             if (_isRotating)
                 yield break;
 
             _isRotating = true;
-            _opens = !_opens;
+            _rotatesToOpen = !_rotatesToOpen;
 
             Quaternion startRotation = transform.localRotation;
-            Quaternion endRotation = _opens ? openRotation : _closeRotation;
+            Quaternion endRotation = _rotatesToOpen ? openRotation : _closeRotation;
 
             float time = 0f;
 
@@ -103,6 +129,32 @@ namespace _Scripts.Equipment
             transform.localRotation = endRotation;
             
             _isRotating = false;
+        }
+
+
+        private IEnumerator PushPullInTime(Vector3 openPosition)
+        { 
+            if (_isMoving) 
+                yield break;
+            
+            _isMoving = true;
+            _movesToOpen = !_movesToOpen;
+
+            Vector3 startPosition = transform.localPosition;
+            Vector3 endPosition = _movesToOpen ? openPosition : _closePosition;
+            
+            float time = 0f;
+
+            while (time < duration)
+            {
+                transform.position = Vector3.Slerp(startPosition, endPosition, time / duration);
+                time += Time.deltaTime;
+                yield return null;
+            }
+            
+            transform.localPosition = endPosition;
+
+            _isMoving = false;
         }
     }
 }
