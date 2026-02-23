@@ -6221,6 +6221,7 @@ GameObject:
   - component: {fileID: 825870597}
   - component: {fileID: 825870596}
   - component: {fileID: 825870603}
+  - component: {fileID: 825870604}
   m_Layer: 0
   m_Name: benching_drawer_05
   m_TagString: Door
@@ -6293,9 +6294,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825870594}
   serializedVersion: 4
-  m_Mass: 1000000
-  m_Drag: 2
-  m_AngularDrag: 1
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -6307,7 +6308,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -6369,7 +6370,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825870594}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2cb5aee9fbd14459fb53d680b7c79f, type: 3}
   m_Name: 
@@ -6377,6 +6378,23 @@ MonoBehaviour:
   closedPosition: {x: 0, y: 0, z: 0}
   openPosition: {x: 0, y: -0.0042, z: 0}
   animationTime: 0.5
+--- !u!114 &825870604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825870594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f051c8336960cf419de10ada439146c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mustRotate: 0
+  transformAxis: 1
+  targetTransform: -0.0042
+  interactDistance: 5
+  duration: 2
 --- !u!1 &832544117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3092298552201564850, guid: c829ec858e67fbf4998d6c3169288f96, type: 3}
@@ -20102,6 +20120,7 @@ GameObject:
   - component: {fileID: 1733775593}
   - component: {fileID: 9129330120154524631}
   - component: {fileID: 9129330120154524632}
+  - component: {fileID: 9129330120154524633}
   m_Layer: 0
   m_Name: OvenDoor
   m_TagString: Door
@@ -20682,7 +20701,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7002023727493317085}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c21c93f8f830e6345ac82ce2c1086e2e, type: 3}
   m_Name: 
@@ -20697,6 +20716,23 @@ MonoBehaviour:
   isOpen: 0
   isAnimating: 0
   DrawerThatIsInWay: {fileID: 0}
+--- !u!114 &9129330120154524633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7002023727493317085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f051c8336960cf419de10ada439146c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mustRotate: 1
+  transformAxis: 2
+  targetTransform: 90
+  interactDistance: 5
+  duration: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

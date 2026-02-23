@@ -9,27 +9,20 @@ namespace _Scripts.Equipment
     
     public class OpenCloseObj : MonoBehaviour
     {
-        [SerializeField] private float targetAngle = 90f;
-        [SerializeField] private float targetMovement = 90f;
+        [SerializeField] private bool mustRotate  = false;  
+   
+        [SerializeField] private Axis transformAxis;        
         
+        [SerializeField] private float targetTransform;
         [SerializeField] private float interactDistance = 5f;
-        
-        [SerializeField] private Axis transformAxis;
-        [SerializeField] private bool mustRotate = false;
         
         public float duration = 2f;
         
         private Quaternion _closeRotation;
-        
-        private Quaternion _openRotationX;       
-        private Quaternion _openRotationY;
-        private Quaternion _openRotationZ;
+        private readonly Quaternion[] _openRotations = new Quaternion[3];  
         
         private Vector3 _closePosition;
-        
-        private Vector3 _openPositionX;       
-        private Vector3 _openPositionY;
-        private Vector3 _openPositionZ; 
+        private readonly Vector3[] _openPositions = new Vector3[3];
         
         private bool _isRotating = false;
         private bool _isMoving = false;
@@ -41,18 +34,22 @@ namespace _Scripts.Equipment
         private void Start()
         {
             _closeRotation = transform.localRotation;
-            
-            _openRotationX = _closeRotation * Quaternion.Euler(targetAngle, 0f, 0f);
-            _openRotationY = _closeRotation * Quaternion.Euler(0f, targetAngle, 0f);
-            _openRotationZ = _closeRotation * Quaternion.Euler(0f, 0f, targetAngle);
-            
             _closePosition = transform.localPosition;
-            
-            _openPositionX = _closePosition + new Vector3(targetMovement, 0f, 0f);
-            _openPositionY = _closePosition + new Vector3(0f, targetMovement, 0f);
-            _openPositionZ = _closePosition + new Vector3(0f, 0f, targetMovement);
+
+            /* Creates the Quaternion and Vector3 for the opened object according
+             to the targetTransform and transformed Axis (X = 0, Y = 1, Z = 2). */
+            for (int i = 0; i < 3; i++)
+            {
+                Vector3 axisVector = Vector3.zero;
+                axisVector[i] = 1f;
+
+                _openRotations[i] = _closeRotation * Quaternion.AngleAxis(targetTransform, axisVector);
+
+                _openPositions[i] = _closePosition + axisVector * targetTransform;
+            }
         }
 
+        
         private void Update()
         {   
             //only for testing
@@ -66,9 +63,9 @@ namespace _Scripts.Equipment
                 
                 if (Physics.Raycast(ray, out hit, interactDistance))
                 {
-                    Debug.Log("Getroffen: " + hit.collider.name);
+                    Debug.Log("Hit: " + hit.collider.name);
                     
-                    if (hit.collider.CompareTag("Door"))
+                    if (hit.collider.name == name)
                     {
                         OpenClose();
                     }
@@ -77,15 +74,15 @@ namespace _Scripts.Equipment
         }
 
 
-        public void OpenClose()
+        private void OpenClose()
         {
             if (mustRotate)
             {
                 Quaternion rotation = transformAxis switch
                 {
-                    Axis.X => _openRotationX,
-                    Axis.Y => _openRotationY,
-                    Axis.Z => _openRotationZ,
+                    Axis.X => _openRotations[0],
+                    Axis.Y => _openRotations[1],
+                    Axis.Z => _openRotations[2],
                     _ => Quaternion.identity
                 };
 
@@ -95,9 +92,9 @@ namespace _Scripts.Equipment
             {
                 Vector3 position = transformAxis switch
                 {
-                    Axis.X => _openPositionX,
-                    Axis.Y => _openPositionY,
-                    Axis.Z => _openPositionZ,
+                    Axis.X => _openPositions[0],
+                    Axis.Y => _openPositions[1],
+                    Axis.Z => _openPositions[2],
                     _ => Vector3.zero
                 };
 
@@ -147,7 +144,7 @@ namespace _Scripts.Equipment
 
             while (time < duration)
             {
-                transform.position = Vector3.Slerp(startPosition, endPosition, time / duration);
+                transform.localPosition = Vector3.Slerp(startPosition, endPosition, time / duration);
                 time += Time.deltaTime;
                 yield return null;
             }
